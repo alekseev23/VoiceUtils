@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4F6E7C59-5A9E-4108-BA02-4C1A67A29F06}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="RecordChars.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\WhoIsSpeaking\WhoIsSpeaking.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="RecordChars">
+        <MSBuild Projects="RecordChars.cbproj"/>
+    </Target>
+    <Target Name="RecordChars:Clean">
+        <MSBuild Projects="RecordChars.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RecordChars:Make">
+        <MSBuild Projects="RecordChars.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="WhoIsSpeaking">
+        <MSBuild Projects="..\WhoIsSpeaking\WhoIsSpeaking.cbproj"/>
+    </Target>
+    <Target Name="WhoIsSpeaking:Clean">
+        <MSBuild Projects="..\WhoIsSpeaking\WhoIsSpeaking.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WhoIsSpeaking:Make">
+        <MSBuild Projects="..\WhoIsSpeaking\WhoIsSpeaking.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="RecordChars;WhoIsSpeaking"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="RecordChars:Clean;WhoIsSpeaking:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="RecordChars:Make;WhoIsSpeaking:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

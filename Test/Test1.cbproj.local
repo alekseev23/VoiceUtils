@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.10.14 19:28:16.173,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.10.14 19:28:16.311,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.cpp</Transaction>
+    <Transaction>2025.10.14 19:28:58.458,D:\Work\CPP\2025\VoiceUtils\Test\Test1PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.10.14 19:28:58.474,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.h</Transaction>
+    <Transaction>2025.10.14 19:28:58.474,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.cpp</Transaction>
+    <Transaction>2025.10.14 19:28:58.474,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.dfm</Transaction>
+    <Transaction>2025.10.14 19:28:58.495,D:\Work\CPP\2025\VoiceUtils\Test\Test1.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.10.14 19:29:09.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit1.h=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.h</Transaction>
+    <Transaction>2025.10.14 19:29:09.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit1.dfm=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.dfm</Transaction>
+    <Transaction>2025.10.14 19:29:09.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit1.cpp=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.cpp</Transaction>
+    <Transaction>2025.10.14 22:00:37.952,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>2025.10.14 22:00:37.990,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>2025.10.14 22:00:38.050,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>2025.10.14 22:01:01.037,=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TVoiceSpecters.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

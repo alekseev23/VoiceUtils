@@ -1,0 +1,15 @@
+*/__astcache
+*/__history
+*/__recovery
+*/Backup
+*/Win32
+*/Win64
+*/Win64x
+*.~*#
+*/Release
+/images/
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.lck

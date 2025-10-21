@@ -1,0 +1,80 @@
+//---------------------------------------------------------------------------
+
+#ifndef SpecterWorkH
+#define SpecterWorkH
+//---------------------------------------------------------------------------
+#include "../Common/Envelope.h"
+
+class SpecterWork {
+
+public:
+	UnicodeString FileName;
+	double
+		*Data = NULL,   // Значения спектров
+		*Middle = NULL, // Средние значения спектров
+		*Main = NULL,   // Основные 5 спектров (усреднённые)
+		MaxValue;       // Максимальное значение точки спетра
+
+	double
+		*Re = NULL,
+		*Im = NULL;
+    double ReMin, ReMax, ImMin, ImMax;
+	int
+		N,              // Кол-во точек для вычисления спектра
+		N2,             // N2 = N / 2
+		BufSize,        // Кол-во точек аудиоданных
+		Count,          // Кол-во спектров (зависит от длины аудио данных)
+        MainCount = 5;  // Кол-во основных спектров
+	short *Buf = NULL;  // Аудио данные
+	Envelope *Env;      // Огибающая
+	bool Loaded;        // Флаг загрузки данных
+
+	SpecterWork();
+	~SpecterWork();
+
+	// Чтение данных из WAV файла
+	bool ReadData(UnicodeString filename);
+
+	// Чтение данных из WAV файла
+	bool ReadDataFromWAV(UnicodeString filename);
+
+	// Чтение данных из DAT файла
+	bool ReadDataFromDAT(UnicodeString filename);
+
+	// Вычисление спектров (n - Кол-во точек для анализа, например 512)
+	void CountSpecters(int n);
+	// Вычисление всех спектров
+	void CountAllSpecters(int n);
+
+	// Получение спектров в массив Middle[N2]
+	void GetMiddle(int type, int scale);
+
+	// Получение спектров в массив Middle[N2]
+	void GetMiddle(int scale, int start, int num);
+
+	double GetSpecterPointValue(int specter, int i, int scale);
+	double GetSpecterValue(double val, int scale);
+
+    void DrawSpectrograms(TBitmap *BMP, int scale);
+	void DrawSpectrograms2(TBitmap *BMP, int scale);
+	void DrawSpectrograms3(TBitmap *BMP, int scale);
+
+	void DrawSpectrograms3D(TBitmap *BMP, int scale);
+
+	// Ищет номер спектра с макимальной суммой нижних частот
+	int FindBest(void);
+
+	// Сохранение главных спектров
+	bool SaveMain(UnicodeString fname);
+
+	// Загрузка главных спектров
+	bool LoadMain(UnicodeString fname);
+
+	// Сравнение главных спектров
+	double Compare(SpecterWork *sw, int scale);
+
+	// Нормировка аудиоданных
+    void Normalize(void);
+
+};
+#endif
