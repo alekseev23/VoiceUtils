@@ -21,9 +21,6 @@ object Form9: TForm9
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 232
-    ExplicitTop = 224
-    ExplicitWidth = 185
     object BitBtn1: TBitBtn
       AlignWithMargins = True
       Left = 546
@@ -34,9 +31,6 @@ object Form9: TForm9
       Caption = #1047#1072#1082#1088#1099#1090#1100
       TabOrder = 0
       OnClick = BitBtn1Click
-      ExplicitLeft = 272
-      ExplicitTop = 8
-      ExplicitHeight = 25
     end
     object BitBtn2: TBitBtn
       AlignWithMargins = True
@@ -161,35 +155,47 @@ object Form9: TForm9
     Left = 3
     Top = 95
     Width = 618
-    Height = 105
+    Height = 50
     Align = alTop
-    Caption = #1055#1077#1088#1077#1084#1077#1097#1077#1085#1080#1077
+    Caption = #1057#1076#1074#1080#1075
     TabOrder = 2
-    ExplicitLeft = 6
-    ExplicitTop = 11
+    object Label7: TLabel
+      Left = 24
+      Top = 24
+      Width = 93
+      Height = 15
+      Caption = #1042#1077#1083#1080#1095#1080#1085#1072' '#1089#1076#1074#1080#1075#1072
+    end
+    object Edit7: TEdit
+      Left = 128
+      Top = 16
+      Width = 49
+      Height = 23
+      Alignment = taRightJustify
+      TabOrder = 0
+      Text = '0'
+    end
   end
   object GroupBox3: TGroupBox
     AlignWithMargins = True
     Left = 3
-    Top = 206
+    Top = 151
     Width = 618
     Height = 105
     Align = alTop
     Caption = #1050#1086#1087#1080#1088#1086#1074#1072#1085#1080#1077
     TabOrder = 3
-    ExplicitLeft = 8
-    ExplicitTop = 282
+    ExplicitTop = 206
   end
   object GroupBox4: TGroupBox
     AlignWithMargins = True
     Left = 3
-    Top = 317
+    Top = 262
     Width = 618
     Height = 105
     Align = alTop
     Caption = #1056#1072#1089#1090#1103#1078#1077#1085#1080#1077' ('#1089#1078#1072#1090#1080#1077') '#1087#1086' '#1074#1088#1077#1084#1077#1085#1080
     TabOrder = 4
-    ExplicitLeft = 8
-    ExplicitTop = 401
+    ExplicitTop = 317
   end
 end

@@ -43,6 +43,9 @@ public:
 
 	// Вычисление спектров (n - Кол-во точек для анализа, например 512)
 	void CountSpecters(int n);
+	void CountSpecters(int n, bool energy_specters);
+    void CountSpecters4X(int n, bool energy_specters);
+
 	// Вычисление всех спектров
 	void CountAllSpecters(int n);
 

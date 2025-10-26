@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.10.25 22:49:21.909,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.10.25 22:49:22.195,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.10.25 22:50:20.604,D:\Work\CPP\2025\VoiceUtils\SortObj\SortObjPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.10.25 22:50:20.619,D:\Work\CPP\2025\VoiceUtils\SortObj\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.10.25 22:50:20.630,D:\Work\CPP\2025\VoiceUtils\SortObj\SortObj.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.10.25 22:50:26.827,D:\Work\CPP\2025\VoiceUtils\SortObj\main.cpp=D:\Work\CPP\2025\VoiceUtils\SortObj\File1.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

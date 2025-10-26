@@ -3,11 +3,11 @@
 #include <wchar.h>
 #include <windows.h>
 #include <iostream>
-#include "../RecordChars/SpecterWork.h"
 #include "../../_Common_/Lib/files.h"
 #include "../../_Common_/Lib/strings.h"
 #include "../Common/common.h"
-#include "TVoiceSpecters.h"
+#include "../Common/TVoiceSpecters.h"
+#include "../Common/SpecterWork.h"
 
 using namespace std;
 

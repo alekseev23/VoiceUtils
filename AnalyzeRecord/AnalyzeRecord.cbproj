@@ -150,10 +150,6 @@
             <DependentOn>TCompareSpecters.h</DependentOn>
             <BuildOrder>10</BuildOrder>
         </CppCompile>
-        <CppCompile Include="TVoiceSpecters.cpp">
-            <DependentOn>TVoiceSpecters.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
-        </CppCompile>
         <CppCompile Include="..\Common\common.cpp">
             <DependentOn>..\Common\common.h</DependentOn>
             <BuildOrder>5</BuildOrder>
@@ -166,9 +162,21 @@
             <DependentOn>..\Common\FrequencyData.h</DependentOn>
             <BuildOrder>7</BuildOrder>
         </CppCompile>
-        <CppCompile Include="..\RecordChars\SpecterWork.cpp">
-            <DependentOn>..\RecordChars\SpecterWork.h</DependentOn>
-            <BuildOrder>9</BuildOrder>
+        <CppCompile Include="..\Common\SpecterWork.cpp">
+            <DependentOn>..\Common\SpecterWork.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TColorSceme.cpp">
+            <DependentOn>..\Common\TColorSceme.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TInterpolation.cpp">
+            <DependentOn>..\Common\TInterpolation.h</DependentOn>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TVoiceSpecters.cpp">
+            <DependentOn>..\Common\TVoiceSpecters.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\..\_Common_\Lib\files.cpp">
             <DependentOn>..\..\_Common_\Lib\files.h</DependentOn>

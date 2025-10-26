@@ -479,9 +479,9 @@ if (!FileExists(filename)) {
 //
 if (Form9->Showing) {
 	TWavFile *WavFile = new TWavFile;
-MyLog("Load");
+//MyLog("Load");
 	WavFile->Load(filename);
-MyLog("Calculate");
+//MyLog("Calculate");
 	WavFile->Calculate();
 	int left, right, d_left, d_right;
 	double kf, kb;
@@ -491,21 +491,23 @@ MyLog("Calculate");
 	d_right = Form9->Edit4->Text.ToIntDef(0);
 	kf = str_replace(".", ",", Form9->Edit5->Text).ToDouble();
 	kb = str_replace(".", ",", Form9->Edit6->Text).ToDouble();
-MyLog("Cut");
+//MyLog("Cut");
 	WavFile->Cut(left, right, d_left, d_right, kf, kb);
+//MyLog("Shift");
+	WavFile->Shift(Form9->Edit7->Text.ToIntDef(0));
 	StatusBar1->Panels[0].Items[0]->Text = UnicodeString(left) + " " + UnicodeString(d_left) + " " +  UnicodeString(right) + " " +  UnicodeString(d_right) + " " +  UnicodeString(kf) + " " + UnicodeString(kb);
-MyLog("ReCalculate");
+//MyLog("ReCalculate");
 	WavFile->ReCalculate();
-MyLog("Save");
+//MyLog("Save");
 	WavFile->Save(CurrentFile);
-MyLog("delete");
+//MyLog("delete");
 	delete WavFile;
-MyLog("OK---------------------------------------------");
+//MyLog("OK---------------------------------------------");
 }
 else CopyFile(filename.w_str(), CurrentFile.w_str(), false);
 SpecterWork->ReadData(CurrentFile);
 //SpecterWork->ReadData(filename);
-SpecterWork->CountSpecters(N2 * 2);
+SpecterWork->CountSpecters(N2 * 2, N20->Checked);
 // Проиграть
 N18Click(this);
 // Строим график
@@ -775,5 +777,14 @@ void __fastcall TForm1::N17Click(TObject *Sender)
 Form9->Show();
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TForm1::N19Click(TObject *Sender)
+{ // Обычные спектры
+N19->Checked = true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::N20Click(TObject *Sender)
+{ // Энергетические спектры
+N20->Checked = true;
+}
+//---------------------------------------------------------------------------
 

@@ -93,6 +93,9 @@ __published:	// IDE-managed Components
 	TMenuItem *N17;
 	TMenuItem *N224;
 	TMenuItem *N18;
+	TMenuItem *N221;
+	TMenuItem *N19;
+	TMenuItem *N20;
 	void __fastcall N3Click(TObject *Sender);
 	void __fastcall UpdateVoicesListExecute(TObject *Sender);
 	void __fastcall N4Click(TObject *Sender);
@@ -125,6 +128,8 @@ __published:	// IDE-managed Components
 	void __fastcall N16Click(TObject *Sender);
 	void __fastcall N17Click(TObject *Sender);
 	void __fastcall N18Click(TObject *Sender);
+	void __fastcall N19Click(TObject *Sender);
+	void __fastcall N20Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

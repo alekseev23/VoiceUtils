@@ -17,9 +17,6 @@ object Form6: TForm6
     Width = 838
     Height = 19
     Panels = <>
-    ExplicitLeft = 424
-    ExplicitTop = 312
-    ExplicitWidth = 0
   end
   object PageControl1: TPageControl
     AlignWithMargins = True
@@ -30,10 +27,6 @@ object Form6: TForm6
     ActivePage = TabSheet2
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 280
-    ExplicitTop = 224
-    ExplicitWidth = 289
-    ExplicitHeight = 193
     object TabSheet1: TTabSheet
       Caption = 'TabSheet1'
       object Memo1: TMemo
@@ -63,10 +56,6 @@ object Form6: TForm6
         View3D = False
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = -56
-        ExplicitTop = -40
-        ExplicitWidth = 400
-        ExplicitHeight = 250
         DefaultCanvas = 'TGDIPlusCanvas'
         ColorPaletteIndex = 13
         object Series1: TBarSeries

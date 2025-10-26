@@ -213,9 +213,29 @@
             <DependentOn>..\Common\FrequencyData.h</DependentOn>
             <BuildOrder>15</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\Common\SpecterWork.cpp">
+            <DependentOn>..\Common\SpecterWork.h</DependentOn>
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TAudioMax.cpp">
+            <DependentOn>..\Common\TAudioMax.h</DependentOn>
+            <BuildOrder>23</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TColorSceme.cpp">
+            <DependentOn>..\Common\TColorSceme.h</DependentOn>
+            <BuildOrder>24</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TInterpolation.cpp">
+            <DependentOn>..\Common\TInterpolation.h</DependentOn>
+            <BuildOrder>26</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\Common\TSpecters.cpp">
             <DependentOn>..\Common\TSpecters.h</DependentOn>
             <BuildOrder>17</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TWavFile.cpp">
+            <DependentOn>..\Common\TWavFile.h</DependentOn>
+            <BuildOrder>25</BuildOrder>
         </CppCompile>
         <LibFiles Include="bass.a" Condition="'$(Platform)'=='Win64' Or '$(Platform)'=='Win64x'">
             <BuildOrder>8</BuildOrder>
@@ -232,22 +252,6 @@
             <BuildOrder>1</BuildOrder>
             <PCH>true</PCH>
         </PCHCompile>
-        <CppCompile Include="SpecterWork.cpp">
-            <DependentOn>SpecterWork.h</DependentOn>
-            <BuildOrder>12</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="TAudioMax.cpp">
-            <DependentOn>TAudioMax.h</DependentOn>
-            <BuildOrder>19</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="TColorSceme.cpp">
-            <DependentOn>TColorSceme.h</DependentOn>
-            <BuildOrder>22</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="TWavFile.cpp">
-            <DependentOn>TWavFile.h</DependentOn>
-            <BuildOrder>24</BuildOrder>
-        </CppCompile>
         <CppCompile Include="Unit1.cpp">
             <Form>Form1</Form>
             <FormType>dfm</FormType>

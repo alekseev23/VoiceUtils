@@ -8,8 +8,8 @@
     <Transaction>2025.10.11 22:23:16.127,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\AnalyzeRecord.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
     <Transaction>2025.10.11 22:23:20.008,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\main.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\File1.cpp</Transaction>
     <Transaction>2025.10.12 17:55:11.330,=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.cpp</Transaction>
-    <Transaction>2025.10.12 17:57:30.861,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TVoiceSpecters.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.h</Transaction>
     <Transaction>2025.10.12 17:57:30.861,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TVoiceSpecters.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.cpp</Transaction>
+    <Transaction>2025.10.12 17:57:30.861,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TVoiceSpecters.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.h</Transaction>
     <Transaction>2025.10.12 23:17:54.522,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
     <Transaction>2025.10.12 23:17:54.565,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
     <Transaction>2025.10.12 23:18:39.289,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
@@ -20,5 +20,9 @@
     <Transaction>2025.10.16 15:33:47.716,=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.cpp</Transaction>
     <Transaction>2025.10.16 15:35:31.940,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TCompareSpecters.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.cpp</Transaction>
     <Transaction>2025.10.16 15:35:31.940,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TCompareSpecters.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\Unit7.h</Transaction>
+    <Transaction>2025.10.26 11:50:36.176,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpecters.cpp</Transaction>
+    <Transaction>2025.10.26 11:58:22.504,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>2025.10.26 11:58:57.718,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+    <Transaction>2025.10.26 11:59:25.887,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
   </Transactions>
 </BorlandProject>

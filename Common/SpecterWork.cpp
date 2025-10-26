@@ -5,11 +5,12 @@
 #include <System.Math.hpp>
 #include "SpecterWork.h"
 #include "../../_Common_/Lib/files.h"
-#include "../Common/Envelope.h"
-#include "../Common/FFT.h"
-#include "../Common/FrequencyData.h"
-#include "../Common/common.h"
-#include "../Common/TSpecters.h"
+#include "Envelope.h"
+#include "FFT.h"
+#include "FrequencyData.h"
+#include "common.h"
+#include "TSpecters.h"
+#include "TInterpolation.h"
 #include "TColorSceme.h"
 
 //---------------------------------------------------------------------------
@@ -88,7 +89,7 @@ Loaded = true;
 return true;
 }
 //---------------------------------------------------------------------------
-// Чтение данных из DAT файла
+// Нормализация данных
 void SpecterWork::Normalize(void) {
 if (!Loaded) return;
 short max = 0, val;
@@ -128,7 +129,6 @@ for (int i = 0; i < Count; i++) {
 delete FrequencyData;
 }
 //---------------------------------------------------------------------------
-
 // Вычисление спектров
 void SpecterWork::CountSpecters(int n) {
 if (!Loaded) return;
@@ -190,6 +190,131 @@ for (auto i = 0; i < MainCount; i++) {
 	auto c = b - a;
 	for (auto k = 0; k < N2; k++) Main[i * N2 + k] /= c;
 }
+}
+//---------------------------------------------------------------------------
+// Вычисление спектров
+void SpecterWork::CountSpecters(int n, bool energy_specters) {
+if (!Loaded) return;
+int RADIUS_SUM = 0, pos, a, b, pp;
+N = n;
+N2 = N / 2;
+Count = 400 * (BufSize - N) / 48000;
+Count = 2 * 4800 * (BufSize - N) / 48000;
+//if (Count > 1000) Count = 1000;
+FrequencyData *FrequencyData = new class FrequencyData(N);
+if (Data != NULL) delete[] Data;
+Data = new double [Count * N2];
+
+if (Re != NULL) delete[] Re;
+Re = new double [Count * N2 * 2];
+if (Im != NULL) delete[] Im;
+Im = new double [Count * N2 * 2];
+
+MaxValue = 0.;
+double val;
+for (int i = 0; i < Count; i++) {
+	pos = i * (BufSize - N) / Count;
+	FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	// Сохраняем данные в массив
+	for (int j = 0; j < N2; j++) {
+		val = FrequencyData->Data[j];
+		if (energy_specters) {
+			val = val * val * (j + 1) * (j + 1);
+		}
+		Data[i * N2 + j] = val;
+		if (val > MaxValue) MaxValue = val;
+	}
+
+	// Готовим значения
+	pp = i * N;
+	for (int j = 0; j < N; j++) {
+		Re[pp + j] = Buf[pos + j];
+		Im[pp + j] = 0.;
+	}
+	FFT(&Re[pp], &Im[pp], N, 9, FT_DIRECT);
+}
+delete FrequencyData;
+
+// Основные спектры
+if (Main != NULL) delete[] Main;
+Main = new double [MainCount * N2];
+// Обнуляем основные спектры
+for (auto i = 0; i < MainCount * N2; i++) Main[i] = 0.;
+// Цикл по основным спектрам
+for (auto i = 0; i < MainCount; i++) {
+	a = i * Count / 5;
+	b = (i + 1) * Count / 5;
+	if (b > Count) b = Count;
+	// Цикл по спектрам внутри группы (находим сумму)
+	for (auto j = a; j < b; j++) {
+		for (auto k = 0; k < N2; k++) {
+			Main[i * N2 + k] += Data[j * N2 + k];
+		}
+
+	}
+	// Находим среднее значение
+	auto c = b - a;
+	for (auto k = 0; k < N2; k++) Main[i * N2 + k] /= c;
+}
+}
+//---------------------------------------------------------------------------
+// Вычисление спектров
+void SpecterWork::CountSpecters4X(int n, bool energy_specters) {
+if (!Loaded) return;
+int pos, a, b, pp;
+double val;
+// Интерполируем значения массива Buf[] и получаем Buf2[] с четверо большим кол-вом точек
+TInterpolation Interpolation;
+int BufSize2 = BufSize * 4;
+short *Buf2 = new short [BufSize2];
+Interpolation.InterpolateX4(BufSize, Buf, Buf2);
+
+N = n;
+N2 = N / 2;
+Count = 400 * (BufSize2 - N) / 48000;
+FrequencyData *FrequencyData = new class FrequencyData(N);
+if (Data != NULL) delete[] Data;
+Data = new double [Count * N2];
+MaxValue = 0.;
+for (int i = 0; i < Count; i++) {
+	pos = i * (BufSize - N) / Count;
+	FrequencyData->calculate(Buf, pos);
+	//FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	// Сохраняем данные в массив
+	for (int j = 0; j < N2; j++) {
+		val = FrequencyData->Data[j];
+		if (energy_specters) {
+			val = val * val * (j + 1) * (j + 1);
+		}
+		Data[i * N2 + j] = val;
+		if (val > MaxValue) MaxValue = val;
+	}
+}
+delete FrequencyData;
+
+// Основные спектры
+if (Main != NULL) delete[] Main;
+Main = new double [MainCount * N2];
+// Обнуляем основные спектры
+for (auto i = 0; i < MainCount * N2; i++) Main[i] = 0.;
+// Цикл по основным спектрам
+for (auto i = 0; i < MainCount; i++) {
+	a = i * Count / 5;
+	b = (i + 1) * Count / 5;
+	if (b > Count) b = Count;
+	// Цикл по спектрам внутри группы (находим сумму)
+	for (auto j = a; j < b; j++) {
+		for (auto k = 0; k < N2; k++) {
+			Main[i * N2 + k] += Data[j * N2 + k];
+		}
+
+	}
+	// Находим среднее значение
+	auto c = b - a;
+	for (auto k = 0; k < N2; k++) Main[i * N2 + k] /= c;
+}
+// Удаляем ненужные объекты
+delete[] Buf2;
 }
 //---------------------------------------------------------------------------
 

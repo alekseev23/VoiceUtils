@@ -110,7 +110,6 @@ void TWavFile::ReCalculate() {
 
 void TWavFile::Cut(int left, int right, int d_left, int d_right, double kf, double kb) {
 	int p;
-//ShowMessage("Point 1");
 	// Вычисляем множители
 	double *K = new double [N];
 	//
@@ -131,35 +130,48 @@ void TWavFile::Cut(int left, int right, int d_left, int d_right, double kf, doub
 	for (auto i = right + d_right; i < N; i++) {
 		if ((i >= 0) && (i < N)) K[i] = kb;
 	}
-//ShowMessage("Point 2");
-
-	/*UnicodeString s;
-	for (int i = 0; i < N; i++) {
-		s = s + UnicodeString(K[i]) + " ";
-	}
-	ShowMessage(s);*/
-
 	for (auto i = 0; i < SpectersCount; i++) {
 		for (auto j = 0; j < N; j++) {
 			p = i * N + j;
-			/*if (j < left) {
-				Re[p] *= kb;
-				Im[p] *= kb;
-			}
-			else if (j > right) {
-				Re[p] *= kb;
-				Im[p] *= kb;
-			}
-			else {
-				Re[p] *= kf;
-				Im[p] *= kf;
-			}*/
 			Re[p] = Re[p] * K[j];
 			Im[p] = Im[p] * K[j];
 		}
 	}
-//ShowMessage("Cut");
-delete[] K;
+	delete[] K;
+}
+
+// Сдвиг спектра вправо или влево
+void TWavFile::Shift(int val) {
+	if (val == 0) return;
+	int p = 0;
+	for (auto i = 0; i < SpectersCount; i++) {
+		p = i * N;
+		if (val > 0) { // Сдвиг вправо
+			for (auto j = N - 1; j > 0; j--) {
+				if (j < val) {
+					Re[p + j] = 0.;
+					Im[p + j] = 0.;
+				}
+				else {
+					Re[p + j] = Re[p + j - val];
+					Im[p + j] = Im[p + j - val];
+				}
+			}
+		}
+		else { // Сдвиг влево
+			for (auto j = 0; j < N; j++) {
+				if (j < -val) {
+					Re[p + j] = Re[p + j - val];
+					Im[p + j] = Im[p + j - val];
+				}
+				else {
+					Re[p + j] = 0.;
+					Im[p + j] = 0.;
+				}
+			}
+
+		}
+	}
 }
 
 void TWavFile::Move() {

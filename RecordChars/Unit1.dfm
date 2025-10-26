@@ -495,6 +495,22 @@ object Form1: TForm1
         RadioItem = True
         OnClick = X1Click
       end
+      object N221: TMenuItem
+        Caption = '-'
+      end
+      object N19: TMenuItem
+        Caption = #1054#1073#1099#1095#1085#1099#1077' '#1089#1087#1077#1082#1090#1088#1099
+        Checked = True
+        GroupIndex = 1
+        RadioItem = True
+        OnClick = N19Click
+      end
+      object N20: TMenuItem
+        Caption = #1069#1085#1077#1088#1075#1077#1090#1080#1095#1077#1089#1082#1080#1077' '#1089#1087#1077#1082#1090#1088#1099
+        GroupIndex = 1
+        RadioItem = True
+        OnClick = N20Click
+      end
     end
     object N223: TMenuItem
       Caption = #1042#1080#1076
