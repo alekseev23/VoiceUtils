@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.10.27 11:37:55.797,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.10.27 11:37:55.869,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.10.27 11:38:59.054,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord2\AnalyzeRecord2PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.10.27 11:38:59.069,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord2\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.10.27 11:38:59.081,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord2\AnalyzeRecord2.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.10.27 11:39:05.153,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord2\main.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord2\File1.cpp</Transaction>
+    <Transaction>2025.10.27 15:29:37.158,=D:\Work\CPP\2025\_Common_\Lib\bitmap.cpp</Transaction>
+    <Transaction>2025.10.27 15:29:37.208,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>2025.10.27 15:29:37.243,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>2025.10.27 15:29:37.311,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>2025.10.27 15:30:19.937,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
+    <Transaction>2025.10.27 15:30:19.940,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>2025.10.27 15:30:19.941,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB.cpp</Transaction>
+    <Transaction>2025.10.27 15:30:19.977,=D:\Work\CPP\2025\VoiceUtils\Common\TWavFile.cpp</Transaction>
+    <Transaction>2025.10.28 21:44:34.648,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>2025.10.28 21:55:47.492,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
+    <Transaction>2025.10.28 21:55:47.538,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
+    <Transaction>2025.10.28 21:55:47.581,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

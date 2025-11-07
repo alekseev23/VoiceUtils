@@ -42,12 +42,24 @@ public:
 	bool ReadDataFromDAT(UnicodeString filename);
 
 	// Вычисление спектров (n - Кол-во точек для анализа, например 512)
-	void CountSpecters(int n);
-	void CountSpecters(int n, bool energy_specters);
-    void CountSpecters4X(int n, bool energy_specters);
+	// specters_in_second - кол-во спектров в секунду
+	void CountSpecters(int n, int specters_in_second);
 
-	// Вычисление всех спектров
-	void CountAllSpecters(int n);
+	// Вычисляем основные спектры
+	void CountMainSpecters(int main_count);
+
+	// Из обычных вычисляем энергетические спектры
+	void GetEnergySpecter(double *specter1, double *specter2);
+
+		//  Deprikated
+		void CountSpecters(int n);
+		void CountSpecters(int n, bool energy_specters);
+		void CountSpecters4X(int n, bool energy_specters);
+
+		// Вычисление всех спектров
+		void CountAllSpecters(int n);
+		void CountAllSpecters(int n, bool energy_specters);
+		void CountAllSpecters4X(int n, bool energy_specters);
 
 	// Получение спектров в массив Middle[N2]
 	void GetMiddle(int type, int scale);

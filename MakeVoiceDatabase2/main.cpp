@@ -4,14 +4,14 @@
 #include <iostream>
 #include <vector>
 #include "../Common/SpecterWork.h"
-#include "../Common/TVoiceSpecters.h"
+#include "../Common/TVoiceSpecters2.h"
 #include "../Common/TVoiceSpectersDB.h"
 #include "../../_Common_/Lib/files.h"
 #include "../../_Common_/Lib/strings.h"
 
 using namespace std;
 
-
+/*
 struct MyObject {
 	double value;
 	short freq;
@@ -19,14 +19,13 @@ struct MyObject {
 	// Overload the less-than operator for default sorting by 'value'
 	bool operator<(const MyObject& other) const {
 		return value > other.value;
-    }
+	}
 };
 
 
 
-/*
-A[n] - входной спектр
-*/
+//A[n] - входной спектр
+
 int Analyze(int n, double *A, int max_m, short *f, short *a) {
 	double max = 0.;
 	short *F = new short [n];
@@ -46,12 +45,12 @@ int Analyze(int n, double *A, int max_m, short *f, short *a) {
 	// Сортировка максимумов
 	// Sort using the overloaded operator<
 	std::sort(objects.begin(), objects.end());
-	int res = objects.length;
+	int res = objects.size();
 	if (res > 10) res = 10;
 
-    return res;
+	return res;
 }
-
+*/
 int _tmain(int argc, _TCHAR* argv[])
 {
 UnicodeString s, c, DirName, DBName;
@@ -78,10 +77,13 @@ for (auto i = 0; i < ts->Count; i++) {
 	sw->ReadDataFromWAV(ts->Strings[i]);
 	// Нахождение спектров
 	sw->CountSpecters4X(N2 * 2, true);
-	// Сохранение буквы (звука) (2 байта)
+	// Сохранение буквы (звука) (4 байта)
 	s = without_extension(get_file_name(ts->Strings[i]));
 	c = getFieldFromString(0, s, "_");
-	fwrite(c.w_str(), 2, 1, fd);
+	//fwrite(c.w_str(), 2, 1, fd);
+	wchar_t SoundChar[10] = {0, 0, 0};
+	wcscpy(SoundChar, c.w_str());
+	fwrite(SoundChar, 2, 2, fd);
 	// Сохранение номера (id) варианта буквы
 	char id = (char)getFieldFromString(1, s, "_").ToIntDef(0);
 	fwrite(&id, 1, 1, fd);
@@ -90,6 +92,36 @@ for (auto i = 0; i < ts->Count; i++) {
 }
 // Закрываем файл
 fclose(fd);
+
+TVoiceSpectersDB *VoiceSpectersDB = new TVoiceSpectersDB;
+VoiceSpectersDB->SetSize(ts->Count);
+// Цикл по списку
+
+cout << "Items=" << ts->Count << endl;
+
+for (auto i = 0; i < ts->Count; i++) {
+	// Вычисляем спектр
+	sw->ReadDataFromWAV(ts->Strings[i]);
+	// Нахождение спектров
+	sw->CountSpecters4X(N2 * 2, true);
+
+	// Сохранение буквы (звука) (2 байта)
+	s = without_extension(get_file_name(ts->Strings[i]));
+	c = getFieldFromString(0, s, "_");
+	//fwrite(c.w_str(), 2, 1, fd);
+	// Сохранение номера (id) варианта буквы
+	int id = getFieldFromString(1, s, "_").ToIntDef(0);
+	VoiceSpectersDB->SetParams(i, c, id);
+
+	// Сохранение спектров
+	//fwrite(sw->Main, 8, sw->MainCount * N2, fd);
+	for (auto j = 0; j < VoiceSpectersDB->MainCount; j++) {
+		VoiceSpectersDB->Set(i, j, N2, &sw->Main[j * sw->N2]);
+	}
+}
+VoiceSpectersDB->Save(without_extension(DBName) + ".vdb3");
+delete VoiceSpectersDB;
+
 // Удаляем ненужные объекты
 delete sw;
 delete ts;

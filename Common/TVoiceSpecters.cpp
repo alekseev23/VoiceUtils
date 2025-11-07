@@ -3,7 +3,7 @@
 #pragma hdrstop
 
 #include "TVoiceSpecters.h"
-//#include "TCompareSpecters.h"
+#include "TCompareSpecters.h"
 #include <System.Math.hpp>
 #include "../../_Common_/Lib/files.h"
 #include "../../_Common_/Lib/strings.h"

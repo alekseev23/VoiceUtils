@@ -74,6 +74,13 @@ else {
 	if (Form1->ListBox2->ItemIndex != AutoWork::Variant) {
 		Form1->ListBox2->ItemIndex = AutoWork::Variant;
 		Form1->ListBox2Click(this);
+		// Делаем скриншоты
+		if (CheckBox2->Checked) Form1->N21Click(this); // Скриншоты - Аудиоданные
+		if (CheckBox3->Checked) Form1->N243Click(this); // Скриншоты - Все спектры данного звука
+		if (CheckBox4->Checked) Form1->N255Click(this); // Скриншоты - Все спектры
+		if (CheckBox5->Checked) Form1->N30Click(this); // Скриншоты - Средние спектры
+		if (CheckBox6->Checked) Form1->N3D1Click(this); // Скриншоты - 3D
+		if (CheckBox7->Checked) Form1->N31Click(this); // Скриншоты - Спектрограмма
 	}
 }
 //Form1->TabControl2Change(this);

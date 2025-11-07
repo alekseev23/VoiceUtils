@@ -3,11 +3,18 @@
 #pragma hdrstop
 
 #include "TVoiceSpectersDB.h"
+#include <System.Math.hpp>
+#include <algorithm> // For std::sort
+#include <iostream>
+#include <vector>
+#include "../../_Common_/Lib/files.h"
+#include "../../_Common_/Lib/strings.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
+using namespace std;
 
-
+//---------------------------------------------------------------------------
 TVoiceSpectersDB::TVoiceSpectersDB() {
 	Count = 0;
 	N2 = 256;
@@ -15,46 +22,82 @@ TVoiceSpectersDB::TVoiceSpectersDB() {
 	//
 	N = 4096;
 	N2 = 2048;
-    NN = 2048;
+	NN = 2048;
 }
 
+//---------------------------------------------------------------------------
 TVoiceSpectersDB::~TVoiceSpectersDB() {
 	if (VoiceSpecters != NULL) delete[] VoiceSpecters;
 }
 
+//---------------------------------------------------------------------------
 void TVoiceSpectersDB::SetSize(int count) {
 	Count = count;
 	if (VoiceSpecters != NULL) delete[] VoiceSpecters;
-	VoiceSpecters = new TVoiceSpecter [Count];
+	VoiceSpecters = new TVoiceSpectersDB_Specters [Count];
 }
 
+//---------------------------------------------------------------------------
 bool TVoiceSpectersDB::Load(UnicodeString fname) {
 	int fsize = getFileSize(fname);
 	if (fsize == 0) return false;
-	Count = fsize / sizeof(TVoiceSpecter);
+	//Count = fsize / sizeof(TVoiceSpectersDB_Specters);
+	//Count = fsize / 215;
+    Count = fsize / ((2 + TVoiceSpectersDB_MAX_PTS * (2 + 2)) * TVoiceSpectersDB_Main_Specters + 2 * 2 + 1);
+//ShowMessage("TVoiceSpectersDB::Load Count=" + UnicodeString(Count));
+//ShowMessage("TVoiceSpectersDB::Load sizeof(TVoiceSpectersDB_Specters)=" + UnicodeString(sizeof(TVoiceSpectersDB_Specters)));
 	if (VoiceSpecters != NULL) delete[] VoiceSpecters;
-	VoiceSpecters = new TVoiceSpecter [Count];
+	VoiceSpecters = new TVoiceSpectersDB_Specters [Count];
 	FILE *fd = _wfopen(fname.w_str(), L"rb");
 	for (auto i = 0; i < Count; i++) {
-		fread(&VoiceSpecters[i].Char, 2, 1, fd);
-		fread(&VoiceSpecters[i].Id, 1, 1, fd);
-		// Сохранение спектров
-		fread(&VoiceSpecters[i].Data, 8, N2 * MainCount, fd);
+		// Чтение звука
+		wchar_t SoundChar[3] = {0, 0, 0};
+		fread(&SoundChar, 2, 2, fd);
+		VoiceSpecters[i].Sound = UnicodeString(SoundChar);
+		// Чтение версии
+		unsigned char id;
+		fread(&id, 1, 1, fd);
+		VoiceSpecters[i].Id = id;
+		// Чтение спектров
+		for (auto j = 0; j < TVoiceSpectersDB_Main_Specters; j++) {
+			// Кол-во точек
+			fread(&VoiceSpecters[i].Specters[j].Count, 2, 1, fd);
+			// Частоты
+			fread(&VoiceSpecters[i].Specters[j].Freq, 2, TVoiceSpectersDB_MAX_PTS, fd);
+			// Значения
+			fread(&VoiceSpecters[i].Specters[j].Value, 2, TVoiceSpectersDB_MAX_PTS, fd);
+		}
 	}
 	// Закрываем файл
 	fclose(fd);
-
 	return true;
 }
 
+//---------------------------------------------------------------------------
 bool TVoiceSpectersDB::Save(UnicodeString fname) {
 	// Создание объекта базы данных
 	FILE *fd = _wfopen(fname.w_str(), L"wb");
+	// Цик по звукам
 	for (auto i = 0; i < Count; i++) {
-		fwrite(&VoiceSpecters[i].Char, 2, 1, fd);
-		fwrite(&VoiceSpecters[i].Id, 1, 1, fd);
-		// Сохранение спектров
-		fwrite(&VoiceSpecters[i].Data, 8, N2 * MainCount, fd);
+		// Sound
+		wchar_t SoundChar[10];
+		wcscpy(SoundChar, VoiceSpecters[i].Sound.w_str());
+		fwrite(SoundChar, 2, 2, fd);
+		// Id (версия)
+		unsigned char id;
+		id = (unsigned char)VoiceSpecters[i].Id;
+		fwrite(&id, 1, 1, fd);
+		// Цикл по спектрам внутри одного звука
+		for (auto j = 0; j < TVoiceSpectersDB_Main_Specters; j++) {
+			// Сохранение спектров
+			// Кол-во точек
+			fwrite(&VoiceSpecters[i].Specters[j].Count, 2, 1, fd);
+//cout <<  i << " " << j << " " << (int)VoiceSpecters[i].Specters[j].Count << endl;
+			// Частоты
+			fwrite(&VoiceSpecters[i].Specters[j].Freq, 2, TVoiceSpectersDB_MAX_PTS, fd);
+			// Значения
+			fwrite(&VoiceSpecters[i].Specters[j].Value, 2, TVoiceSpectersDB_MAX_PTS, fd);
+		}
 	}
 	// Закрываем файл
 	fclose(fd);
@@ -73,7 +116,7 @@ int TVoiceSpectersDB::Analyze(int n, double *A, struct TVoiceSpectersDB_One_Spec
 		if (A[i] > max) max = A[i];
 	}
 	// Ищем максимумы
-	for (auto i = 1; i < n - 1; i++) {
+	for (short i = 1; i < n - 1; i++) {
 		if ((A[i] > A[i - 1]) && (A[i] > A[i + 1])) {
 			objects.push_back({A[i], i});
 		}
@@ -81,12 +124,12 @@ int TVoiceSpectersDB::Analyze(int n, double *A, struct TVoiceSpectersDB_One_Spec
 	// Сортировка максимумов
 	// Sort using the overloaded operator<
 	std::sort(objects.begin(), objects.end());
-	k = objects.length;
-	if (k > 10) k = 10;
+	int k = objects.size();
+	if (k > TVoiceSpectersDB_MAX_PTS) k = TVoiceSpectersDB_MAX_PTS;
 	res->Count = k;
 	for (auto i = 0; i < k; i++) {
-		res.Freq[i] = objects[i].freq;
-		res.Value[i] = (short)(32767. * objects[i].value / max);
+		res->Freq[i] = objects[i].freq;
+		res->Value[i] = (short)(32767. * objects[i].value / max);
 	}
 	return res->Count;
 }
@@ -123,3 +166,49 @@ switch (scale) {
 }
 return 0.;
 }
+
+//---------------------------------------------------------------------------
+// Задать имя и версию (id) набора спектров
+void TVoiceSpectersDB::SetParams(int i, UnicodeString sound, int id) {
+	VoiceSpecters[i].Sound = sound;
+	VoiceSpecters[i].Id = id;
+}
+
+//---------------------------------------------------------------------------
+// Задать данные спектра
+void TVoiceSpectersDB::Set(int i, int j, int n, double *A) {
+	Analyze(n, A, &VoiceSpecters[i].Specters[j]);
+}
+
+//---------------------------------------------------------------------------
+// Сравнение двух спектров s1 и s2 и возвращение кол-ва совпадений
+int TVoiceSpectersDB::Compare(struct TVoiceSpectersDB_One_Specter *s1, struct TVoiceSpectersDB_One_Specter *s2, int delta) {
+	int res = 0;
+	for (auto i = 0; i < s1->Count; i++) {
+		for (auto j = 0; j < s2->Count; j++) {
+			if (abs(s1->Freq[i] - s2->Freq[j]) <= delta) res++;
+		}
+	}
+	return res;
+}
+//---------------------------------------------------------------------------
+// Поиск наиболее похожего спектра
+int TVoiceSpectersDB::Search(struct TVoiceSpectersDB_One_Specter *specter, std::vector<TVoiceSpecters_Search> &result, int delta) {
+	// Очистка вектора
+	result.clear();
+	// Цикл по всем звукам
+	for (auto i = 0; i < Count; i++) {
+		// Цикл по всем спектрам внутри звука
+		for (auto j = 0; j < TVoiceSpectersDB_Main_Specters; j++) {
+			// Сравнение
+			short res = Compare(specter, &VoiceSpecters[i].Specters[j], delta);
+			// Добавление результата в вектор
+			result.push_back({(short)res, (short)i, (short)j});
+		}
+	}
+	// Сортировка вектора
+	std::sort(result.begin(), result.end());
+	return 0;
+}
+//---------------------------------------------------------------------------
+

@@ -12,6 +12,7 @@
 #include "Unit6.h"
 #include "Unit8.h"
 #include "Unit9.h"
+#include "Unit10.h"
 #include "bass.h"
 #include "../../_Common_/Lib/bitmap.h"
 #include "../../_Common_/Lib/files.h"
@@ -22,10 +23,10 @@
 #include "../Common/FrequencyData.h"
 #include "../Common/common.h"
 #include "../Common/TSpecters.h"
-#include "SpecterWork.h"
-#include "TAudioMax.h"
-#include "TColorSceme.h"
-#include "TWavFile.h"
+#include "../Common/SpecterWork.h"
+#include "../Common/TAudioMax.h"
+#include "../Common/TColorSceme.h"
+#include "../Common/TWavFile.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -479,9 +480,7 @@ if (!FileExists(filename)) {
 //
 if (Form9->Showing) {
 	TWavFile *WavFile = new TWavFile;
-//MyLog("Load");
 	WavFile->Load(filename);
-//MyLog("Calculate");
 	WavFile->Calculate();
 	int left, right, d_left, d_right;
 	double kf, kb;
@@ -491,22 +490,15 @@ if (Form9->Showing) {
 	d_right = Form9->Edit4->Text.ToIntDef(0);
 	kf = str_replace(".", ",", Form9->Edit5->Text).ToDouble();
 	kb = str_replace(".", ",", Form9->Edit6->Text).ToDouble();
-//MyLog("Cut");
 	WavFile->Cut(left, right, d_left, d_right, kf, kb);
-//MyLog("Shift");
 	WavFile->Shift(Form9->Edit7->Text.ToIntDef(0));
 	StatusBar1->Panels[0].Items[0]->Text = UnicodeString(left) + " " + UnicodeString(d_left) + " " +  UnicodeString(right) + " " +  UnicodeString(d_right) + " " +  UnicodeString(kf) + " " + UnicodeString(kb);
-//MyLog("ReCalculate");
 	WavFile->ReCalculate();
-//MyLog("Save");
 	WavFile->Save(CurrentFile);
-//MyLog("delete");
 	delete WavFile;
-//MyLog("OK---------------------------------------------");
 }
 else CopyFile(filename.w_str(), CurrentFile.w_str(), false);
 SpecterWork->ReadData(CurrentFile);
-//SpecterWork->ReadData(filename);
 SpecterWork->CountSpecters(N2 * 2, N20->Checked);
 // Проиграть
 N18Click(this);
@@ -522,6 +514,11 @@ AudioMax->Draw(Form5->Image1->Picture->Bitmap);
 AudioMax->DrawMiddleValues(Form5->Image2->Picture->Bitmap);
 Form5->Memo1->Text = AudioMax->Print();
 Form5->Memo2->Text = AudioMax->PrintMiddleValues();
+//
+Chart1->Title->Text->Clear();
+Chart1->Title->Text->Add("Аудио данные звука [" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "] голоса [" + TabControl1->Tabs->Strings[TabControl1->TabIndex] + "]"
+	+ " версия [" + ListBox2->Items->Strings[ListBox2->ItemIndex] + "]");
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn2Click(TObject *Sender)
@@ -636,8 +633,11 @@ for (auto j = 0; (j < SpecterWork->Count) && (j < MAX_SER); j++) {
 		Ser[j].S->LinePen->Width = 1;
 		Ser[j].S->Color = (TColor)(((255 * j / SpecterWork->Count) << 16) + ((255 - 255 * j / SpecterWork->Count) << 8));
 	}
+	int jj;
+	if (SpecterWork->Count < MAX_SER) jj = j;
+	else jj = j * (SpecterWork->Count - 1) / (MAX_SER - 1);
 	for (auto i = 0; i < SpecterWork->N2; i++) {
-		val = SpecterWork->GetSpecterPointValue(j, i, Scale);
+		val = SpecterWork->GetSpecterPointValue(jj, i, Scale);
 		Ser[j].S->AddXY(i, val, "");
 	}
 }
@@ -653,16 +653,18 @@ for (auto i = 0; i < SpecterWork->N2; i++) {
 //SpecterWork->DrawSpectrograms(Image3->Picture->Bitmap, Scale);
 SpecterWork->DrawSpectrograms2(Image3->Picture->Bitmap, Scale);
 //SpecterWork->DrawSpectrograms3(Image3->Picture->Bitmap, Scale);
+/*
 // Сохраняем изображение
 UnicodeString filename = CurPath + "\\voices\\" + TabControl1->Tabs->Strings[TabControl1->TabIndex]
 	+ "\\" + ListBox1->Items->Strings[ListBox1->ItemIndex] + "_" + ListBox2->Items->Strings[ListBox2->ItemIndex] + ".png";
-//ShowMessage(filename);
 save_bitmap(Image3->Picture->Bitmap, filename, false, 100);
+*/
 //
-Image3->Width = Image3->Picture->Bitmap->Width;
+//Image3->Width = Image3->Picture->Bitmap->Width;
 //Image3->Height = Image3->Picture->Bitmap->Height;
-Image3->Height = 3 * Image3->Picture->Bitmap->Height;
-SpecterWork->DrawSpectrograms3D(Image2->Picture->Bitmap, Scale);
+//Image3->Height = 3 * Image3->Picture->Bitmap->Height;
+Form10->ApplyExecute(this);
+//SpecterWork->DrawSpectrograms3D(Image2->Picture->Bitmap, Scale);
 Image2->Width = Image2->Picture->Bitmap->Width;
 Image2->Height = Image2->Picture->Bitmap->Height;
 if (!Form3) return;
@@ -694,6 +696,16 @@ for (auto j = 0; j < SpecterWork->MainCount; j++) {
 		SerMain[j].S->AddXY(i, val, "");
 	}
 }
+// Подписи к графикам
+Chart2->Title->Text->Clear();
+Chart2->Title->Text->Add("Все спектры звука [" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "] голоса [" + TabControl1->Tabs->Strings[TabControl1->TabIndex] + "]"
+	+ " версия [" + ListBox2->Items->Strings[ListBox2->ItemIndex] + "]");
+Chart4->Title->Text->Clear();
+Chart4->Title->Text->Add("Основные спектры звука [" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "] голоса [" + TabControl1->Tabs->Strings[TabControl1->TabIndex] + "]"
+	+ " версия [" + ListBox2->Items->Strings[ListBox2->ItemIndex] + "]");
+
 BUSY = false;
 }
 //---------------------------------------------------------------------------
@@ -731,6 +743,7 @@ Form3->Show();
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn4Click(TObject *Sender)
 { // Построить все
+Form4->DrawAllExecute(this);
 Form4->Show();
 }
 //---------------------------------------------------------------------------
@@ -780,11 +793,122 @@ Form9->Show();
 void __fastcall TForm1::N19Click(TObject *Sender)
 { // Обычные спектры
 N19->Checked = true;
+ListBox2Click(this);
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::N20Click(TObject *Sender)
 { // Энергетические спектры
 N20->Checked = true;
+ListBox2Click(this);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N21Click(TObject *Sender)
+{ // Скриншоты - Аудиоданные
+// Проверка каталога
+UnicodeString dir_name = CurPath + "\\screenshots";
+if (!DirectoryExists(dir_name)) CreateDir(dir_name);
+//
+Chart1->Refresh();
+TBitmap *bmp = new TBitmap;
+bmp->PixelFormat = pf24bit;
+bmp->SetSize(Chart1->Width, Chart1->Height);
+BitBlt(bmp->Canvas->Handle, 0, 0, Form1->Chart1->Width, Form1->Chart1->Height, GetDC(Form1->Chart1->Handle), 0, 0, SRCCOPY);
+UnicodeString file_name = CurPath + "\\screenshots\\audio_data_"
+	+ TabControl1->Tabs->Strings[TabControl1->TabIndex] + "_" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "_" + ListBox2->Items->Strings[ListBox2->ItemIndex] + ".png";
+save_bitmap(bmp, file_name, false, 9);
+delete bmp;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N243Click(TObject *Sender)
+{ // Скриншоты - Все спектры данного звука
+// Проверка каталога
+UnicodeString dir_name = CurPath + "\\screenshots";
+if (!DirectoryExists(dir_name)) CreateDir(dir_name);
+//
+if (!Form4->Showing) BitBtn4Click(this);
+Form4->Chart1->Refresh();
+TBitmap *bmp = new TBitmap;
+bmp->PixelFormat = pf24bit;
+bmp->SetSize(Form4->Chart1->Width, Form4->Chart1->Height);
+BitBlt(bmp->Canvas->Handle, 0, 0, Form4->Chart1->Width, Form4->Chart1->Height, GetDC(Form4->Chart1->Handle), 0, 0, SRCCOPY);
+UnicodeString file_name = CurPath + "\\screenshots\\all_specters_"
+	+ TabControl1->Tabs->Strings[TabControl1->TabIndex] + "_" + ListBox1->Items->Strings[ListBox1->ItemIndex] + ".png";
+save_bitmap(bmp, file_name, false, 9);
+delete bmp;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N255Click(TObject *Sender)
+{ // Скриншоты - Все спектры
+// Проверка каталога
+UnicodeString dir_name = CurPath + "\\screenshots";
+if (!DirectoryExists(dir_name)) CreateDir(dir_name);
+//
+PageControl2->ActivePageIndex = 0;
+Chart2->Refresh();
+TBitmap *bmp = new TBitmap;
+bmp->PixelFormat = pf24bit;
+bmp->SetSize(Form1->Chart2->Width, Form1->Chart2->Height);
+BitBlt(bmp->Canvas->Handle, 0, 0, Form1->Chart2->Width, Form1->Chart2->Height, GetDC(Form1->Chart2->Handle), 0, 0, SRCCOPY);
+UnicodeString file_name = CurPath + "\\screenshots\\specters_"
+	+ TabControl1->Tabs->Strings[TabControl1->TabIndex] + "_" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "_" + ListBox2->Items->Strings[ListBox2->ItemIndex] + ".png";
+save_bitmap(bmp, file_name, false, 9);
+delete bmp;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N30Click(TObject *Sender)
+{ // Скриншоты - Средние спектры
+// Проверка каталога
+UnicodeString dir_name = CurPath + "\\screenshots";
+if (!DirectoryExists(dir_name)) CreateDir(dir_name);
+//
+PageControl2->ActivePageIndex = 1;
+Chart4->Refresh();
+TBitmap *bmp = new TBitmap;
+bmp->PixelFormat = pf24bit;
+bmp->SetSize(Form1->Chart4->Width, Form1->Chart4->Height);
+BitBlt(bmp->Canvas->Handle, 0, 0, Form1->Chart4->Width, Form1->Chart4->Height, GetDC(Form1->Chart4->Handle), 0, 0, SRCCOPY);
+UnicodeString file_name = CurPath + "\\screenshots\\middle_specters_"
+	+ TabControl1->Tabs->Strings[TabControl1->TabIndex] + "_" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "_" + ListBox2->Items->Strings[ListBox2->ItemIndex] + ".png";
+save_bitmap(bmp, file_name, false, 9);
+delete bmp;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N3D1Click(TObject *Sender)
+{ // Скриншоты - 3D
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N31Click(TObject *Sender)
+{ // Скриншоты - Спектрограмма
+// Проверка каталога
+UnicodeString dir_name = CurPath + "\\screenshots";
+if (!DirectoryExists(dir_name)) CreateDir(dir_name);
+//
+UnicodeString file_name = CurPath + "\\screenshots\\spectrogram_"
+	+ TabControl1->Tabs->Strings[TabControl1->TabIndex] + "_" + ListBox1->Items->Strings[ListBox1->ItemIndex]
+	+ "_" + ListBox2->Items->Strings[ListBox2->ItemIndex] + ".png";
+save_bitmap(Image3->Picture->Bitmap, file_name, false, 9);
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N32Click(TObject *Sender)
+{ // Размер спектрограммы
+Form10->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::TabControl1Change(TObject *Sender)
+{
+ListBox1Click(this);
 }
 //---------------------------------------------------------------------------
 

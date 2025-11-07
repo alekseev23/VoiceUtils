@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.11.04 14:15:41.881,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.04 14:15:42.088,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.04 14:16:21.334,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase3\MakeVoiceDatabase3PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.04 14:16:21.349,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase3\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.04 14:16:21.363,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase3\MakeVoiceDatabase3.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.11.04 14:16:27.642,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase3\main.cpp=D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase3\File1.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.012,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.066,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.069,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.102,=D:\Work\CPP\2025\VoiceUtils\Common\TCompareSpecters.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.140,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.143,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpecters2.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.191,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:27.194,=D:\Work\CPP\2025\VoiceUtils\Common\TWavFile.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:52.613,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>2025.11.04 15:33:52.652,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>2025.11.04 15:39:52.874,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
+    <Transaction>2025.11.04 18:40:23.664,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterProps.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

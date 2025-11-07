@@ -8,6 +8,7 @@
 *.~*#
 */Release
 /images/
+/bin/
 *.jpg
 *.jpeg
 *.png

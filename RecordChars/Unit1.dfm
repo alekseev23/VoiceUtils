@@ -105,6 +105,7 @@ object Form1: TForm1
       #1040#1083#1077#1082#1089#1072#1085#1076#1088
       #1058#1072#1090#1100#1103#1085#1072)
     TabIndex = 0
+    OnChange = TabControl1Change
     object GroupBox1: TGroupBox
       AlignWithMargins = True
       Left = 7
@@ -222,7 +223,7 @@ object Form1: TForm1
           end
         end
         object TabSheet2: TTabSheet
-          Caption = #1040#1091#1076#1080#1086#1076#1072#1085#1085#1099#1077
+          Caption = #1040#1091#1076#1080#1086' '#1076#1072#1085#1085#1099#1077
           ImageIndex = 1
           object Chart1: TChart
             AlignWithMargins = True
@@ -246,7 +247,7 @@ object Form1: TForm1
         Top = 196
         Width = 831
         Height = 374
-        ActivePage = TabSheet3
+        ActivePage = TabSheet5
         Align = alClient
         TabOrder = 1
         object TabSheet3: TTabSheet
@@ -333,10 +334,6 @@ object Form1: TForm1
             Height = 338
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 392
-            ExplicitTop = 303
-            ExplicitWidth = 185
-            ExplicitHeight = 41
             object Image3: TImage
               AlignWithMargins = True
               Left = 0
@@ -522,6 +519,13 @@ object Form1: TForm1
         Caption = #1040#1085#1072#1083#1080#1079' '#1084#1072#1082#1089#1080#1084#1091#1084#1086#1074
         OnClick = N28Click
       end
+      object N2788: TMenuItem
+        Caption = '-'
+      end
+      object N32: TMenuItem
+        Caption = #1056#1072#1079#1084#1077#1088' '#1089#1087#1077#1082#1090#1088#1086#1075#1088#1072#1084#1084#1099
+        OnClick = N32Click
+      end
     end
     object N26: TMenuItem
       Caption = #1054#1087#1077#1088#1072#1094#1080#1080
@@ -535,6 +539,53 @@ object Form1: TForm1
       object N17: TMenuItem
         Caption = #1054#1073#1088#1072#1073#1086#1090#1082#1072' '#1089#1087#1077#1082#1090#1088#1086#1074
         OnClick = N17Click
+      end
+      object N22: TMenuItem
+        Caption = '-'
+      end
+      object N23: TMenuItem
+        Caption = #1057#1088#1072#1074#1085#1077#1085#1080#1077' '#1089#1087#1077#1082#1090#1088#1086#1074
+        OnClick = BitBtn5Click
+      end
+      object N24: TMenuItem
+        Caption = '-'
+      end
+      object N27: TMenuItem
+        Caption = #1055#1086#1089#1090#1088#1086#1080#1090#1100' '#1074#1089#1077
+        OnClick = BitBtn4Click
+      end
+    end
+    object N278: TMenuItem
+      Caption = #1057#1082#1088#1080#1085#1096#1086#1090#1099
+      object N21: TMenuItem
+        Caption = #1040#1091#1076#1080#1086' '#1076#1072#1085#1085#1099#1077
+        ShortCut = 116
+        OnClick = N21Click
+      end
+      object N243: TMenuItem
+        Caption = #1042#1089#1077' '#1089#1087#1077#1082#1090#1088#1099' '#1076#1072#1085#1085#1086#1075#1086' '#1079#1074#1091#1082#1072
+        ShortCut = 117
+        OnClick = N243Click
+      end
+      object N255: TMenuItem
+        Caption = #1042#1089#1077' '#1089#1087#1077#1082#1090#1088#1099
+        ShortCut = 118
+        OnClick = N255Click
+      end
+      object N30: TMenuItem
+        Caption = #1057#1088#1077#1076#1085#1080#1077' '#1089#1087#1077#1082#1090#1088#1099
+        ShortCut = 119
+        OnClick = N30Click
+      end
+      object N3D1: TMenuItem
+        Caption = '3D'
+        ShortCut = 120
+        OnClick = N3D1Click
+      end
+      object N31: TMenuItem
+        Caption = #1057#1087#1077#1082#1090#1088#1086#1075#1088#1072#1084#1084#1072
+        ShortCut = 121
+        OnClick = N31Click
       end
     end
   end

@@ -3,8 +3,9 @@
 #ifndef TVoiceSpectersDBH
 #define TVoiceSpectersDBH
 //---------------------------------------------------------------------------
+#include <vector>
 
-#define TVoiceSpectersDB_MAX_PTS 10
+#define TVoiceSpectersDB_MAX_PTS 20
 #define TVoiceSpectersDB_Main_Specters 5
 
 //---------------------------------------------------------------------------
@@ -14,6 +15,18 @@ struct TVoiceSpecters_Object {
 
 	// Overload the less-than operator for default sorting by 'value'
 	bool operator<(const TVoiceSpecters_Object& other) const {
+		return value > other.value;
+	}
+};
+//---------------------------------------------------------------------------
+struct TVoiceSpecters_Search {
+	short
+		value,  	// Кол-во соврадений
+		specter,	// Номер набора спектров
+		num;          // Номер спектра в наборе
+
+	// Overload the less-than operator for default sorting by 'value'
+	bool operator<(const TVoiceSpecters_Search& other) const {
 		return value > other.value;
 	}
 };
@@ -56,6 +69,11 @@ public:
 	// Создание базы спектров
 	void SetSize(int count);
 
+	// Задать имя и версию (id) набора спектров
+	void SetParams(int i, UnicodeString sound, int id);
+	// Задать данные спектра
+	void Set(int i, int j, int n, double *A);
+
 	// Чтение базы со спектрами
 	bool Load(UnicodeString fname);
 
@@ -67,5 +85,12 @@ public:
 
 	// Анализ спектра и получение точек максимума
 	int Analyze(int n, double *A, struct TVoiceSpectersDB_One_Specter *res);
+
+	// Сравнение двух спектров s1 и s2 и возвращение кол-ва совпадений
+	int Compare(struct TVoiceSpectersDB_One_Specter *s1, struct TVoiceSpectersDB_One_Specter *s2, int delta);
+
+	// Поиск наиболее похожего спектра
+    int Search(struct TVoiceSpectersDB_One_Specter *specter, std::vector<TVoiceSpecters_Search> &result, int delta);
+
 };
 #endif

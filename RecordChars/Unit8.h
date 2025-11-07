@@ -28,6 +28,13 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBox1;
 	TTimer *Timer1;
 	TStatusBar *StatusBar1;
+	TGroupBox *GroupBox5;
+	TCheckBox *CheckBox2;
+	TCheckBox *CheckBox3;
+	TCheckBox *CheckBox4;
+	TCheckBox *CheckBox5;
+	TCheckBox *CheckBox6;
+	TCheckBox *CheckBox7;
 	void __fastcall BitBtn1Click(TObject *Sender);
 	void __fastcall BitBtn2Click(TObject *Sender);
 	void __fastcall BitBtn3Click(TObject *Sender);

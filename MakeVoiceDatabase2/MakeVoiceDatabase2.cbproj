@@ -155,12 +155,16 @@
             <DependentOn>..\Common\TColorSceme.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\Common\TCompareSpecters.cpp">
+            <DependentOn>..\Common\TCompareSpecters.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\Common\TInterpolation.cpp">
             <DependentOn>..\Common\TInterpolation.h</DependentOn>
             <BuildOrder>9</BuildOrder>
         </CppCompile>
-        <CppCompile Include="..\Common\TVoiceSpecters.cpp">
-            <DependentOn>..\Common\TVoiceSpecters.h</DependentOn>
+        <CppCompile Include="..\Common\TVoiceSpecters2.cpp">
+            <DependentOn>..\Common\TVoiceSpecters2.h</DependentOn>
             <BuildOrder>10</BuildOrder>
         </CppCompile>
         <CppCompile Include="..\Common\TVoiceSpectersDB.cpp">

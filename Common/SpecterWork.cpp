@@ -130,6 +130,97 @@ delete FrequencyData;
 }
 //---------------------------------------------------------------------------
 // Вычисление спектров
+void SpecterWork::CountAllSpecters(int n, bool energy_specters) {
+if (!Loaded) return;
+int RADIUS_SUM = 0, pos, a, b;
+N = n;
+N2 = N / 2;
+Count = 400 * (BufSize - N) / 48000;
+FrequencyData *FrequencyData = new class FrequencyData(N);
+if (Data != NULL) delete[] Data;
+Data = new double [Count * N2];
+MaxValue = 0.;
+double val;
+for (int i = 0; i < Count; i++) {
+	pos = i * (BufSize - N) / Count;
+	FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	// Сохраняем данные в массив
+	for (int j = 0; j < N2; j++) {
+		val = FrequencyData->Data[j];
+		if (energy_specters) {
+			val = val * val * (j + 1) * (j + 1);
+		}
+		Data[i * N2 + j] = val;
+		if (val > MaxValue) MaxValue = val;
+	}
+}
+delete FrequencyData;
+}
+
+//---------------------------------------------------------------------------
+// Вычисление спектров (n - Кол-во точек для анализа, например 512)
+// specters_in_second - кол-во спектров в секунду
+void SpecterWork::CountSpecters(int n, int specters_in_second) {
+if (!Loaded) return;
+int pos, a, b, pp;
+N = n;
+N2 = N / 2;
+Count = specters_in_second * (BufSize - N) / 48000;
+FrequencyData *FrequencyData = new class FrequencyData(N);
+if (Data != NULL) delete[] Data;
+Data = new double [Count * N2];
+MaxValue = 0.;
+double val;
+for (int i = 0; i < Count; i++) {
+	pos = i * (BufSize - N) / Count;
+	FrequencyData->calculate(Buf, pos);
+	// Сохраняем данные в массив
+	for (int j = 0; j < N2; j++) {
+		val = FrequencyData->Data[j];
+		Data[i * N2 + j] = val;
+		if (val > MaxValue) MaxValue = val;
+	}
+}
+delete FrequencyData;
+
+
+}
+//---------------------------------------------------------------------------
+// Вычисляем основные спектры
+void SpecterWork::CountMainSpecters(int main_count) {
+    int a, b;
+	MainCount = main_count;
+	// Основные спектры
+	if (Main != NULL) delete[] Main;
+	Main = new double [MainCount * N2];
+	// Обнуляем основные спектры
+	for (auto i = 0; i < MainCount * N2; i++) Main[i] = 0.;
+	// Цикл по основным спектрам
+	for (auto i = 0; i < MainCount; i++) {
+		a = i * Count / MainCount;
+		b = (i + 1) * Count / MainCount;
+		if (b > Count) b = Count;
+		// Цикл по спектрам внутри группы (находим сумму)
+		for (auto j = a; j < b; j++) {
+			for (auto k = 0; k < N2; k++) {
+				Main[i * N2 + k] += Data[j * N2 + k];
+			}
+		}
+		// Находим среднее значение
+		auto c = b - a;
+		for (auto k = 0; k < N2; k++) Main[i * N2 + k] /= c;
+	}
+}
+//---------------------------------------------------------------------------
+// Из обычных вычисляем энергетические спектры
+void SpecterWork::GetEnergySpecter(double *specter1, double *specter2) {
+	for (auto i = 0; i < N2; i++) {
+		specter2[i] = specter1[i] * specter1[i] * (i + 1) * (i + 1);
+	}
+}
+
+//---------------------------------------------------------------------------
+// Вычисление спектров
 void SpecterWork::CountSpecters(int n) {
 if (!Loaded) return;
 int RADIUS_SUM = 0, pos, a, b, pp;
@@ -199,7 +290,7 @@ int RADIUS_SUM = 0, pos, a, b, pp;
 N = n;
 N2 = N / 2;
 Count = 400 * (BufSize - N) / 48000;
-Count = 2 * 4800 * (BufSize - N) / 48000;
+Count = 1 * 4800 * (BufSize - N) / 48000;
 //if (Count > 1000) Count = 1000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
@@ -259,6 +350,41 @@ for (auto i = 0; i < MainCount; i++) {
 }
 //---------------------------------------------------------------------------
 // Вычисление спектров
+void SpecterWork::CountAllSpecters4X(int n, bool energy_specters) {
+if (!Loaded) return;
+int pos, a, b, pp;
+double val;
+// Интерполируем значения массива Buf[] и получаем Buf2[] с четверо большим кол-вом точек
+TInterpolation Interpolation;
+int BufSize2 = BufSize * 4;
+short *Buf2 = new short [BufSize2];
+Interpolation.InterpolateX4(BufSize, Buf, Buf2);
+N = n;
+N2 = N / 2;
+Count = 2 * 4800 * (BufSize - N) / 48000;
+FrequencyData *FrequencyData = new class FrequencyData(N);
+if (Data != NULL) delete[] Data;
+Data = new double [Count * N2];
+MaxValue = 0.;
+for (int i = 0; i < Count; i++) {
+	pos = i * (BufSize - N) / Count;
+	FrequencyData->calculate(Buf, pos);
+	//FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	// Сохраняем данные в массив
+	for (int j = 0; j < N2; j++) {
+		val = FrequencyData->Data[j];
+		if (energy_specters) {
+			//val = val * val * (j + 1) * (j + 1);
+			//val = val * (j + 1) * (j + 1);
+		}
+		Data[i * N2 + j] = val;
+		if (val > MaxValue) MaxValue = val;
+	}
+}
+delete FrequencyData;
+}
+//---------------------------------------------------------------------------
+// Вычисление спектров
 void SpecterWork::CountSpecters4X(int n, bool energy_specters) {
 if (!Loaded) return;
 int pos, a, b, pp;
@@ -284,7 +410,8 @@ for (int i = 0; i < Count; i++) {
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
 		if (energy_specters) {
-			val = val * val * (j + 1) * (j + 1);
+			//val = val * val * (j + 1) * (j + 1);
+			//val = val * (j + 1) * (j + 1);
 		}
 		Data[i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;

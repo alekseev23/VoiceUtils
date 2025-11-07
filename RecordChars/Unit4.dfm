@@ -18,9 +18,6 @@ object Form4: TForm4
     Width = 868
     Height = 19
     Panels = <>
-    ExplicitLeft = 440
-    ExplicitTop = 352
-    ExplicitWidth = 0
   end
   object Chart1: TChart
     AlignWithMargins = True
@@ -33,11 +30,15 @@ object Form4: TForm4
     View3D = False
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 240
-    ExplicitTop = 232
-    ExplicitWidth = 400
-    ExplicitHeight = 250
     DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
+  end
+  object ActionList1: TActionList
+    Left = 608
+    Top = 176
+    object DrawAll: TAction
+      Caption = 'DrawAll'
+      OnExecute = DrawAllExecute
+    end
   end
 end

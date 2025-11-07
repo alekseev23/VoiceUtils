@@ -96,6 +96,19 @@ __published:	// IDE-managed Components
 	TMenuItem *N221;
 	TMenuItem *N19;
 	TMenuItem *N20;
+	TMenuItem *N278;
+	TMenuItem *N21;
+	TMenuItem *N243;
+	TMenuItem *N22;
+	TMenuItem *N23;
+	TMenuItem *N24;
+	TMenuItem *N27;
+	TMenuItem *N255;
+	TMenuItem *N30;
+	TMenuItem *N3D1;
+	TMenuItem *N31;
+	TMenuItem *N2788;
+	TMenuItem *N32;
 	void __fastcall N3Click(TObject *Sender);
 	void __fastcall UpdateVoicesListExecute(TObject *Sender);
 	void __fastcall N4Click(TObject *Sender);
@@ -130,6 +143,14 @@ __published:	// IDE-managed Components
 	void __fastcall N18Click(TObject *Sender);
 	void __fastcall N19Click(TObject *Sender);
 	void __fastcall N20Click(TObject *Sender);
+	void __fastcall N21Click(TObject *Sender);
+	void __fastcall N243Click(TObject *Sender);
+	void __fastcall N255Click(TObject *Sender);
+	void __fastcall N30Click(TObject *Sender);
+	void __fastcall N3D1Click(TObject *Sender);
+	void __fastcall N31Click(TObject *Sender);
+	void __fastcall N32Click(TObject *Sender);
+	void __fastcall TabControl1Change(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

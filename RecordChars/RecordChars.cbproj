@@ -229,6 +229,14 @@
             <DependentOn>..\Common\TInterpolation.h</DependentOn>
             <BuildOrder>26</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\Common\TPushAnalyzer.cpp">
+            <DependentOn>..\Common\TPushAnalyzer.h</DependentOn>
+            <BuildOrder>29</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\Common\TSpecterProps.cpp">
+            <DependentOn>..\Common\TSpecterProps.h</DependentOn>
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\Common\TSpecters.cpp">
             <DependentOn>..\Common\TSpecters.h</DependentOn>
             <BuildOrder>17</BuildOrder>
@@ -257,6 +265,12 @@
             <FormType>dfm</FormType>
             <DependentOn>Unit1.h</DependentOn>
             <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Unit10.cpp">
+            <Form>Form10</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Unit10.h</DependentOn>
+            <BuildOrder>27</BuildOrder>
         </CppCompile>
         <CppCompile Include="Unit2.cpp">
             <Form>Form2</Form>
@@ -324,6 +338,7 @@
         <FormResources Include="Unit6.dfm"/>
         <FormResources Include="Unit8.dfm"/>
         <FormResources Include="Unit9.dfm"/>
+        <FormResources Include="Unit10.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
