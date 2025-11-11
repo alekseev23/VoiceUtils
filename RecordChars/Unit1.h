@@ -109,6 +109,8 @@ __published:	// IDE-managed Components
 	TMenuItem *N31;
 	TMenuItem *N2788;
 	TMenuItem *N32;
+	TMenuItem *Q1;
+	TMenuItem *N342;
 	void __fastcall N3Click(TObject *Sender);
 	void __fastcall UpdateVoicesListExecute(TObject *Sender);
 	void __fastcall N4Click(TObject *Sender);
@@ -151,6 +153,7 @@ __published:	// IDE-managed Components
 	void __fastcall N31Click(TObject *Sender);
 	void __fastcall N32Click(TObject *Sender);
 	void __fastcall TabControl1Change(TObject *Sender);
+	void __fastcall Q1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

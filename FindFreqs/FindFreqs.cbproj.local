@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2025.10.30 22:02:00.255,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>2025.10.30 22:02:00.483,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
-    <Transaction>2025.10.30 22:02:57.370,D:\Work\CPP\2025\VoiceUtils\FindFreqs\FindFreqsPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>2025.10.30 22:02:57.387,D:\Work\CPP\2025\VoiceUtils\FindFreqs\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
-    <Transaction>2025.10.30 22:02:57.401,D:\Work\CPP\2025\VoiceUtils\FindFreqs\FindFreqs.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
-    <Transaction>2025.10.30 22:03:03.141,D:\Work\CPP\2025\VoiceUtils\FindFreqs\main.cpp=D:\Work\CPP\2025\VoiceUtils\FindFreqs\File1.cpp</Transaction>
-    <Transaction>2025.10.31 11:22:30.648,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpecters2.cpp</Transaction>
-    <Transaction>2025.10.31 11:27:40.504,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
-    <Transaction>2025.10.31 11:27:40.539,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
-    <Transaction>2025.11.03 19:00:25.323,=D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.cpp</Transaction>
-    <Transaction>2025.11.03 19:15:43.901,D:\Work\CPP\2025\VoiceUtils\RecordChars\Unit10.cpp=D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.cpp</Transaction>
-    <Transaction>2025.11.03 19:15:43.901,D:\Work\CPP\2025\VoiceUtils\RecordChars\Unit10.dfm=D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.dfm</Transaction>
-    <Transaction>2025.11.03 19:15:43.901,D:\Work\CPP\2025\VoiceUtils\RecordChars\Unit10.h=D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.h</Transaction>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.cpp=D:\Work\CPP\2025\VoiceUtils\RecordChars\Unit10.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.323,=D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.370,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\FindFreqs\FindFreqsPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.401,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\FindFreqs\FindFreqs.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.h=D:\Work\CPP\2025\VoiceUtils\RecordChars\Unit10.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\FindFreqs\Unit10.dfm=D:\Work\CPP\2025\VoiceUtils\RecordChars\Unit10.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.255,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.504,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.387,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp=D:\Work\CPP\2025\VoiceUtils\FindFreqs\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.483,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.539,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.141,D:\Work\CPP\2025\VoiceUtils\FindFreqs\File1.cpp=D:\Work\CPP\2025\VoiceUtils\FindFreqs\main.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.648,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpecters2.cpp</Transaction>
   </Transactions>
 </BorlandProject>

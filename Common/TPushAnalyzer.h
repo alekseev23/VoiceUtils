@@ -123,10 +123,11 @@ public:
 //---------------------------------------------------------------------------
 class TPushAnalyzer {
 
-	int Count;
-	struct T_Q4 *Data = NULL;
 
 public:
+
+	int Count;
+	struct T_Q4 *Data = NULL;
 
 	TPushAnalyzer();
 	~TPushAnalyzer();

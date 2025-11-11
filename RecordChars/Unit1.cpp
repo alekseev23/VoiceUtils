@@ -13,6 +13,7 @@
 #include "Unit8.h"
 #include "Unit9.h"
 #include "Unit10.h"
+#include "Unit11.h"
 #include "bass.h"
 #include "../../_Common_/Lib/bitmap.h"
 #include "../../_Common_/Lib/files.h"
@@ -57,6 +58,7 @@ SER SerChanges[CHANGES_N];           // Спектры текущего файла
 SER SerMain[5];             // Основные спектры
 TAudioMax *AudioMax;
 bool BUSY = false;
+
 //---------------------------------------------------------------------------
 void MyLog(UnicodeString message) {
 	FILE *fd = _wfopen(UnicodeString(CurPath + "\\my.log").w_str(), L"at");
@@ -617,6 +619,9 @@ void __fastcall TForm1::TabControl2Change(TObject *Sender)
 BUSY = true;
 double val, val2;
 int best;
+// Графики Q-спектров
+if (Form11->Showing) Form11->Action1Execute(this);
+
 // Прячем все спектры
 for (auto i = 0; i < MAX_SER; i++) Ser[i].S->Visible = false;
 best = SpecterWork->FindBest();
@@ -909,6 +914,12 @@ Form10->Show();
 void __fastcall TForm1::TabControl1Change(TObject *Sender)
 {
 ListBox1Click(this);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Q1Click(TObject *Sender)
+{ // Графики Q-спектров
+Form11->Show();
 }
 //---------------------------------------------------------------------------
 

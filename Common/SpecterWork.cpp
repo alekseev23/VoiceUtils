@@ -310,7 +310,9 @@ for (int i = 0; i < Count; i++) {
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
 		if (energy_specters) {
-			val = val * val * (j + 1) * (j + 1);
+			//val = val * val * (j + 1) * (j + 1);
+			val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
+            val = val * val;
 		}
 		Data[i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
@@ -618,9 +620,10 @@ delete bmp;
 // Рисование топографии спектрограмы
 void SpecterWork::DrawSpectrograms2(TBitmap *BMP, int scale) {
 if (!Loaded) return;
-int sx, sy, i;
+int sx, sy, i, yy;
 unsigned char *p, color;
 double val, max;
+bool flag;
 sx = Count;
 sy = N2;
 TBitmap *bmp = new TBitmap;
@@ -645,9 +648,24 @@ unsigned char r, g, b;
 for (auto y = 0; y < sy; y++) {
 	p = (unsigned char *)bmp->ScanLine[y];
 	i = 0;
+	yy = N2 - y - 1;
+    flag = false;
+	switch (N2) {
+		case  256: if ((yy % 20) == 0) flag = true; break;
+		case  512: if ((yy % 40) == 0) flag = true; break;
+		case 1024: if ((yy % 80) == 0) flag = true; break;
+		case 2048: if ((yy % 160) == 0) flag = true; break;
+		case 4096: if ((yy % 320) == 0) flag = true; break;
+		default:   flag = false;
+	}
 	for (auto x = 0; x < sx; x++) {
-		val = GetSpecterPointValue(x, N2 - y - 1, scale);
+		val = GetSpecterPointValue(x, yy, scale);
 		ColorSceme->Get(val, r, g, b);
+		if (flag) {
+			if (r < 240) r += 15; else r = 255;
+			if (g < 240) g += 15; else g = 255;
+			if (b < 240) b += 15; else b = 255;
+		}
 		p[i++] = r;
 		p[i++] = g;
 		p[i++] = b;

@@ -519,12 +519,21 @@ object Form1: TForm1
         Caption = #1040#1085#1072#1083#1080#1079' '#1084#1072#1082#1089#1080#1084#1091#1084#1086#1074
         OnClick = N28Click
       end
+      object Q1: TMenuItem
+        Caption = #1043#1088#1072#1092#1080#1082#1080' Q-'#1089#1087#1077#1082#1090#1088#1086#1074
+        OnClick = Q1Click
+      end
       object N2788: TMenuItem
         Caption = '-'
       end
       object N32: TMenuItem
         Caption = #1056#1072#1079#1084#1077#1088' '#1089#1087#1077#1082#1090#1088#1086#1075#1088#1072#1084#1084#1099
         OnClick = N32Click
+      end
+      object N342: TMenuItem
+        AutoCheck = True
+        Caption = #1051#1080#1085#1080#1080' '#1085#1072' '#1089#1087#1077#1082#1090#1088#1072#1093
+        Checked = True
       end
     end
     object N26: TMenuItem

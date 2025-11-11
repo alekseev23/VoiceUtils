@@ -8,11 +8,15 @@
 
 //---------------------------------------------------------------------------
 TPushItem::TPushItem() {
+//TStringList *ts = new TStringList;
 	VStep[_Q_SIZE];
 	for (auto i = 0; i < _Q_SIZE; i++) {
 		VStep[i] = (1 << i);
 		HStep[i] = (1 << i);
+//ts->Add(UnicodeString(i) + " " + UnicodeString(VStep[i]) + " " + UnicodeString(HStep[i]));
+
 	}
+//ShowMessage(ts->Text);
 }
 
 //---------------------------------------------------------------------------
@@ -36,8 +40,10 @@ void TPushItem::Analyze(short *A, int n, int pos, int range) {
 		// »щем точку максимума
 		if ((A[i] > A[i - 1]) && (A[i] > A[i + 1])) {
 			if (min_pos != -1) {
-				Data.VP.V[GetVerticalIndex(A[i] - min)] += 1;
-				Data.HP.V[GetHorizontalIndex(A[i] - min)] += 1;
+				//Data.VP.V[GetVerticalIndex(A[i] - min)] += 1;
+				//Data.HP.V[GetHorizontalIndex(i - min_pos)] += 1;
+				Data.VP.Add(GetVerticalIndex(A[i] - min));
+				Data.HP.Add(GetHorizontalIndex(i - min_pos));
 			}
 			max = A[i];
 			max_pos = i;
@@ -45,8 +51,10 @@ void TPushItem::Analyze(short *A, int n, int pos, int range) {
 		// »щем точку минимума
 		if ((A[i] < A[i - 1]) && (A[i] < A[i + 1])) {
 			if (max_pos != -1) {
-				Data.VM.V[GetVerticalIndex(A[i] - max)] += 1;
-				Data.HM.V[GetHorizontalIndex(A[i] - max)] += 1;
+				//Data.VM.V[GetVerticalIndex(A[i] - max)] += 1;
+				//Data.HM.V[GetHorizontalIndex(i - max_pos)] += 1;
+				Data.VM.Add(GetVerticalIndex(max - A[i]));
+				Data.HM.Add(GetHorizontalIndex(i - max_pos));
 			}
 			min = A[i];
 			min_pos = i;
@@ -76,14 +84,14 @@ short TPushItem::FindMaxAmp(short *A, int n, int pos, int radius) {
 //---------------------------------------------------------------------------
 short TPushItem::GetVerticalIndex(short val) {
 	int res = VStep[_Q_SIZE - 1] * val / Max;
-	for (short i = _Q_SIZE; i >= 0; i--) {
+	for (short i = _Q_SIZE - 1; i >= 0; i--) {
 		if (res >= VStep[i]) return i;
 	}
 	return 0;
 }
 //---------------------------------------------------------------------------
 short TPushItem::GetHorizontalIndex(short val) {
-	for (short i = _Q_SIZE; i >= 0; i--) {
+	for (short i = _Q_SIZE - 1; i >= 0; i--) {
 		if (val >= HStep[i]) return i;
 	}
 	return 0;
@@ -101,17 +109,7 @@ void TPushItem::Print(void) {
 }
 //---------------------------------------------------------------------------
 
-
-//---------------------------------------------------------------------------
-/*class TPushAnalyzer {
-
-	int Count;
-	struct T_Q *Data;
-
-public:*/
-
 TPushAnalyzer::TPushAnalyzer() {
-
 }
 
 TPushAnalyzer::~TPushAnalyzer() {

@@ -1,0 +1,156 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4F6E7C59-5A9E-4108-BA02-4C1A67A29F06}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AnalyzeRecord\AnalyzeRecord.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AnalyzeRecord2\AnalyzeRecord2.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FindFreqs\FindFreqs.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Interpolate\Interpolate.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MakeVoiceDatabase\MakeVoiceDatabase.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MakeVoiceDatabase2\MakeVoiceDatabase2.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MakeVoiceDatabase3\MakeVoiceDatabase3.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="RecordChars\RecordChars.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ShowSpecters\ShowSpecters.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SortObj\SortObj.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\Test1.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AnalyzeRecord">
+        <MSBuild Projects="AnalyzeRecord\AnalyzeRecord.cbproj"/>
+    </Target>
+    <Target Name="AnalyzeRecord:Clean">
+        <MSBuild Projects="AnalyzeRecord\AnalyzeRecord.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AnalyzeRecord:Make">
+        <MSBuild Projects="AnalyzeRecord\AnalyzeRecord.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="AnalyzeRecord2">
+        <MSBuild Projects="AnalyzeRecord2\AnalyzeRecord2.cbproj"/>
+    </Target>
+    <Target Name="AnalyzeRecord2:Clean">
+        <MSBuild Projects="AnalyzeRecord2\AnalyzeRecord2.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AnalyzeRecord2:Make">
+        <MSBuild Projects="AnalyzeRecord2\AnalyzeRecord2.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="FindFreqs">
+        <MSBuild Projects="FindFreqs\FindFreqs.cbproj"/>
+    </Target>
+    <Target Name="FindFreqs:Clean">
+        <MSBuild Projects="FindFreqs\FindFreqs.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FindFreqs:Make">
+        <MSBuild Projects="FindFreqs\FindFreqs.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Interpolate">
+        <MSBuild Projects="Interpolate\Interpolate.cbproj"/>
+    </Target>
+    <Target Name="Interpolate:Clean">
+        <MSBuild Projects="Interpolate\Interpolate.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Interpolate:Make">
+        <MSBuild Projects="Interpolate\Interpolate.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase">
+        <MSBuild Projects="MakeVoiceDatabase\MakeVoiceDatabase.cbproj"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase:Clean">
+        <MSBuild Projects="MakeVoiceDatabase\MakeVoiceDatabase.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase:Make">
+        <MSBuild Projects="MakeVoiceDatabase\MakeVoiceDatabase.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase2">
+        <MSBuild Projects="MakeVoiceDatabase2\MakeVoiceDatabase2.cbproj"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase2:Clean">
+        <MSBuild Projects="MakeVoiceDatabase2\MakeVoiceDatabase2.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase2:Make">
+        <MSBuild Projects="MakeVoiceDatabase2\MakeVoiceDatabase2.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase3">
+        <MSBuild Projects="MakeVoiceDatabase3\MakeVoiceDatabase3.cbproj"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase3:Clean">
+        <MSBuild Projects="MakeVoiceDatabase3\MakeVoiceDatabase3.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase3:Make">
+        <MSBuild Projects="MakeVoiceDatabase3\MakeVoiceDatabase3.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="RecordChars">
+        <MSBuild Projects="RecordChars\RecordChars.cbproj"/>
+    </Target>
+    <Target Name="RecordChars:Clean">
+        <MSBuild Projects="RecordChars\RecordChars.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RecordChars:Make">
+        <MSBuild Projects="RecordChars\RecordChars.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="ShowSpecters">
+        <MSBuild Projects="ShowSpecters\ShowSpecters.cbproj"/>
+    </Target>
+    <Target Name="ShowSpecters:Clean">
+        <MSBuild Projects="ShowSpecters\ShowSpecters.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ShowSpecters:Make">
+        <MSBuild Projects="ShowSpecters\ShowSpecters.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SortObj">
+        <MSBuild Projects="SortObj\SortObj.cbproj"/>
+    </Target>
+    <Target Name="SortObj:Clean">
+        <MSBuild Projects="SortObj\SortObj.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SortObj:Make">
+        <MSBuild Projects="SortObj\SortObj.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Test1">
+        <MSBuild Projects="Test\Test1.cbproj"/>
+    </Target>
+    <Target Name="Test1:Clean">
+        <MSBuild Projects="Test\Test1.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Test1:Make">
+        <MSBuild Projects="Test\Test1.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
