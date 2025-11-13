@@ -7,15 +7,16 @@
 #include <Vcl.Styles.hpp>
 #include <Vcl.Themes.hpp>
 USEFORM("Unit2.cpp", Form2);
-USEFORM("Unit1.cpp", Form1);
 USEFORM("Unit3.cpp", Form3);
 USEFORM("Unit4.cpp", Form4);
+USEFORM("Unit11.cpp", Form11);
+USEFORM("Unit1.cpp", Form1);
+USEFORM("Unit10.cpp", Form10);
 USEFORM("Unit5.cpp", Form5);
 USEFORM("Unit6.cpp", Form6);
 USEFORM("Unit8.cpp", Form8);
 USEFORM("Unit9.cpp", Form9);
-USEFORM("Unit10.cpp", Form10);
-USEFORM("Unit11.cpp", Form11);
+USEFORM("Unit12.cpp", Form12);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -35,6 +36,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TForm9), &Form9);
 		Application->CreateForm(__classid(TForm10), &Form10);
 		Application->CreateForm(__classid(TForm11), &Form11);
+		Application->CreateForm(__classid(TForm12), &Form12);
 		Application->Run();
 	}
 	catch (Exception &exception)

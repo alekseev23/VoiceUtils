@@ -12,6 +12,14 @@ object Form4: TForm4
   Font.Style = []
   Position = poMainFormCenter
   TextHeight = 15
+  object Splitter1: TSplitter
+    Left = 100
+    Top = 0
+    Height = 658
+    ExplicitLeft = 440
+    ExplicitTop = 312
+    ExplicitHeight = 100
+  end
   object StatusBar1: TStatusBar
     Left = 0
     Top = 658
@@ -21,17 +29,32 @@ object Form4: TForm4
   end
   object Chart1: TChart
     AlignWithMargins = True
-    Left = 3
+    Left = 106
     Top = 3
-    Width = 862
+    Width = 759
     Height = 652
     Title.Text.Strings = (
       #1057#1088#1077#1076#1085#1080#1077' '#1089#1087#1077#1082#1090#1088#1099)
     View3D = False
     Align = alClient
     TabOrder = 1
+    ExplicitLeft = 3
+    ExplicitWidth = 862
     DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
+  end
+  object Memo1: TMemo
+    AlignWithMargins = True
+    Left = 3
+    Top = 3
+    Width = 94
+    Height = 652
+    Align = alLeft
+    Lines.Strings = (
+      'Memo1')
+    ScrollBars = ssVertical
+    TabOrder = 2
+    OnDblClick = Memo1DblClick
   end
   object ActionList1: TActionList
     Left = 608

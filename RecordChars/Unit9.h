@@ -34,6 +34,16 @@ __published:	// IDE-managed Components
 	TBitBtn *BitBtn2;
 	TLabel *Label7;
 	TEdit *Edit7;
+	TEdit *Edit8;
+	TLabel *Label8;
+	TEdit *Edit9;
+	TLabel *Label9;
+	TEdit *Edit10;
+	TLabel *Label10;
+	TEdit *Edit11;
+	TLabel *Label11;
+	TEdit *Edit12;
+	TLabel *Label12;
 	void __fastcall BitBtn1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

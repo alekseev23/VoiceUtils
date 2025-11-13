@@ -3,6 +3,9 @@
 #ifndef TSpecterPropsH
 #define TSpecterPropsH
 //---------------------------------------------------------------------------
+/*
+ѕоиск центра т€жести спектра в заданном диапазоне
+*/
 class TSpecterProps {
 
 public:

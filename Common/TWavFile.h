@@ -20,6 +20,7 @@ public:
     UnicodeString FileName;
 
 	TWavFile();
+	TWavFile(int n);
 	~TWavFile();
 
 	bool Load(UnicodeString filename);
@@ -33,8 +34,9 @@ public:
 	void Cut(int left, int right, int d_left, int d_right, double kf, double kb);
 	void Shift(int val);
 	void Move();
-	void Copy();
-	void Resize();
+	void Copy(int left, int right, double amp, int sm);
+	void Resize(double ratio);
+    int GetLogN(void);
 
 };
 #endif

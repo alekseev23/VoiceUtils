@@ -14,6 +14,7 @@
 #include "Unit9.h"
 #include "Unit10.h"
 #include "Unit11.h"
+#include "Unit12.h"
 #include "bass.h"
 #include "../../_Common_/Lib/bitmap.h"
 #include "../../_Common_/Lib/files.h"
@@ -28,6 +29,8 @@
 #include "../Common/TAudioMax.h"
 #include "../Common/TColorSceme.h"
 #include "../Common/TWavFile.h"
+#include "../Common/TSpecterProps.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -481,7 +484,8 @@ if (!FileExists(filename)) {
 }
 //
 if (Form9->Showing) {
-	TWavFile *WavFile = new TWavFile;
+	//TWavFile *WavFile = new TWavFile;
+    TWavFile *WavFile = new TWavFile(2 * N2);
 	WavFile->Load(filename);
 	WavFile->Calculate();
 	int left, right, d_left, d_right;
@@ -492,8 +496,16 @@ if (Form9->Showing) {
 	d_right = Form9->Edit4->Text.ToIntDef(0);
 	kf = str_replace(".", ",", Form9->Edit5->Text).ToDouble();
 	kb = str_replace(".", ",", Form9->Edit6->Text).ToDouble();
+    // Обрезка
 	WavFile->Cut(left, right, d_left, d_right, kf, kb);
+    // Сдвиг
 	WavFile->Shift(Form9->Edit7->Text.ToIntDef(0));
+    // Копирование
+	WavFile->Copy(Form9->Edit10->Text.ToIntDef(0), Form9->Edit9->Text.ToIntDef(0),
+    	str_replace(".", ",", Form9->Edit8->Text).ToDouble(), Form9->Edit11->Text.ToIntDef(0));
+    // Растяжение / Сжатие
+	WavFile->Resize(str_replace(".", ",", Form9->Edit12->Text).ToDouble());
+
 	StatusBar1->Panels[0].Items[0]->Text = UnicodeString(left) + " " + UnicodeString(d_left) + " " +  UnicodeString(right) + " " +  UnicodeString(d_right) + " " +  UnicodeString(kf) + " " + UnicodeString(kb);
 	WavFile->ReCalculate();
 	WavFile->Save(CurrentFile);
@@ -655,6 +667,20 @@ for (auto i = 0; i < SpecterWork->N2; i++) {
 	val = SpecterWork->Middle[i];
 	SpecterSer->AddXY(i, val, "");
 }
+// Центр тяжести усреднённого спектра
+TSpecterProps *SpecterProps = new TSpecterProps;
+int a = 0, b;
+switch (SpecterWork->N2) {
+    case  256: b = 20; break;
+    case  512: b = 40; break;
+    case 1024: b = 80; break;
+    case 2048: b = 160; break;
+    case 4096: b = 320; break;
+}
+SpecterProps->Analyze(a, b, SpecterWork->Middle);
+StatusBar1->Panels[0].Items[1]->Text = SpecterProps->Middle;
+delete SpecterProps;
+
 //SpecterWork->DrawSpectrograms(Image3->Picture->Bitmap, Scale);
 SpecterWork->DrawSpectrograms2(Image3->Picture->Bitmap, Scale);
 //SpecterWork->DrawSpectrograms3(Image3->Picture->Bitmap, Scale);
@@ -710,6 +736,8 @@ Chart4->Title->Text->Clear();
 Chart4->Title->Text->Add("Основные спектры звука [" + ListBox1->Items->Strings[ListBox1->ItemIndex]
 	+ "] голоса [" + TabControl1->Tabs->Strings[TabControl1->TabIndex] + "]"
 	+ " версия [" + ListBox2->Items->Strings[ListBox2->ItemIndex] + "]");
+
+if (Form12->Showing) Form12->DrawExecute(this);
 
 BUSY = false;
 }
@@ -920,6 +948,12 @@ ListBox1Click(this);
 void __fastcall TForm1::Q1Click(TObject *Sender)
 { // Графики Q-спектров
 Form11->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N288Click(TObject *Sender)
+{ // Значения нижних спектров
+Form12->Show();
 }
 //---------------------------------------------------------------------------
 

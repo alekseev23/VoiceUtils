@@ -278,6 +278,12 @@
             <DependentOn>Unit11.h</DependentOn>
             <BuildOrder>30</BuildOrder>
         </CppCompile>
+        <CppCompile Include="Unit12.cpp">
+            <Form>Form12</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>Unit12.h</DependentOn>
+            <BuildOrder>31</BuildOrder>
+        </CppCompile>
         <CppCompile Include="Unit2.cpp">
             <Form>Form2</Form>
             <FormType>dfm</FormType>
@@ -346,6 +352,7 @@
         <FormResources Include="Unit6.dfm"/>
         <FormResources Include="Unit8.dfm"/>
         <FormResources Include="Unit9.dfm"/>
+        <FormResources Include="Unit12.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -23,7 +23,10 @@ __published:	// IDE-managed Components
 	TChart *Chart1;
 	TActionList *ActionList1;
 	TAction *DrawAll;
+	TMemo *Memo1;
+	TSplitter *Splitter1;
 	void __fastcall DrawAllExecute(TObject *Sender);
+	void __fastcall Memo1DblClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm4(TComponent* Owner);

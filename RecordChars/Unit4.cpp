@@ -40,11 +40,13 @@ SpecterWork4 = new SpecterWork;
 void __fastcall TForm4::DrawAllExecute(TObject *Sender)
 {
 double val;
+UnicodeString s;
 // Очищаем все графики
 for (auto i = 0; i < MAX_SER_4; i++) {
 	Ser4[i].S->Clear();
 	Ser4[i].S->Visible = false;
 }
+TStringList *ts = new TStringList;
 // Цикл по всем файлам в выбранном звуке
 for (auto i = 0; i < Form1->ListBox2->Items->Count; i++) {
 	// Читаем файл
@@ -68,11 +70,29 @@ for (auto i = 0; i < Form1->ListBox2->Items->Count; i++) {
 		val = SpecterWork4->Middle[j];
 		Ser4[i].S->AddXY(j, val, "");
 	}
+    // Находим точки максимума
+	for (auto j = 1; j < SpecterWork4->N2 - 1; j++) {
+        if ((SpecterWork4->Middle[j] > SpecterWork4->Middle[j - 1]) && (SpecterWork4->Middle[j] > SpecterWork4->Middle[j + 1])) {
+            s.printf(L"%4i", j);
+            ts->Add(s);
+        }
+    }
 }
+ts->Sort();
+Memo1->Text = ts->Text;
+delete ts;
+
 Chart1->Title->Text->Clear();
 Chart1->Title->Text->Add("Средние спектры звука [" + Form1->ListBox1->Items->Strings[Form1->ListBox1->ItemIndex]
 	+ "] голоса [" + Form1->TabControl1->Tabs->Strings[Form1->TabControl1->TabIndex] + "]");
 
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Memo1DblClick(TObject *Sender)
+{
+Memo1->SelectAll();
+Memo1->CopyToClipboard();
 }
 //---------------------------------------------------------------------------
 
