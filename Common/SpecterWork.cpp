@@ -118,7 +118,8 @@ MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
-	FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	//FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+    FrequencyData->calculate(Buf, pos);
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
@@ -143,7 +144,7 @@ MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
-	FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	FrequencyData->calculate(Buf, pos);
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
@@ -242,7 +243,7 @@ MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
-	FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	FrequencyData->calculate(Buf, pos);
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
@@ -256,7 +257,8 @@ for (int i = 0; i < Count; i++) {
 		Re[pp + j] = Buf[pos + j];
 		Im[pp + j] = 0.;
 	}
-	FFT(&Re[pp], &Im[pp], N, 9, FT_DIRECT);
+	//FFT(&Re[pp], &Im[pp], N, 9, FT_DIRECT);
+    FFT(&Re[pp], &Im[pp], N, GetLogN(N), FT_DIRECT);
 }
 delete FrequencyData;
 
@@ -289,8 +291,9 @@ if (!Loaded) return;
 int RADIUS_SUM = 0, pos, a, b, pp;
 N = n;
 N2 = N / 2;
-Count = 400 * (BufSize - N) / 48000;
-Count = 1 * 4800 * (BufSize - N) / 48000;
+//Count = 400 * (BufSize - N) / 48000;
+//Count = 1 * 4800 * (BufSize - N) / 48000;
+Count = 5 * 4800 * (BufSize) / 48000;
 //if (Count > 1000) Count = 1000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
@@ -304,8 +307,10 @@ Im = new double [Count * N2 * 2];
 MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
-	pos = i * (BufSize - N) / Count;
-	FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
+	//pos = i * (BufSize - N) / Count;
+    pos = i * (BufSize) / Count;
+	//FrequencyData->calculate(Buf, pos);
+    FrequencyData->calculate(Buf, BufSize, pos, 256);
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
@@ -324,7 +329,8 @@ for (int i = 0; i < Count; i++) {
 		Re[pp + j] = Buf[pos + j];
 		Im[pp + j] = 0.;
 	}
-	FFT(&Re[pp], &Im[pp], N, 9, FT_DIRECT);
+	//FFT(&Re[pp], &Im[pp], N, 9, FT_DIRECT);
+    FFT(&Re[pp], &Im[pp], N, GetLogN(N), FT_DIRECT);
 }
 delete FrequencyData;
 
@@ -371,7 +377,6 @@ MaxValue = 0.;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
 	FrequencyData->calculate(Buf, pos);
-	//FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
@@ -407,7 +412,6 @@ MaxValue = 0.;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
 	FrequencyData->calculate(Buf, pos);
-	//FrequencyData->calculateeWithStat(Buf, pos, RADIUS_SUM);
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
@@ -824,6 +828,18 @@ double SpecterWork::Compare(SpecterWork *sw, int scale) {
 		}
 	}
 	return dif / (N2 * MainCount);
+}
+//---------------------------------------------------------------------------
+int SpecterWork::GetLogN(int n) {
+	switch (n) {
+		case   256: return 8;
+		case   512: return 9;
+		case  1024: return 10;
+		case  2048: return 11;
+		case  4096: return 12;
+		case  8192: return 13;
+		default:    return 0;
+	}
 }
 //---------------------------------------------------------------------------
 

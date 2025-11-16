@@ -19,21 +19,32 @@ __fastcall FrequencyData::~FrequencyData() {
 }
 
 void __fastcall FrequencyData::setShape(void) {
-    int i, k;
-    k = 5 * N / 100;
-    for (i = 0; i < N; i++) {
-	    // Трапецевидный шейпер
-        /*if (i < k) Shape[i] = 1. * i / k;
-        else if (i > N - k) Shape[i] = 1. * (N - i) / k;
-        else Shape[i] = 1.;*/
-        // Гауссиан
-        Shape[i] = exp(-pow(1. * i - N2, 2) / (2. * N2 * N2 / 50));
-        //cout << 100 * Shape[i] << endl;
-        //Shape[i] = 1.0;
-    }
+    applyShape(0);
 }
 
-void __fastcall FrequencyData::applyShape(void) {
+void __fastcall FrequencyData::applyShape(int shape_type) {
+    int i, k;
+    k = 5 * N / 100; // Для трапецевидного шейпера
+    for (i = 0; i < N; i++) {
+        switch (shape_type) {
+            case 0: // Прямоугольный
+                    Shape[i] = 1.; break;
+            case 1: // Трапецевидный шейпер
+                    if (i < k) Shape[i] = 1. * i / k;
+			        else if (i > N - k) Shape[i] = 1. * (N - i) / k;
+			        else Shape[i] = 1.;
+                    break;
+            case 2: // Нормальный Гауссиан
+			        Shape[i] = exp(-pow(1. * i - N2, 2) / (2. * N2 * N2 / 50));
+                    break;
+            case 3: // Узкий Гауссиан
+			        Shape[i] = exp(-pow(1. * i - N2, 2) / (2. * N2 * N2 / 100));
+                    break;
+            case 4: // Широкий Гауссиан
+			        Shape[i] = exp(-pow(1. * i - N2, 2) / (2. * N2 * N2 / 25));
+                    break;
+        }
+    }
 }
 
 // Задать данные
@@ -179,9 +190,35 @@ void __fastcall FrequencyData::calculate(short *buf, int pos) {
 	double *a, *f;
     a = new double [N];
     f = new double [N];
-    for (i = 0; i < N; i++) a[i] = 1. * buf[pos + i];
+    //for (i = 0; i < N; i++) a[i] = 1. * buf[pos + i];
+    for (i = 0; i < N; i++) a[i] = Shape[i] * buf[pos + i];
     // Нормируем значения
     //normalize(a, 1., n); // Давайте пока без нормализации!
+    // Находим частоты
+    FFTAnalysis(a, f, N, N);
+    for (i = 0; i < N2; i++) Data[i] = f[i];
+    delete[] a;
+    delete[] f;
+}
+
+// Вычислить частотные значения из данных в открытом файле
+// buf - массив типа short с аудиоданными
+// buf_size - размер массива buf[buf_size]
+// pos - индекс центра
+// len - длина области (должна быть <= N)
+void __fastcall FrequencyData::calculate(short *buf, int buf_size, int pos, int len) {
+    int i, j;
+	double *a, *f;
+    a = new double [N];
+    f = new double [N];
+    for (i = 0; i < N; i++) {
+        j = i + pos - N / 2;
+        // Выход за границы исходного массива
+        if ((j < 0) || (j >= buf_size)) a[i] = 0.;
+        // Выход за границы области (len)
+        else if ((i < N / 2 - len / 2) || (i > N / 2 + len / 2)) a[i] = 0.;
+    	else a[i] = Shape[i] * buf[j];
+    }
     // Находим частоты
     FFTAnalysis(a, f, N, N);
     for (i = 0; i < N2; i++) Data[i] = f[i];

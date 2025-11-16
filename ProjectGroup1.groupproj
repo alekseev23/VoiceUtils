@@ -36,6 +36,9 @@
         <Projects Include="Test\Test1.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="DrawSpecters\DrawSpecters.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -143,14 +146,23 @@
     <Target Name="Test1:Make">
         <MSBuild Projects="Test\Test1.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="DrawSpecters">
+        <MSBuild Projects="DrawSpecters\DrawSpecters.cbproj"/>
+    </Target>
+    <Target Name="DrawSpecters:Clean">
+        <MSBuild Projects="DrawSpecters\DrawSpecters.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DrawSpecters:Make">
+        <MSBuild Projects="DrawSpecters\DrawSpecters.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1"/>
+        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean"/>
+        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make"/>
+        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

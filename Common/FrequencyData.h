@@ -531,7 +531,7 @@ public:
 	__fastcall FrequencyData(int n);
 	__fastcall ~FrequencyData();
     void __fastcall setShape(void);
-    void __fastcall applyShape(void);
+    void __fastcall applyShape(int k);
     void __fastcall cut(void);
     void __fastcall equalizeFrequencies(void);
     void __fastcall set(unsigned char *data, int n);
@@ -542,6 +542,7 @@ public:
 	double __fastcall compare(double *d, int n);
 	void __fastcall smoothArray(double *values, int n, int radius);
     void __fastcall calculate(short *buf, int pos);
+    void __fastcall calculate(short *buf, int buf_size, int pos, int len);
     void __fastcall calculateeWithStat(short *buf, int pos, int radius);
 
     int __fastcall findMax(short *buf, int pos, int len);

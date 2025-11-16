@@ -13,6 +13,7 @@
 #include "../Common/TAudioMax.h"
 #include "../Common/TColorSceme.h"
 #include "../Common/TWavFile.h"
+#include "../Common/Freq2Note.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -41,6 +42,7 @@ void __fastcall TForm4::DrawAllExecute(TObject *Sender)
 {
 double val;
 UnicodeString s;
+class Freq2Note *Freq2Note = new class Freq2Note;
 // Очищаем все графики
 for (auto i = 0; i < MAX_SER_4; i++) {
 	Ser4[i].S->Clear();
@@ -74,13 +76,15 @@ for (auto i = 0; i < Form1->ListBox2->Items->Count; i++) {
 	for (auto j = 1; j < SpecterWork4->N2 - 1; j++) {
         if ((SpecterWork4->Middle[j] > SpecterWork4->Middle[j - 1]) && (SpecterWork4->Middle[j] > SpecterWork4->Middle[j + 1])) {
             s.printf(L"%4i", j);
-            ts->Add(s);
+            int f = Freq2Note->Get(j, SpecterWork4->N2 * 2);
+            ts->Add(s + "\t" + Freq2Note->Comment[f]);
         }
     }
 }
 ts->Sort();
 Memo1->Text = ts->Text;
 delete ts;
+delete Freq2Note;
 
 Chart1->Title->Text->Clear();
 Chart1->Title->Text->Add("Средние спектры звука [" + Form1->ListBox1->Items->Strings[Form1->ListBox1->ItemIndex]

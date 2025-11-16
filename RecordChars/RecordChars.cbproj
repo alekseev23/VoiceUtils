@@ -209,6 +209,10 @@
             <DependentOn>..\Common\FFT.h</DependentOn>
             <BuildOrder>14</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\Common\Freq2Note.cpp">
+            <DependentOn>..\Common\Freq2Note.h</DependentOn>
+            <BuildOrder>32</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\Common\FrequencyData.cpp">
             <DependentOn>..\Common\FrequencyData.h</DependentOn>
             <BuildOrder>15</BuildOrder>

@@ -91,5 +91,7 @@ public:
 	// Нормировка аудиоданных
     void Normalize(void);
 
+    int GetLogN(int n);
+
 };
 #endif
