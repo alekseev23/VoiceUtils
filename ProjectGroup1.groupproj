@@ -39,6 +39,18 @@
         <Projects Include="DrawSpecters\DrawSpecters.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="FindPeaks\FindPeaks.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MakeVoiceDatabase4\MakeVoiceDatabase4.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AnalyzeRecord4\AnalyzeRecord4.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test4\Test4.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -155,14 +167,50 @@
     <Target Name="DrawSpecters:Make">
         <MSBuild Projects="DrawSpecters\DrawSpecters.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="FindPeaks">
+        <MSBuild Projects="FindPeaks\FindPeaks.cbproj"/>
+    </Target>
+    <Target Name="FindPeaks:Clean">
+        <MSBuild Projects="FindPeaks\FindPeaks.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FindPeaks:Make">
+        <MSBuild Projects="FindPeaks\FindPeaks.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase4">
+        <MSBuild Projects="MakeVoiceDatabase4\MakeVoiceDatabase4.cbproj"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase4:Clean">
+        <MSBuild Projects="MakeVoiceDatabase4\MakeVoiceDatabase4.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MakeVoiceDatabase4:Make">
+        <MSBuild Projects="MakeVoiceDatabase4\MakeVoiceDatabase4.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="AnalyzeRecord4">
+        <MSBuild Projects="AnalyzeRecord4\AnalyzeRecord4.cbproj"/>
+    </Target>
+    <Target Name="AnalyzeRecord4:Clean">
+        <MSBuild Projects="AnalyzeRecord4\AnalyzeRecord4.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AnalyzeRecord4:Make">
+        <MSBuild Projects="AnalyzeRecord4\AnalyzeRecord4.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Test4">
+        <MSBuild Projects="Test4\Test4.cbproj"/>
+    </Target>
+    <Target Name="Test4:Clean">
+        <MSBuild Projects="Test4\Test4.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Test4:Make">
+        <MSBuild Projects="Test4\Test4.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters"/>
+        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters;FindPeaks;MakeVoiceDatabase4;AnalyzeRecord4;Test4"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean"/>
+        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean;FindPeaks:Clean;MakeVoiceDatabase4:Clean;AnalyzeRecord4:Clean;Test4:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make"/>
+        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make;FindPeaks:Make;MakeVoiceDatabase4:Make;AnalyzeRecord4:Make;Test4:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

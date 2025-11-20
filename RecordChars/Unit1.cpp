@@ -513,7 +513,8 @@ if (Form9->Showing) {
 }
 else CopyFile(filename.w_str(), CurrentFile.w_str(), false);
 SpecterWork->ReadData(CurrentFile);
-SpecterWork->CountSpecters(N2 * 2, N20->Checked);
+//SpecterWork->CountSpecters(N2 * 2, N20->Checked);
+SpecterWork->CountSpectersThread(N2 * 2, N20->Checked, SpecterWork->BufSize);
 // Проиграть
 N18Click(this);
 // Строим график

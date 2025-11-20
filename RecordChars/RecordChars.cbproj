@@ -245,6 +245,10 @@
             <DependentOn>..\Common\TSpecters.h</DependentOn>
             <BuildOrder>17</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\Common\TSpecterWorkThread.cpp">
+            <DependentOn>..\Common\TSpecterWorkThread.h</DependentOn>
+            <BuildOrder>33</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\Common\TWavFile.cpp">
             <DependentOn>..\Common\TWavFile.h</DependentOn>
             <BuildOrder>25</BuildOrder>

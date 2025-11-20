@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.11.18 00:10:36.786,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.18 00:10:36.865,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.18 00:11:19.616,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\AnalyzeRecord4PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.18 00:11:19.633,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.18 00:11:19.647,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\AnalyzeRecord4.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.11.18 00:11:25.231,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\main.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\File1.cpp</Transaction>
+    <Transaction>2025.11.18 13:26:31.533,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
+    <Transaction>2025.11.18 13:26:31.577,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>2025.11.18 13:26:31.580,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>2025.11.18 13:26:31.649,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+    <Transaction>2025.11.18 13:26:31.652,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB4.cpp</Transaction>
+    <Transaction>2025.11.18 13:31:14.212,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
+    <Transaction>2025.11.18 13:31:14.259,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
+    <Transaction>2025.11.18 13:31:31.483,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>2025.11.18 13:31:31.553,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>2025.11.18 13:31:31.615,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>2025.11.19 13:14:03.253,=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.cpp</Transaction>
+    <Transaction>2025.11.19 13:21:50.412,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\TBallsSum.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.h</Transaction>
+    <Transaction>2025.11.19 13:21:50.412,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\TBallsSum.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.cpp</Transaction>
+    <Transaction>2025.11.19 13:43:57.164,=D:\Work\CPP\2025\VoiceUtils\Common\TBallsSum.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

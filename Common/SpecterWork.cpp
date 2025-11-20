@@ -3,6 +3,7 @@
 #pragma hdrstop
 
 #include <System.Math.hpp>
+#include <stdlib.h>
 #include "SpecterWork.h"
 #include "../../_Common_/Lib/files.h"
 #include "Envelope.h"
@@ -12,7 +13,7 @@
 #include "TSpecters.h"
 #include "TInterpolation.h"
 #include "TColorSceme.h"
-
+#include "TSpecterWorkThread.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -333,6 +334,92 @@ for (int i = 0; i < Count; i++) {
     FFT(&Re[pp], &Im[pp], N, GetLogN(N), FT_DIRECT);
 }
 delete FrequencyData;
+
+// Основные спектры
+if (Main != NULL) delete[] Main;
+Main = new double [MainCount * N2];
+// Обнуляем основные спектры
+for (auto i = 0; i < MainCount * N2; i++) Main[i] = 0.;
+// Цикл по основным спектрам
+for (auto i = 0; i < MainCount; i++) {
+	a = i * Count / 5;
+	b = (i + 1) * Count / 5;
+	if (b > Count) b = Count;
+	// Цикл по спектрам внутри группы (находим сумму)
+	for (auto j = a; j < b; j++) {
+		for (auto k = 0; k < N2; k++) {
+			Main[i * N2 + k] += Data[j * N2 + k];
+		}
+
+	}
+	// Находим среднее значение
+	auto c = b - a;
+	for (auto k = 0; k < N2; k++) Main[i * N2 + k] /= c;
+}
+}
+//---------------------------------------------------------------------------
+// Вычисление спектров
+void SpecterWork::CountSpectersThread(int n, bool energy_specters, int count) {
+if (!Loaded) return;
+int pos, a, b, pp, d;
+N = n;
+N2 = N / 2;
+//Count = 5 * 4800 * (BufSize) / 48000;
+Count = count;
+if (Data != NULL) delete[] Data;
+Data = new double [Count * N2];
+
+//ShowMessage("Point 1 Count=" + UnicodeString(Count) + " N2=" + UnicodeString(N2));
+
+// Подготовка и старт
+//TSpecterWorkThread *SpecterWorkThread[CPUCount] = new TSpecterWorkThread [CPUCount];
+TSpecterWorkThread **SpecterWorkThread = new TSpecterWorkThread* [CPUCount];
+d = (Count + CPUCount - 1) / CPUCount;
+for (auto i = 0; i < CPUCount; i++) {
+    SpecterWorkThread[i] = new TSpecterWorkThread(true);
+    SpecterWorkThread[i]->A = i * d;
+    SpecterWorkThread[i]->B = (i + 1) * d;
+    if (SpecterWorkThread[i]->B > Count) SpecterWorkThread[i]->B = Count;
+    SpecterWorkThread[i]->Buf = Buf;
+    SpecterWorkThread[i]->BufSize = BufSize;
+    SpecterWorkThread[i]->Data = Data;
+    SpecterWorkThread[i]->energy_specters = energy_specters;
+    SpecterWorkThread[i]->N = N;
+    SpecterWorkThread[i]->Count = Count;
+    SpecterWorkThread[i]->Resume();
+//    Sleep(20);
+//ShowMessage("i=" + UnicodeString(i) + " " + UnicodeString(SpecterWorkThread[i]->Started)  + " " + UnicodeString(SpecterWorkThread[i]->Finished));
+}
+
+//ShowMessage("Point 2");
+
+// Ожидание
+int sum = 0;
+while (sum < CPUCount) {
+    Sleep(100);
+    MaxValue = 0.;
+    sum = 0;
+	for (auto i = 0; i < CPUCount; i++) {
+    	if (SpecterWorkThread[i]->Finished) {
+        	sum++;
+            if (SpecterWorkThread[i]->MaxValue > MaxValue) MaxValue = SpecterWorkThread[i]->MaxValue;
+        }
+    }
+//ShowMessage("sum=" + UnicodeString(sum));
+}
+
+
+//ShowMessage("Point 3");
+
+
+// Завершение
+for (auto i = 0; i < CPUCount; i++) {
+   	delete SpecterWorkThread[i];
+}
+delete[] SpecterWorkThread;
+
+//ShowMessage("Point 4");
+
 
 // Основные спектры
 if (Main != NULL) delete[] Main;
@@ -840,6 +927,30 @@ int SpecterWork::GetLogN(int n) {
 		case  8192: return 13;
 		default:    return 0;
 	}
+}
+//---------------------------------------------------------------------------
+// Вычисление усреднённых значений
+void SpecterWork::CountMiddleValues(int pos, int n, int pts, double *min, double *max, double *middle) {
+    double v;
+    // Обнуляем значения
+    for (auto i = 0; i < pts; i++) {
+        min[i] = 1e8;
+        max[i] = 0.;
+        middle[i] = 0.;
+    }
+    // Цикл по спектрам
+    for (auto j = pos; j < pos + n; j++) {
+        for (auto i = 0; i < pts; i++) {
+        	v = Data[j * N2 + i];
+            if (v < min[i]) min[i] = v;
+	        if (v > max[i]) max[i] = v;
+	        middle[i] += v;
+        }
+    }
+    // Находим средние значения
+    for (auto i = 0; i < pts; i++) {
+        middle[i] /= n;
+    }
 }
 //---------------------------------------------------------------------------
 

@@ -44,6 +44,7 @@ public:
 	// Вычисление спектров (n - Кол-во точек для анализа, например 512)
 	// specters_in_second - кол-во спектров в секунду
 	void CountSpecters(int n, int specters_in_second);
+    void CountSpectersThread(int n, bool energy_specters, int Count);
 
 	// Вычисляем основные спектры
 	void CountMainSpecters(int main_count);
@@ -92,6 +93,9 @@ public:
     void Normalize(void);
 
     int GetLogN(int n);
+
+    // Вычисление усреднённых значений
+    void CountMiddleValues(int pos, int n, int pts, double *min, double *max, double *middle);
 
 };
 #endif
