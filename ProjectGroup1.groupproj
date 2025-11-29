@@ -51,6 +51,12 @@
         <Projects Include="Test4\Test4.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="FindFreqs2\FindFreqs2.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DrawLongSpecters\DrawLongSpecters.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -203,14 +209,32 @@
     <Target Name="Test4:Make">
         <MSBuild Projects="Test4\Test4.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="FindFreqs2">
+        <MSBuild Projects="FindFreqs2\FindFreqs2.cbproj"/>
+    </Target>
+    <Target Name="FindFreqs2:Clean">
+        <MSBuild Projects="FindFreqs2\FindFreqs2.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FindFreqs2:Make">
+        <MSBuild Projects="FindFreqs2\FindFreqs2.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="DrawLongSpecters">
+        <MSBuild Projects="DrawLongSpecters\DrawLongSpecters.cbproj"/>
+    </Target>
+    <Target Name="DrawLongSpecters:Clean">
+        <MSBuild Projects="DrawLongSpecters\DrawLongSpecters.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DrawLongSpecters:Make">
+        <MSBuild Projects="DrawLongSpecters\DrawLongSpecters.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters;FindPeaks;MakeVoiceDatabase4;AnalyzeRecord4;Test4"/>
+        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters;FindPeaks;MakeVoiceDatabase4;AnalyzeRecord4;Test4;FindFreqs2;DrawLongSpecters"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean;FindPeaks:Clean;MakeVoiceDatabase4:Clean;AnalyzeRecord4:Clean;Test4:Clean"/>
+        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean;FindPeaks:Clean;MakeVoiceDatabase4:Clean;AnalyzeRecord4:Clean;Test4:Clean;FindFreqs2:Clean;DrawLongSpecters:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make;FindPeaks:Make;MakeVoiceDatabase4:Make;AnalyzeRecord4:Make;Test4:Make"/>
+        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make;FindPeaks:Make;MakeVoiceDatabase4:Make;AnalyzeRecord4:Make;Test4:Make;FindFreqs2:Make;DrawLongSpecters:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

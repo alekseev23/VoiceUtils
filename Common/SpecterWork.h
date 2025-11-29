@@ -24,10 +24,12 @@ public:
 		N2,             // N2 = N / 2
 		BufSize,        // Кол-во точек аудиоданных
 		Count,          // Кол-во спектров (зависит от длины аудио данных)
-        MainCount = 5;  // Кол-во основных спектров
+        MainCount = 5,  // Кол-во основных спектров
+        SpectersPerSecond = 400;    // Кол-во спектров в секунду
 	short *Buf = NULL;  // Аудио данные
 	Envelope *Env;      // Огибающая
 	bool Loaded;        // Флаг загрузки данных
+    char *FreqLinePos;  // Позиции частотных линий на графике
 
 	SpecterWork();
 	~SpecterWork();
@@ -40,11 +42,14 @@ public:
 
 	// Чтение данных из DAT файла
 	bool ReadDataFromDAT(UnicodeString filename);
+    bool ReadDataFromDAT(UnicodeString filename, int begin, int len);
 
 	// Вычисление спектров (n - Кол-во точек для анализа, например 512)
 	// specters_in_second - кол-во спектров в секунду
 	void CountSpecters(int n, int specters_in_second);
     void CountSpectersThread(int n, bool energy_specters, int Count);
+    void CountSpectersThread(int n, bool energy_specters, int specters_per_second,
+    	int begin, int end, int windows_size, int shape_type);
 
 	// Вычисляем основные спектры
 	void CountMainSpecters(int main_count);
@@ -73,6 +78,7 @@ public:
 
     void DrawSpectrograms(TBitmap *BMP, int scale);
 	void DrawSpectrograms2(TBitmap *BMP, int scale);
+    void DrawSpectrograms2(TBitmap *BMP, int scale, int freq_width, bool show_grid_lines);
 	void DrawSpectrograms3(TBitmap *BMP, int scale);
 
 	void DrawSpectrograms3D(TBitmap *BMP, int scale);
@@ -97,5 +103,10 @@ public:
     // Вычисление усреднённых значений
     void CountMiddleValues(int pos, int n, int pts, double *min, double *max, double *middle);
 
+    // Вычисление позиций процентов
+    void GetPercentsPos(double *A, int n, double *percent, int *pos, int k);
+
+    // Вычисление позиций вертикальных тиков
+    void GetFreqPos(void);
 };
 #endif

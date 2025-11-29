@@ -19,6 +19,7 @@
 
 SpecterWork::SpecterWork() {
 Loaded = false;
+FreqLinePos = new char [65536];
 }
 //---------------------------------------------------------------------------
 
@@ -30,6 +31,7 @@ if (Main != NULL) delete[] Main;
 
 if (Re != NULL) delete[] Re;
 if (Im != NULL) delete[] Im;
+delete[] FreqLinePos;
 }
 //---------------------------------------------------------------------------
 
@@ -90,6 +92,32 @@ Loaded = true;
 return true;
 }
 //---------------------------------------------------------------------------
+// Чтение данных из DAT файла
+bool SpecterWork::ReadDataFromDAT(UnicodeString filename, int begin, int len) {
+FileName = filename;
+Loaded = false;
+// Грузим данные из DAT файла
+if (!FileExists(filename)) {
+	ShowMessage("Файл не найден: " + filename);
+	return false;
+}
+int fsize = getFileSize(filename);
+if (fsize < (begin + len) * 2) return false;
+BufSize = len;
+if (Buf != NULL) delete[] Buf;
+Buf = new short[BufSize];
+FILE *fd;
+if ((fd = _wfopen(filename.w_str(), L"rb")) == NULL) {
+	ShowMessage("Ошибка открытия файла: " + filename);
+	return false;
+}
+fseek(fd, 2 * begin, SEEK_SET);
+fread(Buf, 2, BufSize, fd);
+fclose(fd);
+Loaded = true;
+return true;
+}
+//---------------------------------------------------------------------------
 // Нормализация данных
 void SpecterWork::Normalize(void) {
 if (!Loaded) return;
@@ -114,7 +142,7 @@ N2 = N / 2;
 Count = 400 * (BufSize - N) / 48000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
@@ -124,7 +152,7 @@ for (int i = 0; i < Count; i++) {
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 }
@@ -140,7 +168,7 @@ N2 = N / 2;
 Count = 400 * (BufSize - N) / 48000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
@@ -152,7 +180,7 @@ for (int i = 0; i < Count; i++) {
 		if (energy_specters) {
 			val = val * val * (j + 1) * (j + 1);
 		}
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 }
@@ -170,7 +198,7 @@ N2 = N / 2;
 Count = specters_in_second * (BufSize - N) / 48000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 MaxValue = 0.;
 double val;
 for (int i = 0; i < Count; i++) {
@@ -179,7 +207,7 @@ for (int i = 0; i < Count; i++) {
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 }
@@ -205,7 +233,7 @@ void SpecterWork::CountMainSpecters(int main_count) {
 		// Цикл по спектрам внутри группы (находим сумму)
 		for (auto j = a; j < b; j++) {
 			for (auto k = 0; k < N2; k++) {
-				Main[i * N2 + k] += Data[j * N2 + k];
+				Main[i * N2 + k] += Data[1LL * j * N2 + k];
 			}
 		}
 		// Находим среднее значение
@@ -233,7 +261,7 @@ Count = 2 * 4800 * (BufSize - N) / 48000;
 //if (Count > 1000) Count = 1000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 
 if (Re != NULL) delete[] Re;
 Re = new double [Count * N2 * 2];
@@ -248,7 +276,7 @@ for (int i = 0; i < Count; i++) {
 	// Сохраняем данные в массив
 	for (int j = 0; j < N2; j++) {
 		val = FrequencyData->Data[j];
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 
@@ -276,7 +304,7 @@ for (auto i = 0; i < MainCount; i++) {
 	// Цикл по спектрам внутри группы (находим сумму)
 	for (auto j = a; j < b; j++) {
 		for (auto k = 0; k < N2; k++) {
-			Main[i * N2 + k] += Data[j * N2 + k];
+			Main[i * N2 + k] += Data[1LL * j * N2 + k];
 		}
 
 	}
@@ -298,7 +326,7 @@ Count = 5 * 4800 * (BufSize) / 48000;
 //if (Count > 1000) Count = 1000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 
 if (Re != NULL) delete[] Re;
 Re = new double [Count * N2 * 2];
@@ -320,7 +348,7 @@ for (int i = 0; i < Count; i++) {
 			val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
             val = val * val;
 		}
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 
@@ -348,7 +376,7 @@ for (auto i = 0; i < MainCount; i++) {
 	// Цикл по спектрам внутри группы (находим сумму)
 	for (auto j = a; j < b; j++) {
 		for (auto k = 0; k < N2; k++) {
-			Main[i * N2 + k] += Data[j * N2 + k];
+			Main[i * N2 + k] += Data[1LL * j * N2 + k];
 		}
 
 	}
@@ -364,15 +392,10 @@ if (!Loaded) return;
 int pos, a, b, pp, d;
 N = n;
 N2 = N / 2;
-//Count = 5 * 4800 * (BufSize) / 48000;
 Count = count;
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
-
-//ShowMessage("Point 1 Count=" + UnicodeString(Count) + " N2=" + UnicodeString(N2));
-
+Data = new double [1LL * Count * N2];
 // Подготовка и старт
-//TSpecterWorkThread *SpecterWorkThread[CPUCount] = new TSpecterWorkThread [CPUCount];
 TSpecterWorkThread **SpecterWorkThread = new TSpecterWorkThread* [CPUCount];
 d = (Count + CPUCount - 1) / CPUCount;
 for (auto i = 0; i < CPUCount; i++) {
@@ -383,16 +406,11 @@ for (auto i = 0; i < CPUCount; i++) {
     SpecterWorkThread[i]->Buf = Buf;
     SpecterWorkThread[i]->BufSize = BufSize;
     SpecterWorkThread[i]->Data = Data;
-    SpecterWorkThread[i]->energy_specters = energy_specters;
+    SpecterWorkThread[i]->EnergySpecters = energy_specters;
     SpecterWorkThread[i]->N = N;
     SpecterWorkThread[i]->Count = Count;
     SpecterWorkThread[i]->Resume();
-//    Sleep(20);
-//ShowMessage("i=" + UnicodeString(i) + " " + UnicodeString(SpecterWorkThread[i]->Started)  + " " + UnicodeString(SpecterWorkThread[i]->Finished));
 }
-
-//ShowMessage("Point 2");
-
 // Ожидание
 int sum = 0;
 while (sum < CPUCount) {
@@ -405,22 +423,10 @@ while (sum < CPUCount) {
             if (SpecterWorkThread[i]->MaxValue > MaxValue) MaxValue = SpecterWorkThread[i]->MaxValue;
         }
     }
-//ShowMessage("sum=" + UnicodeString(sum));
 }
-
-
-//ShowMessage("Point 3");
-
-
 // Завершение
-for (auto i = 0; i < CPUCount; i++) {
-   	delete SpecterWorkThread[i];
-}
+for (auto i = 0; i < CPUCount; i++) delete SpecterWorkThread[i];
 delete[] SpecterWorkThread;
-
-//ShowMessage("Point 4");
-
-
 // Основные спектры
 if (Main != NULL) delete[] Main;
 Main = new double [MainCount * N2];
@@ -434,7 +440,92 @@ for (auto i = 0; i < MainCount; i++) {
 	// Цикл по спектрам внутри группы (находим сумму)
 	for (auto j = a; j < b; j++) {
 		for (auto k = 0; k < N2; k++) {
-			Main[i * N2 + k] += Data[j * N2 + k];
+			Main[i * N2 + k] += Data[1LL * j * N2 + k];
+		}
+
+	}
+	// Находим среднее значение
+	auto c = b - a;
+	for (auto k = 0; k < N2; k++) Main[i * N2 + k] /= c;
+}
+}
+//---------------------------------------------------------------------------
+/*
+Вычисление спектров
+n - Кол-во аудио точек в спектре
+energy_specters - постые спектры или энергетические
+count - кол-во спектров для вычисления
+begin - начало аудио области
+end - конец аудио области
+windows_size - размер окна
+shape_type - тип шейпера
+*/
+void SpecterWork::CountSpectersThread(int n, bool energy_specters, int specters_per_second, int begin, int end, int windows_size, int shape_type) {
+if (!Loaded) return;
+int pos, a, b, pp, d;
+N = n;
+N2 = N / 2;
+SpectersPerSecond = specters_per_second;
+Count = 1LL * specters_per_second * (end - begin) / 48000;
+//std::cout << "specters_per_second=" << specters_per_second <<  " begin=" << begin <<  " end=" << end <<" Count=" << Count << " 1LL * Count * N2=" << (1LL * Count * N2) << std::endl;
+if (Data != NULL) delete[] Data;
+__int64 t = 2LL * Count * N2;
+Data = new double [t];
+if (Data == NULL) {
+    std::cout << "Data allocation error!" << std::endl;
+    return;
+}
+// Подготовка и старт
+TSpecterWorkThread **SpecterWorkThread = new TSpecterWorkThread* [CPUCount];
+d = (Count + CPUCount - 1) / CPUCount;
+for (auto i = 0; i < CPUCount; i++) {
+    SpecterWorkThread[i] = new TSpecterWorkThread(true);
+    SpecterWorkThread[i]->A = i * d;
+    SpecterWorkThread[i]->B = (i + 1) * d;
+    if (SpecterWorkThread[i]->B > Count) SpecterWorkThread[i]->B = Count;
+    SpecterWorkThread[i]->Buf = Buf;
+    SpecterWorkThread[i]->BufSize = BufSize;
+    SpecterWorkThread[i]->Data = Data;
+    SpecterWorkThread[i]->Begin = begin;
+    SpecterWorkThread[i]->End = end;
+    SpecterWorkThread[i]->EnergySpecters = energy_specters;
+    SpecterWorkThread[i]->WindowSize = windows_size;
+    SpecterWorkThread[i]->ShapeType = shape_type;
+    SpecterWorkThread[i]->N = N;
+    SpecterWorkThread[i]->Count = Count;
+    SpecterWorkThread[i]->Resume();
+}
+// Ожидание
+int sum = 0;
+while (sum < CPUCount) {
+    Sleep(100);
+    MaxValue = 0.;
+    sum = 0;
+	for (auto i = 0; i < CPUCount; i++) {
+    	if (SpecterWorkThread[i]->Finished) {
+        	sum++;
+            if (SpecterWorkThread[i]->MaxValue > MaxValue) MaxValue = SpecterWorkThread[i]->MaxValue;
+        }
+    }
+}
+// Завершение
+for (auto i = 0; i < CPUCount; i++) delete SpecterWorkThread[i];
+delete[] SpecterWorkThread;
+// Основные спектры
+if (Main != NULL) delete[] Main;
+Main = new double [MainCount * N2];
+// Обнуляем основные спектры
+for (auto i = 0; i < MainCount * N2; i++) Main[i] = 0.;
+// Цикл по основным спектрам
+for (auto i = 0; i < MainCount; i++) {
+	a = i * Count / 5;
+	b = (i + 1) * Count / 5;
+	if (b > Count) b = Count;
+	// Цикл по спектрам внутри группы (находим сумму)
+	for (auto j = a; j < b; j++) {
+		for (auto k = 0; k < N2; k++) {
+            t = 1LL * j * N2 + k;
+			Main[i * N2 + k] += Data[t];
 		}
 
 	}
@@ -459,7 +550,7 @@ N2 = N / 2;
 Count = 2 * 4800 * (BufSize - N) / 48000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 MaxValue = 0.;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
@@ -471,7 +562,7 @@ for (int i = 0; i < Count; i++) {
 			//val = val * val * (j + 1) * (j + 1);
 			//val = val * (j + 1) * (j + 1);
 		}
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 }
@@ -494,7 +585,7 @@ N2 = N / 2;
 Count = 400 * (BufSize2 - N) / 48000;
 FrequencyData *FrequencyData = new class FrequencyData(N);
 if (Data != NULL) delete[] Data;
-Data = new double [Count * N2];
+Data = new double [1LL * Count * N2];
 MaxValue = 0.;
 for (int i = 0; i < Count; i++) {
 	pos = i * (BufSize - N) / Count;
@@ -506,7 +597,7 @@ for (int i = 0; i < Count; i++) {
 			//val = val * val * (j + 1) * (j + 1);
 			//val = val * (j + 1) * (j + 1);
 		}
-		Data[i * N2 + j] = val;
+		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
 	}
 }
@@ -525,7 +616,7 @@ for (auto i = 0; i < MainCount; i++) {
 	// Цикл по спектрам внутри группы (находим сумму)
 	for (auto j = a; j < b; j++) {
 		for (auto k = 0; k < N2; k++) {
-			Main[i * N2 + k] += Data[j * N2 + k];
+			Main[i * N2 + k] += Data[1LL * j * N2 + k];
 		}
 
 	}
@@ -588,7 +679,7 @@ int pos = 0;
 double max_sum = 0., sum;
 for (auto i = 0; i < Count; i++) {
 	sum = 0.;
-	for (auto j = 0; j < 10; j++) sum += Data[i * N2 + j];
+	for (auto j = 0; j < 10; j++) sum += Data[1LL * i * N2 + j];
 	if (sum > max_sum) {
 		max_sum = sum;
 		pos = i;
@@ -605,7 +696,8 @@ scale = 3 - логарифм по основанию 1.042
 */
 double SpecterWork::GetSpecterPointValue(int specter, int i, int scale) {
 if (!Loaded) return 0.;
-double val = Data[specter * N2 + i];
+__int64 t = 1LL * specter * N2 + i;
+double val = Data[t];
 return GetSpecterValue(val, scale);
 }
 
@@ -666,7 +758,8 @@ control_color[0] = (TColor)(0);
 control_color[1] = (TColor)(255);
 control_color[2] = (TColor)(255 << 8);
 control_color[3] = (TColor)(255 << 16);
-double values[4] = {0., max / 3, 2. * max / 3, max};
+//double values[4] = {0., max / 3, 2. * max / 3, max};
+double values[4] = {0., max / 10, max / 3, max};
 TColorSceme *ColorSceme = new TColorSceme(left_color, right_color, 4, control_color, values, 1000);
 //
 TColor control_color2[3];
@@ -757,6 +850,79 @@ for (auto y = 0; y < sy; y++) {
 			if (g < 240) g += 15; else g = 255;
 			if (b < 240) b += 15; else b = 255;
 		}
+		p[i++] = r;
+		p[i++] = g;
+		p[i++] = b;
+	}
+}
+BMP->Assign(bmp);
+delete bmp;
+}
+//---------------------------------------------------------------------------
+// Рисование топографии спектрограмы
+void SpecterWork::DrawSpectrograms2(TBitmap *BMP, int scale, int freq_width, bool show_grid_lines) {
+if (!Loaded) return;
+int sx, sy, i, yy, SpectersPerSecond10;
+unsigned char *p, color;
+double val, max;
+bool flag;
+// Вычисляем тики частоте
+GetFreqPos();
+sx = Count;
+sy = freq_width;
+SpectersPerSecond10 = SpectersPerSecond / 10;
+TBitmap *bmp = new TBitmap;
+bmp->PixelFormat = pf24bit;
+bmp->SetSize(sx, sy);
+//
+switch (scale) {
+	case 1: max = MaxValue; break;
+	case 2: max = log10(MaxValue); break;
+	case 3: max = Math::LogN(1.042, MaxValue); break;
+}
+// Цветовая схема
+TColor left_color = clYellow, right_color = clYellow, control_color[4];
+control_color[0] = (TColor)(0);
+control_color[1] = (TColor)(255);
+control_color[2] = (TColor)(255 << 8);
+control_color[3] = (TColor)(255 << 16);
+double values[4] = {0., 1. * max / 20, 1. * max / 4, max};
+//double values[5] = {0., 1. * max / 1000, 1. * max / 100, 1. * max / 10, max};
+TColorSceme *ColorSceme = new TColorSceme(left_color, right_color, 4, control_color, values, 1000);
+//
+unsigned char r, g, b;
+for (auto y = 0; y < sy; y++) {
+	p = (unsigned char *)bmp->ScanLine[y];
+	i = 0;
+	yy = sy - 1 - y;
+   	if (show_grid_lines) {
+    	if (FreqLinePos[yy]) {
+			for (auto x = 0; x < sx; x++) {
+				p[i++] = 30;                
+				p[i++] = 30;                
+				p[i++] = 30;                
+            }
+			continue;
+        }
+    }
+	for (auto x = 0; x < sx; x++) {
+        // Отрисовка сетки
+    	if (show_grid_lines) {
+            if (x % SpectersPerSecond == 0) { // Линия 1 секунда
+				p[i++] = 80;                
+				p[i++] = 80;                
+				p[i++] = 80;                
+                continue;
+            }
+            if (x % SpectersPerSecond10 == 0) { // Линия 0.1 секунды
+				p[i++] = 30;
+				p[i++] = 30;                
+				p[i++] = 30;                
+                continue;
+            }
+        }    
+		val = GetSpecterPointValue(x, yy, scale);
+		ColorSceme->Get(val, r, g, b);
 		p[i++] = r;
 		p[i++] = g;
 		p[i++] = b;
@@ -941,7 +1107,7 @@ void SpecterWork::CountMiddleValues(int pos, int n, int pts, double *min, double
     // Цикл по спектрам
     for (auto j = pos; j < pos + n; j++) {
         for (auto i = 0; i < pts; i++) {
-        	v = Data[j * N2 + i];
+        	v = Data[1LL * j * N2 + i];
             if (v < min[i]) min[i] = v;
 	        if (v > max[i]) max[i] = v;
 	        middle[i] += v;
@@ -951,6 +1117,55 @@ void SpecterWork::CountMiddleValues(int pos, int n, int pts, double *min, double
     for (auto i = 0; i < pts; i++) {
         middle[i] /= n;
     }
+}
+//---------------------------------------------------------------------------
+/*
+Вычисление позиций процентов
+Дано: A[n] - спектр
+percent[k] - массив интересующих процентов, например percent[9] = {10, 20, 30, 40, 50, 60, 70, 80, 90}
+Результат: pos[k] - массив значений позиций начиная слева
+*/
+void SpecterWork::GetPercentsPos(double *A, int n, double *percent, int *pos, int k) {
+    double sum = 0, sum2 = 0.;
+    int j = 0;
+    // Находим сумму значений
+    for (auto i = 0; i < n; i++) sum += A[i];
+    // Ищем позиции
+    for (auto i = 0; i < n; i++) { // Повторный цикл
+    	sum2 += A[i]; // Новая сумма
+        while (sum2 * 100. / sum >= percent[j]) { // Если сумма >= очередного процента
+            pos[j++] = i;   // Нашли очередную точку процента
+            if (j >= k) return; // Нашли все точки
+        }
+    }
+}
+//---------------------------------------------------------------------------
+// Вычисление позиций вертикальных тиков
+void SpecterWork::GetFreqPos(void) {
+	int K;
+    switch (N2) {
+    	case   256: K = 84; break;
+    	case   512: K = 170; break;
+    	case  1024: K = 340; break;
+    	case  2048: K = 682; break;
+    	case  4096: K = 1364; break;
+    	case  8192: K = 2730; break;
+    	case 16384: K = 5460; break;
+    	case 32768: K = 10920; break;
+    	case 65536: K = 21840; break;
+    }
+
+	// Очистка
+	for (auto i = 0; i < N2; i++) FreqLinePos[i] = 0;
+    // 200, 400, 600, 800 (Гц)
+	for (auto i = 1; i < 5; i++) {
+    	FreqLinePos[i * 200 * K / 8000] = 1;
+    }
+    // 1K, 2K, 3K, ... (Гц)
+	for (auto i = 1; i <= 10; i++) {
+    	FreqLinePos[i * 1000 * K / 8000] = 1;
+    }
+    
 }
 //---------------------------------------------------------------------------
 

@@ -176,6 +176,7 @@ object Form1: TForm1
         Height = 539
         Align = alClient
         ItemHeight = 15
+        PopupMenu = PopupMenu1
         TabOrder = 0
         OnClick = ListBox2Click
       end
@@ -625,5 +626,13 @@ object Form1: TForm1
     OnTimer = Timer1Timer
     Left = 696
     Top = 400
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 240
+    Top = 456
+    object N567: TMenuItem
+      Caption = #1054#1073#1085#1086#1074#1080#1090#1100' '#1087#1086#1088#1103#1076#1086#1082' '#1080#1084#1105#1085
+      OnClick = N567Click
+    end
   end
 end

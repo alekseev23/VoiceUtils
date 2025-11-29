@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2025.11.14 21:08:21.346,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>2025.11.14 21:08:21.556,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp</Transaction>
-    <Transaction>2025.11.14 21:09:32.189,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\DrawSpectersPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>2025.11.14 21:09:32.210,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.dfm</Transaction>
-    <Transaction>2025.11.14 21:09:32.210,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.h</Transaction>
-    <Transaction>2025.11.14 21:09:32.210,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp</Transaction>
-    <Transaction>2025.11.14 21:09:32.231,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\DrawSpecters.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
-    <Transaction>2025.11.14 21:09:36.637,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit1.dfm=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.dfm</Transaction>
-    <Transaction>2025.11.14 21:09:36.637,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit1.cpp=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.cpp</Transaction>
-    <Transaction>2025.11.14 21:09:36.637,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit1.h=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.h</Transaction>
-    <Transaction>2025.11.15 11:55:12.455,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
-    <Transaction>2025.11.15 11:55:12.498,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
-    <Transaction>2025.11.15 11:55:12.539,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
-    <Transaction>2025.11.15 13:05:40.556,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
-    <Transaction>2025.11.15 13:05:40.559,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.455,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.556,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.637,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.dfm=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.498,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.231,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\DrawSpecters.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.189,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\DrawSpectersPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.346,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.539,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.210,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.dfm=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.210,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.556,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.559,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.637,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.h=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.637,D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.cpp=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.210,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.h=D:\Work\CPP\2025\VoiceUtils\DrawSpecters\Unit13.h</Transaction>
   </Transactions>
 </BorlandProject>

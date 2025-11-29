@@ -350,17 +350,17 @@
             <DependentOn>..\..\_Common_\Lib\strings.h</DependentOn>
             <BuildOrder>6</BuildOrder>
         </CppCompile>
+        <FormResources Include="Unit11.dfm"/>
+        <FormResources Include="Unit12.dfm"/>
         <FormResources Include="Unit2.dfm"/>
         <FormResources Include="Unit3.dfm"/>
-        <FormResources Include="Unit4.dfm"/>
-        <FormResources Include="Unit11.dfm"/>
         <FormResources Include="Unit1.dfm"/>
         <FormResources Include="Unit10.dfm"/>
+        <FormResources Include="Unit4.dfm"/>
         <FormResources Include="Unit5.dfm"/>
         <FormResources Include="Unit6.dfm"/>
         <FormResources Include="Unit8.dfm"/>
         <FormResources Include="Unit9.dfm"/>
-        <FormResources Include="Unit12.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.11.27 14:36:41.310,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.27 14:36:41.429,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.27 14:37:53.931,D:\Work\CPP\2025\VoiceUtils\MakeSpectersBitmap\MakeSpectersBitmapPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.27 14:37:53.950,D:\Work\CPP\2025\VoiceUtils\MakeSpectersBitmap\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.27 14:37:53.965,D:\Work\CPP\2025\VoiceUtils\MakeSpectersBitmap\MakeSpectersBitmap.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.11.27 14:38:02.978,D:\Work\CPP\2025\VoiceUtils\MakeSpectersBitmap\main.cpp=D:\Work\CPP\2025\VoiceUtils\MakeSpectersBitmap\File1.cpp</Transaction>
+    <Transaction>2025.11.27 15:00:22.391,=D:\Work\CPP\2025\_Common_\Lib\bitmap.cpp</Transaction>
+    <Transaction>2025.11.27 15:00:22.448,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>2025.11.27 15:00:22.491,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>2025.11.27 15:00:22.539,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>2025.11.27 15:00:22.606,=D:\Work\CPP\2025\_Common_\Lib\TCommandLineArgumentsAnalyzer.cpp</Transaction>
+    <Transaction>2025.11.27 15:52:33.031,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
+    <Transaction>2025.11.27 15:52:33.072,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
+    <Transaction>2025.11.27 15:52:33.116,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>2025.11.27 15:52:33.178,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>2025.11.27 15:53:00.220,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
+    <Transaction>2025.11.27 15:53:00.282,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+    <Transaction>2025.11.27 15:53:00.346,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
+  </Transactions>
+  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="..\..\VoiceUtils"/>
+    <File Path="..\Common"/>
+    <File Path="..\Common\common.cpp"/>
+    <File Path="..\Common\common.cpp"/>
+    <File Path="..\Common\common.h"/>
+    <File Path="..\Common\FFT.cpp"/>
+    <File Path="..\Common\FFT.cpp"/>
+    <File Path="..\Common\FFT.h"/>
+    <File Path="..\Common\FrequencyData.cpp"/>
+    <File Path="..\Common\FrequencyData.cpp"/>
+    <File Path="..\Common\FrequencyData.h"/>
+    <File Path="..\Common\SpecterWork.cpp"/>
+    <File Path="..\Common\SpecterWork.cpp"/>
+    <File Path="..\Common\SpecterWork.h"/>
+    <File Path="..\Common\TColorSceme.cpp"/>
+    <File Path="..\Common\TColorSceme.cpp"/>
+    <File Path="..\Common\TColorSceme.h"/>
+    <File Path="..\Common\TInterpolation.cpp"/>
+    <File Path="..\Common\TInterpolation.cpp"/>
+    <File Path="..\Common\TInterpolation.h"/>
+    <File Path="..\Common\TSpecterWorkThread.cpp"/>
+    <File Path="..\Common\TSpecterWorkThread.cpp"/>
+    <File Path="..\Common\TSpecterWorkThread.h"/>
+    <File Path="..\..\..\2025"/>
+    <File Path="..\..\_Common_"/>
+    <File Path="..\..\_Common_\Lib"/>
+    <File Path="..\..\_Common_\Lib\bitmap.cpp"/>
+    <File Path="..\..\_Common_\Lib\bitmap.cpp"/>
+    <File Path="..\..\_Common_\Lib\bitmap.h"/>
+    <File Path="..\..\_Common_\Lib\files.cpp"/>
+    <File Path="..\..\_Common_\Lib\files.cpp"/>
+    <File Path="..\..\_Common_\Lib\files.h"/>
+    <File Path="..\..\_Common_\Lib\RunProcess.cpp"/>
+    <File Path="..\..\_Common_\Lib\RunProcess.cpp"/>
+    <File Path="..\..\_Common_\Lib\RunProcess.h"/>
+    <File Path="..\..\_Common_\Lib\strings.cpp"/>
+    <File Path="..\..\_Common_\Lib\strings.cpp"/>
+    <File Path="..\..\_Common_\Lib\strings.h"/>
+    <File Path="..\..\_Common_\Lib\TCommandLineArgumentsAnalyzer.cpp"/>
+    <File Path="..\..\_Common_\Lib\TCommandLineArgumentsAnalyzer.cpp"/>
+    <File Path="..\..\_Common_\Lib\TCommandLineArgumentsAnalyzer.h"/>
+    <File Path="main.cpp"/>
+    <File Path="MakeSpectersBitmapPCH1.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

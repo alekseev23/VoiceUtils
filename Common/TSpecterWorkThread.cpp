@@ -31,21 +31,32 @@ void __fastcall TSpecterWorkThread::Execute()
 {
 	//---- Place thread code here ----
     double val;
-    int pos, N2 = N / 2;
+    int N2 = N / 2;
+    __int64 t, pos;
     FrequencyData *FrequencyData = new class FrequencyData(N);
+    FrequencyData->applyShape(ShapeType);
+    if (End == 0) End = BufSize - 1;
     for (int i = A; i < B; i++) {
-	    pos = i * BufSize / Count;
-	    FrequencyData->calculate(Buf, BufSize, pos, 512);
+	    pos = 1LL * i * (End - Begin) / Count + Begin;
+        //pos = 1LL * i * (End - Begin) / Count;
+	    FrequencyData->calculate(Buf, BufSize, (int)pos, WindowSize);
 		// Сохраняем данные в массив
+        t = 1LL * i * N2;
 		for (int j = 0; j < N2; j++) {
 			val = FrequencyData->Data[j];
-			if (energy_specters) {
-				val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
+			if (EnergySpecters) {
+				//val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
+                val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
     	        val = val * val;
 			}
-			Data[i * N2 + j] = val;
+			Data[t++] = val;
 			if (val > MaxValue) MaxValue = val;
 		}
+/*if ((i >= 12000) && (i <= 12000)) {
+    std::cout << " i=" << i << " pos=" << (int)pos << " FrequencyData->Data[0]=" <<  FrequencyData->Data[0]
+        << " Begin=" << Begin << " End=" << End << " A=" << A << " B=" << B
+    	<< std::endl;
+}*/
     }
     delete FrequencyData;
 }

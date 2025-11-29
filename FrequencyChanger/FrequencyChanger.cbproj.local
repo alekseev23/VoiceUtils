@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.11.29 18:59:05.873,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.29 18:59:06.017,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.29 19:00:15.867,D:\Work\CPP\2025\VoiceUtils\FrequencyChanger\FrequencyChangerPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2025.11.29 19:00:15.883,D:\Work\CPP\2025\VoiceUtils\FrequencyChanger\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>2025.11.29 19:00:15.896,D:\Work\CPP\2025\VoiceUtils\FrequencyChanger\FrequencyChanger.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>2025.11.29 19:00:20.689,D:\Work\CPP\2025\VoiceUtils\FrequencyChanger\main.cpp=D:\Work\CPP\2025\VoiceUtils\FrequencyChanger\File1.cpp</Transaction>
+  </Transactions>
+</BorlandProject>

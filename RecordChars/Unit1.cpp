@@ -958,3 +958,38 @@ Form12->Show();
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::N567Click(TObject *Sender)
+{ // Обновить порядок имён
+// Получить список значений
+TStringList *ts = new TStringList;
+TStringList *ts2 = new TStringList;
+UnicodeString s, src, dest;
+for (auto i = 0; i < ListBox2->Count; i++) {
+    s = ListBox2->Items->Strings[i];
+    if (s.Length() == 1) s = "  " + s;
+    else if (s.Length() == 2) s = " " + s;
+    ts->Add(s);
+    ts2->Add(UnicodeString(i + 1));
+}
+// Отсортировать список значений
+ts->Sort();
+// Цикл по всем значениям
+for (auto i = 0; i < ListBox2->Count; i++) {
+	// Находим очередное значение
+    if (ts->Strings[i].Trim() != ts2->Strings[i]) {
+		// Переименовываем
+        src = CurPath + "\\voices\\" + TabControl1->Tabs->Strings[TabControl1->TabIndex]
+			+ "\\" + ListBox1->Items->Strings[ListBox1->ItemIndex] + "_" + ts->Strings[i].Trim() + ".wav";
+        dest = CurPath + "\\voices\\" + TabControl1->Tabs->Strings[TabControl1->TabIndex]
+			+ "\\" + ListBox1->Items->Strings[ListBox1->ItemIndex] + "_" + ts2->Strings[i]+ ".wav";
+        RenameFile(src, dest);
+    }
+}
+// Удаляем ненужные объекты
+delete ts;
+delete ts2;
+// Обновляем список
+ListBox1Click(this);
+}
+//---------------------------------------------------------------------------
+

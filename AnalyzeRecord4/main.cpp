@@ -18,7 +18,7 @@ int wmain(int argc, wchar_t* argv[])
 SetConsoleCP(CP_UTF8);
 SetConsoleOutputCP(65001);
 // Объявление переменных
-int N = 8192, N2 = N / 2, Count, d = 3, id, fpos, param = 7;
+int N = 8192, N2 = N / 2, Count, d = 3, id, fpos, param = 3;
 double dif, same;
 UnicodeString s;
 // Анализ аргументов командной строки
