@@ -50,6 +50,58 @@ bool TWavFile::Load(UnicodeString filename) {
 	return true;
 }
 
+// Загрузка из DAT файла
+bool TWavFile::LoadFromDAT(UnicodeString filename) {
+	FileName = filename;
+	Loaded = false;
+	// Грузим данные из DAT файла
+	if (!FileExists(filename)) {
+		ShowMessage("Файл не найден: " + filename);
+		return false;
+	}
+	int fsize = getFileSize(filename);
+	if (fsize == 0) return false;
+	BufSize = fsize / 2;
+	if (Buf != NULL) delete[] Buf;
+	Buf = new short[BufSize];
+	FILE *fd;
+	if ((fd = _wfopen(filename.w_str(), L"rb")) == NULL) {
+		ShowMessage("Ошибка открытия файла: " + filename);
+		return false;
+	}
+	fread(Buf, 2, BufSize, fd);
+	fclose(fd);
+	Loaded = true;
+	return true;
+}
+
+// Загрузка из DAT файла с определённой позиции (pos) определённого куска данных (len)
+bool TWavFile::LoadFromDAT(UnicodeString filename, int begin, int len) {
+	FileName = filename;
+	Loaded = false;
+	// Грузим данные из DAT файла
+	if (!FileExists(filename)) {
+		ShowMessage("Файл не найден: " + filename);
+		return false;
+	}
+	int fsize = getFileSize(filename);
+	if (fsize < (begin + len ) * 2) return false;
+	BufSize = len;
+	if (Buf != NULL) delete[] Buf;
+	Buf = new short[BufSize];
+	FILE *fd;
+	if ((fd = _wfopen(filename.w_str(), L"rb")) == NULL) {
+		ShowMessage("Ошибка открытия файла: " + filename);
+		return false;
+	}
+	fseek(fd, begin * 2, SEEK_SET);
+	fread(Buf, 2, BufSize, fd);
+	fclose(fd);
+	Loaded = true;
+	return true;
+}
+
+// Сохранение в WAV файл
 bool TWavFile::Save(UnicodeString filename) {
 	WAVEFORMATEX *wf;
     char *recbuf = NULL;		// recording buffer
@@ -81,6 +133,19 @@ bool TWavFile::Save(UnicodeString filename) {
 	fwrite(Buf, 2, BufSize, fd);
 	fclose(fd);
 	free(recbuf);
+    return true;
+}
+
+// Сохранение в DAT файл
+bool TWavFile::SaveToDat(UnicodeString filename) {
+	FILE *fd;
+	if (!(fd = _wfopen(filename.w_str(), L"wb"))) {
+		ShowMessage("Can't create the file");
+		return false;
+	}
+	// Сохраняем данные
+	fwrite(Buf, 2, BufSize, fd);
+	fclose(fd);
     return true;
 }
 

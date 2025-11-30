@@ -32,8 +32,8 @@ void Help(void) {
         << "\t--show-grid-lines" << std::endl
         << "\t--audio-file audio_file" << std::endl
         << "\t--picture-file picture_file" << std::endl
-    	<< "Example: MakeSpectersBitmap.exe --time-begin 0 --time-end 0 -N 16384 --window-size 512 --specters-per-second 400 --energy-specters -a 1.mp3 -p 1.png" << std::endl
-    	<< "Example: MakeSpectersBitmap.exe --time-begin 12.5 --time-len 5.5 -N 1024 -s 48000 --specters-width 200 --log-scale  --shaper-type 4 -a 2.mp3 -p 2.png" << std::endl;
+    	<< "Example: MakeSpectersBitmap.exe --time-begin 0 --time-end 0 -N 16384 --window-size 512 --specters-per-second 400 --energy-specters --audio-file 1.mp3 --picture-file 1.png" << std::endl
+    	<< "Example: MakeSpectersBitmap.exe --time-begin 12.5 --time-len 5.5 -N 1024 --specters-per-second 48000 --specters-width 200 --log-scale  --shaper-type 4 --audio-file 2.mp3 --picture-file 2.png" << std::endl;
 }
 //------------------------------------------------------------------------------
 bool Convert(UnicodeString SOX, UnicodeString in, UnicodeString out) {

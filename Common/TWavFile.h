@@ -23,8 +23,18 @@ public:
 	TWavFile(int n);
 	~TWavFile();
 
+    // Загрузка из WAV файла
 	bool Load(UnicodeString filename);
+    // Загрузка из DAT файла
+	bool LoadFromDAT(UnicodeString filename);
+    // Загрузка из DAT файла с определённой позиции (pos) определённого куска данных (len)
+	bool LoadFromDAT(UnicodeString filename, int begin, int len);
+
+
+    // Сохранение в WAV файл
 	bool Save(UnicodeString filename);
+    // Сохранение в DAT файл
+	bool SaveToDat(UnicodeString filename);
 
 	// Вычисляем спектры из аудио данных
 	void Calculate();
