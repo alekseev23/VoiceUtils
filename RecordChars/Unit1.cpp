@@ -15,6 +15,7 @@
 #include "Unit10.h"
 #include "Unit11.h"
 #include "Unit12.h"
+#include "Unit13.h"
 #include "bass.h"
 #include "../../_Common_/Lib/bitmap.h"
 #include "../../_Common_/Lib/files.h"
@@ -59,6 +60,7 @@ SpecterWork *SpecterWork;
 SER Ser[MAX_SER];           // Спектры текущего файла
 SER SerChanges[CHANGES_N];           // Спектры текущего файла
 SER SerMain[5];             // Основные спектры
+SER Ser5[5];    	// Дополнительная информация
 TAudioMax *AudioMax;
 bool BUSY = false;
 
@@ -316,6 +318,22 @@ SpecterSer = new TFastLineSeries(this);
 Chart2->AddSeries(SpecterSer);
 SpecterSer->Color = (TColor)(200);
 SpecterSer->LinePen->Width = 3;
+
+// Дополнительные графики
+for (int i = 0; i < 5; i++) {
+	// Частоты
+	Ser5[i].S = new TFastLineSeries(this);
+	Ser5[i].S->Pen->Width = 3;
+	Chart5->AddSeries(Ser5[i].S);
+}
+Ser5[0].S->Title = "Min";
+Ser5[1].S->Title = "Max";
+Ser5[2].S->Title = "Middle";
+Ser5[3].S->Title = "Change";
+Ser5[4].S->Title = "Changes count";
+Ser5[3].S->Color = clBlack;
+Ser5[4].S->Color = clGreen;
+
 // get list of recording devices
 UpdateAudioInputListExecute(this);
 //
@@ -739,6 +757,10 @@ Chart4->Title->Text->Add("Основные спектры звука [" + ListBox1->Items->Strings[L
 	+ " версия [" + ListBox2->Items->Strings[ListBox2->ItemIndex] + "]");
 
 if (Form12->Showing) Form12->DrawExecute(this);
+// Дополнительные графики
+if (PageControl2->ActivePageIndex == 5) {
+	DrawAdditionalExecute(this);
+}
 
 BUSY = false;
 }
@@ -990,6 +1012,31 @@ delete ts;
 delete ts2;
 // Обновляем список
 ListBox1Click(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::DrawAdditionalExecute(TObject *Sender)
+{
+SpecterWork->AnalyzeSpecters();
+for (auto i = 0; i < 5; i++) Ser5[i].S->Clear();
+for (auto j = 0; j < SpecterWork->N2; j++) {
+	Ser5[0].S->AddXY(j, 1000. * SpecterWork->AMin[j] / SpecterWork->AMax_Max, "");
+	Ser5[1].S->AddXY(j, 1000. * SpecterWork->AMax[j] / SpecterWork->AMax_Max, "");
+	Ser5[2].S->AddXY(j, 1000. * SpecterWork->AMiddle[j] / SpecterWork->AMax_Max, "");
+	Ser5[3].S->AddXY(j, 1000. * SpecterWork->AChange[j] / SpecterWork->AChange_Max, "");
+	Ser5[4].S->AddXY(j, 1000. * SpecterWork->Changes[j] / SpecterWork->Changes_Max, "");
+}
+Chart5->Refresh();
+if (Form13->Showing) {
+    Form13->Memo1->Lines->Add(TabControl1->Tabs->Strings[TabControl1->TabIndex] + "\t"
+    	+ ListBox1->Items->Strings[ListBox1->ItemIndex] + "\t"
+        + ListBox2->Items->Strings[ListBox2->ItemIndex] + "\t" + SpecterWork->CP);
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::N998Click(TObject *Sender)
+{ // Контрольные точки
+Form13->Show();
 }
 //---------------------------------------------------------------------------
 

@@ -334,7 +334,7 @@ if (Im != NULL) delete[] Im;
 Im = new double [Count * N2 * 2];
 
 MaxValue = 0.;
-double val;
+double val, f;
 for (int i = 0; i < Count; i++) {
 	//pos = i * (BufSize - N) / Count;
     pos = i * (BufSize) / Count;
@@ -345,8 +345,12 @@ for (int i = 0; i < Count; i++) {
 		val = FrequencyData->Data[j];
 		if (energy_specters) {
 			//val = val * val * (j + 1) * (j + 1);
-			val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
-            val = val * val;
+
+			//val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
+            //val = val * val;
+
+            f = 8000 * 4096 * (j + 1) / (1364 * N2);
+            val = val * f * f;
 		}
 		Data[1LL * i * N2 + j] = val;
 		if (val > MaxValue) MaxValue = val;
@@ -1168,4 +1172,107 @@ void SpecterWork::GetFreqPos(void) {
     
 }
 //---------------------------------------------------------------------------
+// Анализ значений
+void SpecterWork::AnalyzeSpecters(void) {
+	if (!Loaded) return;
+    // Подготовка
+    if (Changes != NULL) delete[] Changes;
+    if (AMax != NULL) delete[] AMax;
+    if (AMin != NULL) delete[] AMin;
+    if (AMiddle != NULL) delete[] AMiddle;
+    if (AChange != NULL) delete[] AChange;
+    bool *Dir = new bool [N2]; // Направление возрастания
+    Changes = new int [N2];
+    AMax = new double [N2];
+    AMin = new double [N2];
+    AMiddle = new double [N2];
+    AChange = new double [N2];
+    for (auto i = 0; i < N2; i++) {
+        Changes[i] = 0;
+        AMax[i] = 0.;
+        AMin[i] = 1e8;
+        AMiddle[i] = 0.;
+        AChange[i] = 0.;
+        Dir[i] = false;
+    }
+    // Ищем минимум и максимум
+    double val;
+    for (auto j = 0; j < Count; j++) { // Цикл по спектрам
+	    for (auto i = 0; i < N2; i++) {
+            val = Data[j * N2 + i];
+            if (val > AMax[i]) AMax[i] = val;
+            if (val < AMin[i]) AMin[i] = val;
+            AMiddle[i] += val;
+	    }
+        // AChange
+        if (j > 0) {
+		    for (auto i = 0; i < N2; i++) {
+    	        AChange[i] += fabs(Data[(j - 1) * N2 + i] - Data[j * N2 + i]);
+            }
+        }
+        // Changes
+        if (j == 0);
+        else if (j == 1) {
+		    for (auto i = 0; i < N2; i++) {
+                if (Data[j * N2 + i] > Data[(j - 1) * N2 + i]) Dir[i] = true;
+                else Dir[i] = false;
+            }
+        }
+        else {
+		    for (auto i = 0; i < N2; i++) {
+                if (Data[j * N2 + i] > Data[(j - 1) * N2 + i]) { // Увеличение
+                	Dir[i] = true;
+                }
+                else { // Уменьшение
+                    if (Dir[i]) {
+                    	Changes[i] += 1;
+	                	Dir[i] = false;
+                    }
+                }
+            }
+        }
+    }
+    delete[] Dir;
+    // Находим максимумы
+    AMax_Max = 0.;
+    AMin_Max = 0.;
+    AMiddle_Max = 0.;
+    AChange_Max = 0.;
+	Changes_Max = 0;
+    for (auto i = 0; i < N2; i++) {
+        if (AMax[i] > AMax_Max) AMax_Max = AMax[i];
+        if (AMin[i] > AMin_Max) AMin_Max = AMin[i];
+        AMiddle[i] /= Count;
+        if (AMiddle[i] > AMiddle_Max) AMiddle_Max = AMiddle[i];
+        if (AChange[i] > AChange_Max) AChange_Max = AChange[i];
+        if (Changes[i] > Changes_Max) Changes_Max = Changes[i];
+    }
+    // Дополнительные исследования
+    double sum, max, percent[3] = {25., 50., 75.};
+    int pos, center, res_pos[3];
+    sum = max = 0.;
+    pos = 0;
+    for (auto i = 0; i < 130; i++) {
+        sum += AMax[i];
+        if (AMax[i] > max) {
+            pos = i;
+            max = AMax[i];
+        }
+    }
+	GetPercentsPos(AMax, 130, percent, res_pos, 3);
+    center = res_pos[1];
+    CP = UnicodeString(std::round(sum)) + "\t" + UnicodeString(std::round(max)) + "\t" + UnicodeString(pos) + "\t" + UnicodeString(center) + "\t";
 
+    sum = max = 0.;
+    pos = 0;
+    for (auto i = 0; i < 130; i++) {
+        sum += AMiddle[i];
+        if (AMiddle[i] > max) {
+            pos = i;
+            max = AMiddle[i];
+        }
+    }
+	GetPercentsPos(AMiddle, 130, percent, res_pos, 3);
+    center = res_pos[1];
+    CP = CP + UnicodeString(std::round(sum)) + "\t" + UnicodeString(std::round(max)) + "\t" + UnicodeString(pos) + "\t\t" + UnicodeString(center);
+}

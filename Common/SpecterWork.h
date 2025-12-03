@@ -8,7 +8,9 @@
 class SpecterWork {
 
 public:
-	UnicodeString FileName;
+	UnicodeString
+    	FileName,
+        CP;
 	double
 		*Data = NULL,   // Значения спектров
 		*Middle = NULL, // Средние значения спектров
@@ -19,6 +21,18 @@ public:
 		*Re = NULL,
 		*Im = NULL;
     double ReMin, ReMax, ImMin, ImMax;
+    int
+        *Changes = NULL,
+        Changes_Max;
+    double
+        *AMax = NULL,
+        *AMin = NULL,
+        *AMiddle = NULL,
+        *AChange = NULL,
+        AMax_Max,
+        AMin_Max,
+        AMiddle_Max,
+        AChange_Max;
 	int
 		N,              // Кол-во точек для вычисления спектра
 		N2,             // N2 = N / 2
@@ -108,5 +122,8 @@ public:
 
     // Вычисление позиций вертикальных тиков
     void GetFreqPos(void);
+
+    // Анализ значений
+    void AnalyzeSpecters(void);
 };
 #endif

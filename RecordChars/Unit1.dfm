@@ -341,6 +341,7 @@ object Form1: TForm1
               Top = 0
               Width = 105
               Height = 105
+              PopupMenu = PopupMenu2
               Stretch = True
             end
           end
@@ -359,6 +360,27 @@ object Form1: TForm1
             View3D = False
             Align = alClient
             TabOrder = 0
+            DefaultCanvas = 'TGDIPlusCanvas'
+            ColorPaletteIndex = 13
+          end
+        end
+        object TabSheet8: TTabSheet
+          Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1099#1077' '#1075#1088#1072#1092#1080#1082#1080
+          ImageIndex = 5
+          object Chart5: TChart
+            Left = 0
+            Top = 0
+            Width = 823
+            Height = 344
+            Title.Text.Strings = (
+              'TChart')
+            View3D = False
+            Align = alClient
+            TabOrder = 0
+            ExplicitLeft = 208
+            ExplicitTop = 48
+            ExplicitWidth = 400
+            ExplicitHeight = 250
             DefaultCanvas = 'TGDIPlusCanvas'
             ColorPaletteIndex = 13
           end
@@ -535,6 +557,10 @@ object Form1: TForm1
         Caption = #1047#1085#1072#1095#1077#1085#1080#1103' '#1085#1080#1078#1085#1080#1093' '#1089#1087#1077#1082#1090#1088#1086#1074
         OnClick = N288Click
       end
+      object N998: TMenuItem
+        Caption = #1050#1086#1085#1090#1088#1086#1083#1100#1085#1099#1077' '#1090#1086#1095#1082#1080
+        OnClick = N998Click
+      end
       object N33: TMenuItem
         Caption = '-'
       end
@@ -621,6 +647,10 @@ object Form1: TForm1
       Caption = 'UpdateRecordsList'
       OnExecute = UpdateRecordsListExecute
     end
+    object DrawAdditional: TAction
+      Caption = 'DrawAdditional'
+      OnExecute = DrawAdditionalExecute
+    end
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
@@ -633,6 +663,14 @@ object Form1: TForm1
     object N567: TMenuItem
       Caption = #1054#1073#1085#1086#1074#1080#1090#1100' '#1087#1086#1088#1103#1076#1086#1082' '#1080#1084#1105#1085
       OnClick = N567Click
+    end
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 616
+    Top = 360
+    object N1123: TMenuItem
+      Caption = #1056#1072#1079#1084#1077#1088' '#1089#1087#1077#1082#1090#1088#1086#1075#1088#1072#1084#1084#1099
+      OnClick = N32Click
     end
   end
 end

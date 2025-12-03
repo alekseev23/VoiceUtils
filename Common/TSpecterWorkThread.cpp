@@ -30,7 +30,7 @@ __fastcall TSpecterWorkThread::TSpecterWorkThread(bool CreateSuspended)
 void __fastcall TSpecterWorkThread::Execute()
 {
 	//---- Place thread code here ----
-    double val;
+    double val, f;
     int N2 = N / 2;
     __int64 t, pos;
     FrequencyData *FrequencyData = new class FrequencyData(N);
@@ -46,8 +46,12 @@ void __fastcall TSpecterWorkThread::Execute()
 			val = FrequencyData->Data[j];
 			if (EnergySpecters) {
 				//val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
-                val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
-    	        val = val * val;
+
+                //val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
+    	        //val = val * val;
+
+                f = 8000 * 4096 * (j + 1) / (1364 * N2);
+                val = val * f * f;
 			}
 			Data[t++] = val;
 			if (val > MaxValue) MaxValue = val;

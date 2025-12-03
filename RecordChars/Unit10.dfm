@@ -21,8 +21,6 @@ object Form10: TForm10
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 87
-    ExplicitWidth = 325
     object BitBtn1: TBitBtn
       AlignWithMargins = True
       Left = 6
@@ -33,7 +31,6 @@ object Form10: TForm10
       Caption = #1057#1073#1088#1086#1089
       TabOrder = 0
       OnClick = BitBtn1Click
-      ExplicitLeft = 85
     end
     object BitBtn3: TBitBtn
       AlignWithMargins = True
@@ -45,7 +42,6 @@ object Form10: TForm10
       Caption = #1047#1072#1082#1088#1099#1090#1100
       TabOrder = 1
       OnClick = BitBtn3Click
-      ExplicitLeft = 247
     end
   end
   object StaticText1: TStaticText
@@ -65,6 +61,9 @@ object Form10: TForm10
     TabOrder = 2
     OnClick = ApplyExecute
     Items.Strings = (
+      '1 / 20'
+      '1 / 10'
+      '1 / 5'
       '1 / 3'
       '1 / 2'
       '1'
@@ -84,6 +83,9 @@ object Form10: TForm10
     TabOrder = 3
     OnClick = ApplyExecute
     Items.Strings = (
+      '1 / 20'
+      '1 / 10'
+      '1 / 5'
       '1 / 3'
       '1 / 2'
       '1'

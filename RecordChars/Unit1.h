@@ -115,6 +115,12 @@ __published:	// IDE-managed Components
 	TMenuItem *N33;
 	TPopupMenu *PopupMenu1;
 	TMenuItem *N567;
+	TTabSheet *TabSheet8;
+	TChart *Chart5;
+	TAction *DrawAdditional;
+	TPopupMenu *PopupMenu2;
+	TMenuItem *N1123;
+	TMenuItem *N998;
 	void __fastcall N3Click(TObject *Sender);
 	void __fastcall UpdateVoicesListExecute(TObject *Sender);
 	void __fastcall N4Click(TObject *Sender);
@@ -160,6 +166,8 @@ __published:	// IDE-managed Components
 	void __fastcall Q1Click(TObject *Sender);
 	void __fastcall N288Click(TObject *Sender);
 	void __fastcall N567Click(TObject *Sender);
+	void __fastcall DrawAdditionalExecute(TObject *Sender);
+	void __fastcall N998Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

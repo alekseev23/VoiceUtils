@@ -89,6 +89,13 @@ CommandLineArgumentsAnalyzer->AddKey("--frequency-stretch", true, 1, 1);
 CommandLineArgumentsAnalyzer->AddKey("--in", true, 1, 1);
 CommandLineArgumentsAnalyzer->AddKey("--out", true, 1, 1);
 CommandLineArgumentsAnalyzer->AddArguments(argc, argv, 1, argc);
+
+/*for (auto i = 0; i < CommandLineArgumentsAnalyzer->Count; i++) {
+    std::wcout << CommandLineArgumentsAnalyzer->Keys[i]->Key
+        <<  "\t" << CommandLineArgumentsAnalyzer->Keys[i]->Present
+        <<  "\t" << CommandLineArgumentsAnalyzer->Keys[i]->Params->Text
+    	<< std::endl;
+}*/
 // Анализ
 // Аудио файл
 if (CommandLineArgumentsAnalyzer->Check("--in") && CommandLineArgumentsAnalyzer->CheckRequiredParams("--in")) {
@@ -171,6 +178,7 @@ if ((CommandLineArgumentsAnalyzer->Check("--frequency-cut") && CommandLineArgume
 // --frequency-shift
 if ((CommandLineArgumentsAnalyzer->Check("--frequency-shift") && CommandLineArgumentsAnalyzer->CheckRequiredParams("--frequency-shift"))) {
 	int shift = CommandLineArgumentsAnalyzer->GetParameter("--frequency-shift", 0).ToIntDef(0);
+    //std::cout << "Frequency-shift: " << shift << std::endl;
 	WavFile->Shift(shift);
 }
 // Копирование
@@ -189,6 +197,7 @@ if ((CommandLineArgumentsAnalyzer->Check("--frequency-stretch") && CommandLineAr
 	double val = str_replace(".", ",", CommandLineArgumentsAnalyzer->GetParameter("--frequency-stretch", 0)).ToDouble();
 	WavFile->Resize(val);
 }
+
 // Обратное преобразование
 WavFile->ReCalculate();
 // Сохранение
