@@ -108,11 +108,11 @@ double TVoiceSpectersDB4_Sound::Compare(std::vector<TVoiceSpectersDB4_Specter> &
     dif = 0.;
     same = 0.;
     // ѕроверка индексов спектров
-	if (p1 + n >= s1.size()) {
+	if (p1 + n > s1.size()) {
     std::cout << "1   -1" << std::endl;
     	return -1.;
     }
-    if (p2 + n >= s2.size()) {
+    if (p2 + n > s2.size()) {
     std::cout << "2   -1" << std::endl;
     	return -1.;
     }
@@ -135,7 +135,14 @@ double TVoiceSpectersDB4_Sound::Compare(std::vector<TVoiceSpectersDB4_Specter> &
 }
 
 //---------------------------------------------------------------------------
-// »щет, где разница минимальна, а похожесть максимальна
+/*
+»щет, где разница минимальна, а похожесть максимальна
+s - вектор спектров
+p - позици€ в векторе
+n - количество сравниваемых элементов
+dif - разница значений
+same - одинокова€ часть значений
+*/
 int TVoiceSpectersDB4_Sound::SearchMin(std::vector<TVoiceSpectersDB4_Specter> &s, int p, int n, double &dif, double &same) {
     int pos = -1, k;
     double cur_dif, cur_same;
@@ -143,7 +150,7 @@ int TVoiceSpectersDB4_Sound::SearchMin(std::vector<TVoiceSpectersDB4_Specter> &s
     same = -1e8;
     k = Specters.size() - n;
     // ÷икл по всем группам спектров
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i <= k; i++) {
 //std::cout << "TVoiceSpectersDB4_Sound::SearchMin Count=" << Count << " Specters.size()=" << Specters.size() << " n=" << n << " i=" << i << std::endl;
         if (Compare(Specters, s, i, p, n, cur_dif, cur_same) > same - dif) {
             dif = cur_dif;
@@ -257,7 +264,7 @@ bool TVoiceSpectersDB4::Search(std::vector<TVoiceSpectersDB4_Specter> &s, int fr
 
 	        // »щет, где разница минимальна, а похожесть максимальна
 			pos = Sounds[j].SearchMin(s, i, dn, dif, same);
-//std::wcout << R << "\tpos=" << pos << "\ti=" << i << "\tsame=" << same << "\tdif=" << dif << "\tdelta=" << (same - dif) << std::endl;
+//std::wcout << R << "\tpos=" << pos << "\ti=" << i << "\tdn=" << dn << "\tsame=" << same << "\tdif=" << dif << "\tdelta=" << (same - dif) << std::endl;
         	//sum.Add(Sounds[j].Sound, same - dif);
             sum.SoftAdd(Sounds[j].Sound, same - dif);
         }

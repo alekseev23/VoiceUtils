@@ -8,7 +8,8 @@
 #include <vector>
 #include "TBallsSum.h"
 
-#define TVoiceSpectersDB4_M 320
+//#define TVoiceSpectersDB4_M 320
+#define TVoiceSpectersDB4_M 1024
 
 //---------------------------------------------------------------------------
 /*
