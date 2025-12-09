@@ -31,9 +31,42 @@ class TVoiceSpectersDB4_Specter {
 
 public:
     double Sum = 0.;
-    class TVoiceSpectersDB4_Point Points[TVoiceSpectersDB4_M];
-};
+    class TVoiceSpectersDB4_Point *Points;
 
+    TVoiceSpectersDB4_Specter() {
+        Points = new class TVoiceSpectersDB4_Point[TVoiceSpectersDB4_M];
+    }
+
+    ~TVoiceSpectersDB4_Specter() {
+        delete[] Points;
+    }
+};
+//---------------------------------------------------------------------------
+/*
+Объект для хранения информации о пиках звука
+*/
+class TVoiceSpectersDB4_Peaks {
+
+public:
+
+    int
+    	N,      // Кол-во точек в спектре
+        Count;  // Кол-во пиков
+    int Tag;
+    double
+    	*Max = NULL,    // Максимумв пике
+        *Sum2 = NULL,    // Сумма значений в районе пика
+        GlobalSum,      // Глобальная сумма
+        GlobalMax;      // Глобальный максимум
+
+    TVoiceSpectersDB4_Peaks();
+    ~TVoiceSpectersDB4_Peaks();
+    void Set(double *values, int n);
+    double CompareMax(double *max, double *sum, double &dif, double &same);
+    double CompareSum(double *max, double *sum, double &dif, double &same);
+    double CompareMax(TVoiceSpectersDB4_Peaks *peak, double &dif, double &same);
+
+};
 //---------------------------------------------------------------------------
 /*
 Объект для хранения звука и его спектров
@@ -46,8 +79,11 @@ public:
     	Id = 0,     // Версия звука (1, 2, ...)
         Count = 0;  // Кол-во спектров
     std::vector<TVoiceSpectersDB4_Specter> Specters;
+    TVoiceSpectersDB4_Peaks *Peaks = NULL;
 
     TVoiceSpectersDB4_Sound();
+    TVoiceSpectersDB4_Sound(const TVoiceSpectersDB4_Sound &s);
+    TVoiceSpectersDB4_Sound(TVoiceSpectersDB4_Sound &&s);
     ~TVoiceSpectersDB4_Sound();
     bool Read(FILE *fd);
     bool Write(FILE *fd);
@@ -100,6 +136,7 @@ public:
 
 	// Поиск наиболее похожего звука
 	bool Search(std::vector<TVoiceSpectersDB4_Specter> &s, int from, int len, int dn, TBallsSum &sum);
+	bool SearchPeaks(std::vector<TVoiceSpectersDB4_Specter> &s, TBallsSum &sum);
 
 };
 #endif

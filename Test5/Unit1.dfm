@@ -61,6 +61,7 @@ object Form1: TForm1
     TabOrder = 2
     OnClick = ListBox2Click
     OnDblClick = ListBox2DblClick
+    ExplicitTop = 0
   end
   object Chart1: TChart
     AlignWithMargins = True

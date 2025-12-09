@@ -12,6 +12,7 @@
 #include "../Common/TBallsSum.h"
 using namespace std;
 
+int MMM = 0;
 //------------------------------------------------------------------------------
 int wmain(int argc, wchar_t* argv[])
 {
@@ -34,7 +35,6 @@ if (argc != 3) {
 }
 // Вычисление всех спектров
 class SpecterWork *sw = new class SpecterWork;
-
 //sw->ReadDataFromDAT(dat_fname);
 sw->ReadDataFromWAV(UnicodeString(argv[2]));
 // Нахождение спектров
@@ -42,22 +42,31 @@ sw->CountSpectersThread(N, true, 1200, 0, sw->BufSize, windows_size, shape_type)
 // Находим средний спектр
 sw->CountMiddleValues(0, sw->Count, TVoiceSpectersDB4_M, Min, Max, Middle);
 // Добавляем спектр в вектор звука
-TVoiceSpectersDB4_Sound Sound;
-Sound.Add(Min, Max, Middle);
+
 // Загрузка базы спектров
 TVoiceSpectersDB4 *db = new class TVoiceSpectersDB4;
+
+std::cout << "Here 1" <<std::endl;
+
 db->Load(UnicodeString(argv[1]));
-//cout << "db->Count=" << db->Count << endl;
+cout << "db->Count=" << db->Count << endl;
+
+std::cout << "Here 2" <<std::endl;
+TVoiceSpectersDB4_Sound Sound;
+Sound.Add(Min, Max, Middle);
+std::cout << "Here 3" <<std::endl;
+
 TStringList *ts = new TStringList;
 TBallsSum bs;
-db->Search(Sound.Specters, 0, 1, 1, bs);
+//db->Search(Sound.Specters, 0, 1, 1, bs);
+db->SearchPeaks(Sound.Specters, bs);
 for (auto i = 0; i < bs.N; i++) {
     //ts->Add(bs.Sound[bs.Order[i]] + "\t" + UnicodeString(std::round(bs.Balls[bs.Order[i]])));
     ts->Add(bs.Sound[bs.Order[i]] + "\t" + UnicodeString((double)System::Math::RoundTo(bs.Balls[bs.Order[i]], -3)));
 }
 // Сохраняем результат
 ts->SaveToFile("result.dat", TEncoding::UTF8);
-//ShowMessage(ts->Text);
+ShowMessage(ts->Text);
 // Удаляем ненужные объекты
 delete ts;
 delete sw;

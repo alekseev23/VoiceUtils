@@ -7,17 +7,145 @@
 #pragma package(smart_init)
 
 //---------------------------------------------------------------------------
-TVoiceSpectersDB4_Sound::TVoiceSpectersDB4_Sound() {
+extern int MMM;
+//---------------------------------------------------------------------------
+TVoiceSpectersDB4_Peaks::TVoiceSpectersDB4_Peaks() {
+    Tag = MMM;
+    MMM++;
+    Max = new double[100];
+    Sum2 = new double[100];
+    for (int i = 0; i < 100; i++) {
+        Max[i] = i;
+        Sum2[i] = i;
+    }
+    std::cout << "TVoiceSpectersDB4_Peaks Tag=" << Tag << std::endl;
 }
-
+//---------------------------------------------------------------------------
+TVoiceSpectersDB4_Peaks::~TVoiceSpectersDB4_Peaks() {
+std::cout << "<<<<<<Pizdez!>>>>>    Tag=" << Tag << std::endl;
+    if (Max != NULL) delete[] Max;
+    if (Sum2 != NULL) delete[] Sum2;
+}
+//---------------------------------------------------------------------------
+void TVoiceSpectersDB4_Peaks::Set(double *values, int n) {
+    int k = 0, d = 131;
+//std::cout << "Set Point 1"<< std::endl;
+    //if (Max != NULL) delete[] Max;
+    //if (Sum != NULL) delete[] Sum;
+    N = n;
+    Count = N / d;
+    //Max = new double [Count];
+    //Sum = new double [Count];
+std::cout << "Set Point 2 N=" << N << " Count=" << Count << " Tag=" << Tag << std::endl;
+    for (int i = 0; i < Count; i++) {
+        Max[i] = 0.;
+        Sum2[i] = 0.;
+	    for (int j = 0; j < d; j++) {
+            if (values[k] > Max[i]) Max[i] = values[k];
+            Sum2[i] += values[k];
+            k++;
+        }
+std::cout << "Set Point 3  i=" << i << " k=" << k << " Count=" << Count << " Max=" << Max[i] <<  " Sum2=" << Sum2[i] << " values=" << values[k] << std::endl;
+    }
+    GlobalSum = GlobalMax = 0.;
+    for (auto i = 0; i < Count; i++) {
+        if (Max[i] > GlobalMax) GlobalMax = Max[i];
+        GlobalSum += Sum2[i];
+    }
+//std::cout << "GlobalSum=" << GlobalSum << "\tGlobalMax=" << GlobalMax;
+//for (auto i = 0; i < Count; i++) std::cout << "\t" << Max[i] << "," << Sum[i];
+//std::cout << std::endl;
+}
+//---------------------------------------------------------------------------
+double TVoiceSpectersDB4_Peaks::CompareMax(double *max, double *sum, double &dif, double &same) {
+    // Вычисление масштабных коэффициентов
+    double s1 = 0., m1 = 0., s2 = 0., m2 = 0., k, v1, v2;
+    for (auto i = 0; i < Count; i++) {
+        if (Max[i] > m1) m1 = Max[i];
+        if (max[i] > m2) m2 = max[i];
+        s1 += Sum2[i];
+        s2 += sum[i];
+    }
+    k = 1. * (m2 / m1 + s2 / s1) / 2;
+std::cout << "\t\tm1=" << m1 << "\tm2=" << m2 << "\ts1=" << s1 << "\ts2=" << s2 << "\tk=" << k << std::endl;
+    // Вычисление похожести и различий
+    dif = same = 0.;
+    for (auto i = 0; i < Count; i++) {
+        v1 = k * Max[i];
+        v2 = max[i];
+std::cout << "v1=" << v1 << "\tv2=" << v2 << "\tk=" << k << "\tMax=" << Max[i] << "\tmax=" << max[i] << std::endl;
+        dif += fabs(v1 - v2);
+        if (v1 > v2) same += v2;
+        else same += v1;
+    }
+    return (same - dif);
+}
+//---------------------------------------------------------------------------
+double TVoiceSpectersDB4_Peaks::CompareMax(TVoiceSpectersDB4_Peaks *peak, double &dif, double &same) {
+// double *max, double *sum, double &dif, double &same) {
+std::cout << "CompareMax" << std::endl;
+    // Вычисление масштабных коэффициентов
+    double k, v1, v2;
+    k = 1. * (peak->GlobalMax / GlobalMax + peak->GlobalSum / GlobalSum) / 2;
+    // Вычисление похожести и различий
+    dif = same = 0.;
+std::cout << "CompareMax 2 Count=" << Count << std::endl;
+    for (auto i = 0; i < Count; i++) {
+if (peak->Max[i] != Max[i]) std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+        v1 = k * Max[i];
+        v2 = peak->Max[i];
+std::cout << "v1=" << v1 << "\tv2=" << v2 << "\tk=" << k << "\tMax=" << Max[i] << "\tmax=" << peak->Max[i] << "\tTag=" << Tag << std::endl;
+        dif += fabs(v1 - v2);
+        if (v1 > v2) same += v2;
+        else same += v1;
+    }
+    return (same - dif);
+}
+//---------------------------------------------------------------------------
+double TVoiceSpectersDB4_Peaks::CompareSum(double *max, double *sum, double &dif, double &same) {
+    // Вычисление масштабных коэффициентов
+    double s1 = 0., m1 = 0., s2 = 0., m2 = 0., k, v1, v2;
+    for (auto i = 0; i < Count; i++) {
+        if (Max[i] > m1) m1 = Max[i];
+        if (max[i] > m2) m2 = max[i];
+        s1 += Sum2[i];
+        s2 += sum[i];
+    }
+    k = (m2 / m1 + s2 / s1) / 2;
+    // Вычисление похожести и различий
+    dif = same = 0.;
+    for (auto i = 0; i < Count; i++) {
+        v1 = k * Sum2[i];
+        v2 = sum[i];
+        dif += fabs(v1 - v2);
+        if (v1 > v2) same += v2;
+        else same += v1;
+    }
+    return (same - dif);
+}
+//---------------------------------------------------------------------------
+TVoiceSpectersDB4_Sound::TVoiceSpectersDB4_Sound() {
+	Peaks = new TVoiceSpectersDB4_Peaks;
+}
+//---------------------------------------------------------------------------
+TVoiceSpectersDB4_Sound::TVoiceSpectersDB4_Sound(const TVoiceSpectersDB4_Sound &s) {
+std::cout << "Copy constructor" << std::endl;
+}
+//---------------------------------------------------------------------------
+TVoiceSpectersDB4_Sound::TVoiceSpectersDB4_Sound(TVoiceSpectersDB4_Sound &&s) {
+std::cout << "Move constructor" << std::endl;
+}
 //---------------------------------------------------------------------------
 TVoiceSpectersDB4_Sound::~TVoiceSpectersDB4_Sound() {
     Clear();
+    delete Peaks;
 }
 
 //---------------------------------------------------------------------------
 bool TVoiceSpectersDB4_Sound::Read(FILE *fd) {
+//std::cout << "read Point 1" << std::endl;
     Clear();
+//std::cout << "read Point 2" << std::endl;
     // Sound (6)
     wchar_t w[10];
     fread(w, 2, 3, fd);
@@ -26,12 +154,36 @@ bool TVoiceSpectersDB4_Sound::Read(FILE *fd) {
     fread(&Id, 4, 1, fd);
     // Count (4)
     fread(&Count, 4, 1, fd);
+//std::cout << "read Point 3 Count=" << Count << std::endl;
     // Вектор со спектрами
-    TVoiceSpectersDB4_Specter A;
+    //TVoiceSpectersDB4_Specter A;
+    //TVoiceSpectersDB4_Specter *A = new class TVoiceSpectersDB4_Specter;
     for (auto i = 0; i < Count; i++) {
-	    fread(&A, 8, TVoiceSpectersDB4_M * 3 + 1, fd);
-        Specters.push_back(A);
+	    //TVoiceSpectersDB4_Specter *A;
+        //A = new class TVoiceSpectersDB4_Specter;
+        //fread(A, 8, TVoiceSpectersDB4_M * 3 + 1, fd);
+        //Specters.push_back(*A);
+        TVoiceSpectersDB4_Specter A;
+        fread(&A.Sum, 8, 1, fd);
+        for (auto j = 0; j < TVoiceSpectersDB4_M; j++) {
+            fread(&A.Points[j].Min, 8, 1, fd);
+            fread(&A.Points[j].Max, 8, 1, fd);
+            fread(&A.Points[j].Middle, 8, 1, fd);
+        }
+	    //fread(A.Points, 8, TVoiceSpectersDB4_M * 3, fd);
+        //Specters.push_back(A);
+        Specters.push_back(std::move(A));
     }
+//std::cout << "read Point 4" << std::endl;
+    // Предполагаем, что векторов у нас только один
+    double *values = new double [TVoiceSpectersDB4_M];
+//std::cout << "read Point 45 size=" << Specters.size() << std::endl;
+    for (auto i = 0; i < TVoiceSpectersDB4_M; i++) values[i] = Specters[0].Points[i].Middle;
+//std::cout << "read Point 5" << std::endl;
+    Peaks->Set(values, TVoiceSpectersDB4_M);
+//std::cout << "read\tCount=" << Count << "\t" << values[0] << " " << values[1] << " " << values[2] << " " << values[3] << std::endl;
+    delete[] values;
+//std::cout << "read Point 6" << std::endl;
     return true;
 }
 
@@ -177,9 +329,15 @@ TVoiceSpectersDB4::~TVoiceSpectersDB4() {
 void TVoiceSpectersDB4::SetSize(int count) {
     Clear();
     Count = count;
-    TVoiceSpectersDB4_Sound sound;
-    for (auto i = 0; i < Count; i++) {
-        Sounds.push_back(sound);
+    //TVoiceSpectersDB4_Sound *sound;
+    for (int i = 0; i < Count; i++) {
+	    //TVoiceSpectersDB4_Sound sound;
+        //Sounds.push_back(sound);
+        //sound = new TVoiceSpectersDB4_Sound;
+        //Sounds.push_back(std::move(*sound));
+        //Sounds.emplace_back(*sound);
+        //sound = NULL;
+        Sounds.emplace_back(new class TVoiceSpectersDB4_Sound);
     }
 }
 
@@ -190,12 +348,16 @@ bool TVoiceSpectersDB4::Load(UnicodeString fname) {
     if (fd == NULL) return false;
     // Кол-во звуков
     fread(&Count, 4, 1, fd);
+std::cout << "Point 1 Count=" << Count << std::endl;
     SetSize(Count);
+std::cout << "Point 2" << std::endl;
     // Сами звуки
     for (auto i = 0; i < Count; i++) {
         Sounds[i].Read(fd);
     }
+std::cout << "Point 3" << std::endl;
     fclose(fd);
+std::cout << "Point 4" << std::endl;
     return true;
 }
 
@@ -214,6 +376,7 @@ bool TVoiceSpectersDB4::Save(UnicodeString fname) {
     return true;
 }
 
+//---------------------------------------------------------------------------
 // Очистка списка
 void TVoiceSpectersDB4::Clear(void) {
     Sounds.clear();
@@ -271,6 +434,39 @@ bool TVoiceSpectersDB4::Search(std::vector<TVoiceSpectersDB4_Specter> &s, int fr
         sum.Commit();
     }
     sum.Analyze();
+    return true;
+}
+//---------------------------------------------------------------------------
+// Поиск наиболее похожего звука
+bool TVoiceSpectersDB4::SearchPeaks(std::vector<TVoiceSpectersDB4_Specter> &s, TBallsSum &sum) {
+    int pos;
+    double dif, same;
+    double values[TVoiceSpectersDB4_M];
+    UnicodeString R;
+    // Очищаем сумматор
+    sum.Clear();
+    // Считаем текущие пики
+    for (auto i = 0; i < TVoiceSpectersDB4_M; i++) values[i] = s[0].Points[i].Middle;
+    TVoiceSpectersDB4_Peaks *cur_peaks = new TVoiceSpectersDB4_Peaks;
+    std::cout << std::endl;
+    cur_peaks->Set(values, TVoiceSpectersDB4_M);
+
+for (auto i = 0; i < cur_peaks->Count; i++) {
+    std::cout << i << "\t" << cur_peaks->Max[i] << "\t" << cur_peaks->Sum2[i] << std::endl;
+}
+    // Цикл по всем звукам и их вариантам
+    for (auto j = 0; j < Count; j++) {
+		// Ищет, где разница минимальна, а похожесть максимальна
+        //Sounds[j].Peaks->CompareMax(cur_peaks->Max, cur_peaks->Sum, dif, same);
+        Sounds[j].Peaks->CompareMax(cur_peaks, dif, same);
+        //pos = Sounds[j].SearchMin(s, 0, dn, dif, same);
+//std::wcout << R << "\tpos=" << pos << "\ti=" << i << "\tdn=" << dn << "\tsame=" << same << "\tdif=" << dif << "\tdelta=" << (same - dif) << std::endl;
+std::cout << j << "\t" << same << "\t" << dif << "\t" << (same - dif) << std::endl;
+       	sum.SoftAdd(Sounds[j].Sound, same - dif);
+	}
+    sum.Commit();
+    sum.Analyze();
+    delete cur_peaks;
     return true;
 }
 //---------------------------------------------------------------------------
