@@ -72,18 +72,19 @@ object Form1: TForm1
     end
     object BitBtn4: TBitBtn
       AlignWithMargins = True
-      Left = 840
+      Left = 654
       Top = 3
-      Width = 116
+      Width = 148
       Height = 35
       Align = alRight
-      Caption = #1055#1086#1089#1090#1088#1086#1080#1090#1100' '#1074#1089#1077
+      Caption = #1055#1086#1089#1090#1088#1086#1080#1090#1100' '#1074#1089#1077' '#1079#1072#1087#1080#1089#1080
       TabOrder = 3
       OnClick = BitBtn4Click
+      ExplicitLeft = 808
     end
     object BitBtn5: TBitBtn
       AlignWithMargins = True
-      Left = 704
+      Left = 518
       Top = 3
       Width = 130
       Height = 35
@@ -91,6 +92,20 @@ object Form1: TForm1
       Caption = #1057#1088#1072#1074#1085#1077#1085#1080#1077' '#1089#1087#1077#1082#1090#1088#1086#1074
       TabOrder = 4
       OnClick = BitBtn5Click
+      ExplicitLeft = 704
+    end
+    object BitBtn6: TBitBtn
+      AlignWithMargins = True
+      Left = 808
+      Top = 3
+      Width = 148
+      Height = 35
+      Align = alRight
+      Caption = #1055#1086#1089#1090#1088#1086#1080#1090#1100' '#1074#1089#1077' '#1079#1074#1091#1082#1080
+      TabOrder = 5
+      OnClick = BitBtn6Click
+      ExplicitLeft = 862
+      ExplicitTop = 0
     end
   end
   object TabControl1: TTabControl
@@ -377,10 +392,6 @@ object Form1: TForm1
             View3D = False
             Align = alClient
             TabOrder = 0
-            ExplicitLeft = 208
-            ExplicitTop = 48
-            ExplicitWidth = 400
-            ExplicitHeight = 250
             DefaultCanvas = 'TGDIPlusCanvas'
             ColorPaletteIndex = 13
           end
@@ -629,6 +640,14 @@ object Form1: TForm1
         Caption = #1057#1087#1077#1082#1090#1088#1086#1075#1088#1072#1084#1084#1072
         ShortCut = 121
         OnClick = N31Click
+      end
+    end
+    object N777: TMenuItem
+      Caption = #1047#1072#1087#1080#1089#1100
+      object N34: TMenuItem
+        AutoCheck = True
+        Caption = #1053#1086#1088#1084#1072#1083#1080#1079#1086#1074#1072#1090#1100' '#1075#1088#1086#1084#1082#1086#1089#1090#1100
+        Checked = True
       end
     end
   end

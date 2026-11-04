@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.474,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.050,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit1.h=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.173,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.458,D:\Work\CPP\2025\VoiceUtils\Test\Test1PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.474,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.311,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.474,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit1.cpp=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.495,D:\Work\CPP\2025\VoiceUtils\Test\Test1.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.dfm=D:\Work\CPP\2025\VoiceUtils\Test\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.458,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\Test\Test1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.474,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.cpp=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.495,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\Test\Test1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.474,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.h=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.h=D:\Work\CPP\2025\VoiceUtils\Test\Unit1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.952,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.990,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit1.dfm=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.901,D:\Work\CPP\2025\VoiceUtils\Test\Unit7.cpp=D:\Work\CPP\2025\VoiceUtils\Test\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.474,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit7.dfm=D:\Work\CPP\2025\VoiceUtils\Test\Unit7.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.037,=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord\TVoiceSpecters.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.173,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.050,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.990,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
   </Transactions>
 </BorlandProject>

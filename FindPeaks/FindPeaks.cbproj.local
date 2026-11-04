@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.046,D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaks.cbproj=D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaks.cbproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.306,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.245,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.292,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.782,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaks.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.777,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaksPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.347,D:\Work\CPP\2025\VoiceUtils\FindPeaks\main.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.046,D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaks.cbproj=D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaks.cbproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.505,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.377,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.347,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp=D:\Work\CPP\2025\VoiceUtils\FindPeaks\main.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.292,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.782,D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaks.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.777,D:\Work\CPP\2025\VoiceUtils\FindPeaks\FindPeaksPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.635,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.612,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.637,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.635,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.355,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.639,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.377,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.355,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.210,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
   </Transactions>
 </BorlandProject>

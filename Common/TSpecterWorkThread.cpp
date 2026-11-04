@@ -50,6 +50,9 @@ void __fastcall TSpecterWorkThread::Execute()
                 //val = val * 8000 * (j + 1) * N2 / (1364 * 4096);
     	        //val = val * val;
 
+                //val = log10(val);
+                //if (val < 0.) val = 0.;
+
                 f = 8000 * 4096 * (j + 1) / (1364 * N2);
                 val = val * f * f;
 			}

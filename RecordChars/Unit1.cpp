@@ -16,6 +16,7 @@
 #include "Unit11.h"
 #include "Unit12.h"
 #include "Unit13.h"
+#include "Unit14.h"
 #include "bass.h"
 #include "../../_Common_/Lib/bitmap.h"
 #include "../../_Common_/Lib/files.h"
@@ -206,7 +207,7 @@ BOOL InitDevice(int device) {
 }
 
 //---------------------------------------------------------------------------
-void __fastcall AnalyzeRecord(UnicodeString filename)
+void __fastcall AnalyzeRecord(UnicodeString filename, bool normalize)
 {
 int i, Items, max, min, max_pos, a, b, val, n;
 short *Buf;
@@ -247,9 +248,11 @@ n = b - a;
 /*ShowMessage("min=" + UnicodeString(min) + " max=" + UnicodeString(max)
 	+ " a=" + UnicodeString(a) + " b=" + UnicodeString(b)
 	+ " n=" + UnicodeString(n) + " Items=" + UnicodeString(Items));*/
-for (i = 0; i < n; i++) {
-	// Делаем нормировку
-	Buf[i] = (short) (32767 * Buf[i + a] / max);
+if (normalize) { // Делаем нормировку
+	for (i = 0; i < n; i++) Buf[i] = (short) (32767 * Buf[i + a] / max);
+}
+else {
+	for (i = 0; i < n; i++) Buf[i] = Buf[i + a];
 }
 // Сохраняем его в WAV файле
 reclen = 44 + n * 2;
@@ -415,7 +418,7 @@ else if (BitBtn1->Caption == "Стоп") {
 		name = ListBox1->Items->Strings[ListBox1->ItemIndex];
 		dirname = CurPath + "\\voices\\" + TabControl1->Tabs->Strings[TabControl1->TabIndex];
 		filename = dirname + "\\" + name + "_" + UnicodeString(max) + ".wav";
-		AnalyzeRecord(filename);
+		AnalyzeRecord(filename, N34->Checked);
 		UpdateRecordsListExecute(this);
 		if (ListBox2->Items->Count > 0) ListBox2->ItemIndex = ListBox2->Items->Count - 1;
 		ListBox2Click(this);
@@ -798,12 +801,18 @@ Form3->Show();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::BitBtn4Click(TObject *Sender)
-{ // Построить все
+{ // Построить все записи
 Form4->DrawAllExecute(this);
 Form4->Show();
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TForm1::BitBtn6Click(TObject *Sender)
+{ // Построить все звуки
+Form14->Show();
+Form14->CalculateExecute(this);
+Form14->BitBtn1Click(this);
+}
+//---------------------------------------------------------------------------
 void __fastcall TForm1::N28Click(TObject *Sender)
 {
 Form5->Show();
@@ -1039,4 +1048,5 @@ void __fastcall TForm1::N998Click(TObject *Sender)
 Form13->Show();
 }
 //---------------------------------------------------------------------------
+
 

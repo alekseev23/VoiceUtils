@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.164,=D:\Work\CPP\2025\VoiceUtils\Common\TBallsSum.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.652,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB4.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.633,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.412,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\TBallsSum.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.865,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.577,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.231,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\File1.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\main.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.412,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\TBallsSum.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.615,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.212,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.647,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\AnalyzeRecord4.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.231,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\main.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\File1.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.580,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.164,=D:\Work\CPP\2025\VoiceUtils\Common\TBallsSum.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.553,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.649,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.483,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.412,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\TBallsSum.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.259,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.483,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.533,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.647,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\AnalyzeRecord4.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.616,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\AnalyzeRecord4PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.633,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.616,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\AnalyzeRecord4PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.786,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.412,D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.cpp=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\TBallsSum.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.253,=D:\Work\CPP\2025\VoiceUtils\AnalyzeRecord4\Unit7.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.553,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
   </Transactions>
 </BorlandProject>

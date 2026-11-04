@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.619,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.709,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit1.cpp=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.965,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.764,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.735,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\DrawLongSpecters.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.685,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\DrawLongSpectersPCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.433,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.h=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.619,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit1.h=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.709,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.154,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.350,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.622,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.965,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.685,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\DrawLongSpectersPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.688,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.113,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.735,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\DrawLongSpecters.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.581,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.709,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.h=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.709,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.dfm=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.433,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.dfm=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.709,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit1.dfm=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.596,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.150,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.433,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.cpp=D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.688,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.709,D:\Work\CPP\2025\VoiceUtils\DrawLongSpecters\Unit13.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit13.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.414,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
   </Transactions>
 </BorlandProject>

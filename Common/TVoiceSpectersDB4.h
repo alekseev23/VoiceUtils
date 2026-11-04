@@ -55,7 +55,7 @@ public:
     int Tag;
     double
     	*Max = NULL,    // Максимумв пике
-        *Sum2 = NULL,    // Сумма значений в районе пика
+        *Sum = NULL,    // Сумма значений в районе пика
         GlobalSum,      // Глобальная сумма
         GlobalMax;      // Глобальный максимум
 
@@ -65,7 +65,7 @@ public:
     double CompareMax(double *max, double *sum, double &dif, double &same);
     double CompareSum(double *max, double *sum, double &dif, double &same);
     double CompareMax(TVoiceSpectersDB4_Peaks *peak, double &dif, double &same);
-
+    double CompareSum(TVoiceSpectersDB4_Peaks *peak, double &dif, double &same);
 };
 //---------------------------------------------------------------------------
 /*
@@ -113,7 +113,8 @@ class TVoiceSpectersDB4 {
 public:
     int Count;  // Кол-во версий разных звуков
 
-    std::vector<TVoiceSpectersDB4_Sound> Sounds;
+    //std::vector<TVoiceSpectersDB4_Sound> Sounds;
+    TVoiceSpectersDB4_Sound Sounds[31];
 
 	TVoiceSpectersDB4();
     ~TVoiceSpectersDB4();

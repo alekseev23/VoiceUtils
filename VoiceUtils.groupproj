@@ -72,6 +72,12 @@
         <Projects Include="Test5\Test5.cbproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="VoiceGenerator\VoiceGenerator.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DrawSpectersDif\DrawSpectersDif.cbproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -287,14 +293,32 @@
     <Target Name="Test5:Make">
         <MSBuild Projects="Test5\Test5.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="VoiceGenerator">
+        <MSBuild Projects="VoiceGenerator\VoiceGenerator.cbproj"/>
+    </Target>
+    <Target Name="VoiceGenerator:Clean">
+        <MSBuild Projects="VoiceGenerator\VoiceGenerator.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VoiceGenerator:Make">
+        <MSBuild Projects="VoiceGenerator\VoiceGenerator.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="DrawSpectersDif">
+        <MSBuild Projects="DrawSpectersDif\DrawSpectersDif.cbproj"/>
+    </Target>
+    <Target Name="DrawSpectersDif:Clean">
+        <MSBuild Projects="DrawSpectersDif\DrawSpectersDif.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DrawSpectersDif:Make">
+        <MSBuild Projects="DrawSpectersDif\DrawSpectersDif.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters;FindPeaks;MakeVoiceDatabase4;AnalyzeRecord4;Test4;FindFreqs2;DrawLongSpecters;MakeSpectersBitmap;FrequencyChanger;MakeVoiceDatabase5;AnalyzeRecord5;Test5"/>
+        <CallTarget Targets="AnalyzeRecord;AnalyzeRecord2;FindFreqs;Interpolate;MakeVoiceDatabase;MakeVoiceDatabase2;MakeVoiceDatabase3;RecordChars;ShowSpecters;SortObj;Test1;DrawSpecters;FindPeaks;MakeVoiceDatabase4;AnalyzeRecord4;Test4;FindFreqs2;DrawLongSpecters;MakeSpectersBitmap;FrequencyChanger;MakeVoiceDatabase5;AnalyzeRecord5;Test5;VoiceGenerator;DrawSpectersDif"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean;FindPeaks:Clean;MakeVoiceDatabase4:Clean;AnalyzeRecord4:Clean;Test4:Clean;FindFreqs2:Clean;DrawLongSpecters:Clean;MakeSpectersBitmap:Clean;FrequencyChanger:Clean;MakeVoiceDatabase5:Clean;AnalyzeRecord5:Clean;Test5:Clean"/>
+        <CallTarget Targets="AnalyzeRecord:Clean;AnalyzeRecord2:Clean;FindFreqs:Clean;Interpolate:Clean;MakeVoiceDatabase:Clean;MakeVoiceDatabase2:Clean;MakeVoiceDatabase3:Clean;RecordChars:Clean;ShowSpecters:Clean;SortObj:Clean;Test1:Clean;DrawSpecters:Clean;FindPeaks:Clean;MakeVoiceDatabase4:Clean;AnalyzeRecord4:Clean;Test4:Clean;FindFreqs2:Clean;DrawLongSpecters:Clean;MakeSpectersBitmap:Clean;FrequencyChanger:Clean;MakeVoiceDatabase5:Clean;AnalyzeRecord5:Clean;Test5:Clean;VoiceGenerator:Clean;DrawSpectersDif:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make;FindPeaks:Make;MakeVoiceDatabase4:Make;AnalyzeRecord4:Make;Test4:Make;FindFreqs2:Make;DrawLongSpecters:Make;MakeSpectersBitmap:Make;FrequencyChanger:Make;MakeVoiceDatabase5:Make;AnalyzeRecord5:Make;Test5:Make"/>
+        <CallTarget Targets="AnalyzeRecord:Make;AnalyzeRecord2:Make;FindFreqs:Make;Interpolate:Make;MakeVoiceDatabase:Make;MakeVoiceDatabase2:Make;MakeVoiceDatabase3:Make;RecordChars:Make;ShowSpecters:Make;SortObj:Make;Test1:Make;DrawSpecters:Make;FindPeaks:Make;MakeVoiceDatabase4:Make;AnalyzeRecord4:Make;Test4:Make;FindFreqs2:Make;DrawLongSpecters:Make;MakeSpectersBitmap:Make;FrequencyChanger:Make;MakeVoiceDatabase5:Make;AnalyzeRecord5:Make;Test5:Make;VoiceGenerator:Make;DrawSpectersDif:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

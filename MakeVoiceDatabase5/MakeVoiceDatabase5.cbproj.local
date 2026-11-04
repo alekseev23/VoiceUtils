@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2025.12.05 15:14:50.617,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>2025.12.05 15:14:50.876,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
-    <Transaction>2025.12.05 15:15:49.565,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\MakeVoiceDatabase5PCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>2025.12.05 15:15:49.586,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\File1.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
-    <Transaction>2025.12.05 15:15:49.602,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\MakeVoiceDatabase5.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
-    <Transaction>2025.12.05 15:15:55.205,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\main.cpp=D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\File1.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:11.343,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:11.398,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:11.445,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:44.168,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:44.235,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:44.276,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
-    <Transaction>2025.12.05 15:29:44.337,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
-    <Transaction>2025.12.05 15:30:41.968,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
-    <Transaction>2025.12.05 15:30:41.973,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
-    <Transaction>2025.12.05 15:30:42.008,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB.cpp</Transaction>
-    <Transaction>2025.12.05 15:30:42.076,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB4.cpp</Transaction>
-    <Transaction>2025.12.05 15:37:06.407,=D:\Work\CPP\2025\VoiceUtils\Common\TBallsSum.cpp</Transaction>
-    <Transaction>2025.12.06 10:57:44.223,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
-    <Transaction>2025.12.06 10:58:21.601,=D:\Work\CPP\2025\VoiceUtils\Common\TWavFile.cpp</Transaction>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.407,=D:\Work\CPP\2025\VoiceUtils\Common\TBallsSum.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.076,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB4.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.586,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp=D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.876,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\File1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.235,=D:\Work\CPP\2025\VoiceUtils\Common\FrequencyData.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.205,D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\File1.cpp=D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\main.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.445,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.337,=D:\Work\CPP\2025\VoiceUtils\Common\TColorSceme.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.276,=D:\Work\CPP\2025\VoiceUtils\Common\SpecterWork.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.223,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.398,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.968,=D:\Work\CPP\2025\VoiceUtils\Common\TInterpolation.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.973,=D:\Work\CPP\2025\VoiceUtils\Common\TSpecterWorkThread.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.343,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.168,=D:\Work\CPP\2025\VoiceUtils\Common\FFT.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.602,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\MakeVoiceDatabase5.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.565,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\MakeVoiceDatabase5\MakeVoiceDatabase5PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.617,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.008,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.601,=D:\Work\CPP\2025\VoiceUtils\Common\TWavFile.cpp</Transaction>
   </Transactions>
 </BorlandProject>

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.272,D:\Work\CPP\2025\VoiceUtils\RecordChars\ProjectGroup1.groupproj=D:\Work\CPP\2025\VoiceUtils\ProjectGroup1.groupproj</Transaction>
-    <Transaction>2025.11.27 14:31:45.833,D:\Work\CPP\2025\VoiceUtils\VoiceUtils.groupproj=D:\Work\CPP\2025\VoiceUtils\ProjectGroup1.groupproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.272,D:\Work\CPP\2025\VoiceUtils\ProjectGroup1.groupproj=D:\Work\CPP\2025\VoiceUtils\RecordChars\ProjectGroup1.groupproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.833,D:\Work\CPP\2025\VoiceUtils\ProjectGroup1.groupproj=D:\Work\CPP\2025\VoiceUtils\VoiceUtils.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="D:\Work\CPP\2025\VoiceUtils\Test5\Test5.cbproj"/>
+		<Projects ActiveProject="D:\Work\CPP\2025\VoiceUtils\RecordChars\RecordChars.cbproj"/>
 	</Default.Personality>
 </BorlandProject>

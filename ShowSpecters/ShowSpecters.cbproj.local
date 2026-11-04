@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.576,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.674,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit2.dfm=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.606,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.058,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit1.dfm=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.587,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\ShowSpectersPCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.600,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.587,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\ShowSpectersPCH1.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.606,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.h=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.578,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.156,=D:\Work\CPP\2025\_Common_\Lib\strings.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.093,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.058,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.dfm=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.674,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.dfm=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.627,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\ShowSpecters.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.674,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.h=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit2.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.058,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.h=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.863,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.h=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.986,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpecters2.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.009,=D:\Work\CPP\2025\_Common_\Lib\bitmap.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.578,=D:\Work\CPP\2025\VoiceUtils\Common\TVoiceSpectersDB.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.056,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.058,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit1.h=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.674,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit2.cpp=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.674,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit2.h=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.627,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\ShowSpecters.cbproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.058,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit1.cpp=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.093,=D:\Work\CPP\2025\_Common_\Lib\RunProcess.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.dfm=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.576,=D:\Work\CPP\2025\VoiceUtils\Common\common.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.606,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.cpp=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.751,=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.606,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.863,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit10.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.058,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.674,D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit10.cpp=D:\Work\CPP\2025\VoiceUtils\ShowSpecters\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.056,=D:\Work\CPP\2025\_Common_\Lib\files.cpp</Transaction>
   </Transactions>
 </BorlandProject>

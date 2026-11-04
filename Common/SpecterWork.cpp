@@ -37,7 +37,10 @@ delete[] FreqLinePos;
 
 // Чтение данных из WAV файла
 bool SpecterWork::ReadData(UnicodeString filename) {
-	return ReadDataFromWAV(filename);
+    UnicodeString ext = get_extension(filename);
+	if (ext == ".wav") return ReadDataFromWAV(filename);
+    if (ext == ".dat")  return ReadDataFromDAT(filename);
+    return false;
 }
 //---------------------------------------------------------------------------
 
@@ -412,6 +415,7 @@ for (auto i = 0; i < CPUCount; i++) {
     SpecterWorkThread[i]->Data = Data;
     SpecterWorkThread[i]->EnergySpecters = energy_specters;
     SpecterWorkThread[i]->N = N;
+    SpecterWorkThread[i]->WindowSize = N;
     SpecterWorkThread[i]->Count = Count;
     SpecterWorkThread[i]->Resume();
 }

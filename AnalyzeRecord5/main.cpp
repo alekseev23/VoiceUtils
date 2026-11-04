@@ -46,15 +46,15 @@ sw->CountMiddleValues(0, sw->Count, TVoiceSpectersDB4_M, Min, Max, Middle);
 // Загрузка базы спектров
 TVoiceSpectersDB4 *db = new class TVoiceSpectersDB4;
 
-std::cout << "Here 1" <<std::endl;
+//std::cout << "Here 1" <<std::endl;
 
 db->Load(UnicodeString(argv[1]));
-cout << "db->Count=" << db->Count << endl;
+//cout << "db->Count=" << db->Count << endl;
 
-std::cout << "Here 2" <<std::endl;
+//std::cout << "Here 2" <<std::endl;
 TVoiceSpectersDB4_Sound Sound;
 Sound.Add(Min, Max, Middle);
-std::cout << "Here 3" <<std::endl;
+//std::cout << "Here 3" <<std::endl;
 
 TStringList *ts = new TStringList;
 TBallsSum bs;
@@ -66,7 +66,7 @@ for (auto i = 0; i < bs.N; i++) {
 }
 // Сохраняем результат
 ts->SaveToFile("result.dat", TEncoding::UTF8);
-ShowMessage(ts->Text);
+//ShowMessage(ts->Text);
 // Удаляем ненужные объекты
 delete ts;
 delete sw;

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.892,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\VoiceGeneratorPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.553,D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit14.h=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.553,D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit14.dfm=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.918,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit14.h=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit14.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.953,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.cbproj=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\VoiceGenerator.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.918,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit14.dfm=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit14.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.296,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit14.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.918,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit14.cpp=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit14.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.553,D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit14.cpp=D:\Work\CPP\2025\VoiceUtils\VoiceGenerator\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.936,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+  </Transactions>
+</BorlandProject>

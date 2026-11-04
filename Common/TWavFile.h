@@ -41,6 +41,7 @@ public:
 	// Пересчитываем аудио данные из спектров
 	void ReCalculate();
 
+    // Из всего спектра вырезаем полосу, а остальное
 	void Cut(int left, int right, int d_left, int d_right, double kf, double kb);
 	void Shift(int val);
 	void Move();
